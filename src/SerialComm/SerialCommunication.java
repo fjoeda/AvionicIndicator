@@ -49,6 +49,8 @@ public class SerialCommunication {
             "COM3", // Windows
     };
 
+    //Kirim data ke Serial
+
     public void SendToSerial(String message) {
         try{
             output1.write(Byte.valueOf(message));
@@ -59,8 +61,9 @@ public class SerialCommunication {
         }
     }
 
+    // Menghubungkan ke Serial
 
-    public void ConnectToSerial(ActionEvent actionEvent) throws Exception {
+    public void connectToSerial() throws Exception {
         System.out.println("Clicked");
         if(PortName!=null&&BaudRate!=0){
             CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(PortName);
@@ -78,7 +81,7 @@ public class SerialCommunication {
                             if(event.getEventType()==SerialPortEvent.DATA_AVAILABLE){
                                 String data = input.readLine();
                                 ReceivedMessage = data;
-                                System.out.println(data);
+                                //System.out.println(data);
                             }
                         }catch (IOException e){
 
@@ -95,6 +98,8 @@ public class SerialCommunication {
         }
     }
 
+
+
     public String getReceivedMessage(){
         return ReceivedMessage;
     }
@@ -105,5 +110,9 @@ public class SerialCommunication {
 
     public void setPortName(String portName){
         PortName = portName;
+    }
+
+    public void disconnectSerial(){
+        serialPort.close();
     }
 }
