@@ -20,10 +20,8 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -69,8 +67,13 @@ public class Demo extends Application {
         pane.setPadding(new Insets(20, 20, 20, 20));
         pane.setSpacing(20);
         pane.setBackground(new Background(new BackgroundFill(Color.rgb(31, 31, 31), CornerRadii.EMPTY, Insets.EMPTY)));
-        
-        Scene scene = new Scene(pane);
+
+        AnchorPane test = new AnchorPane();
+        Button tombol = new Button("dhajdad");
+
+        test.getChildren().addAll(pane,tombol);
+
+        Scene scene = new Scene(test);
 
         stage.setTitle("AirSeries");
         stage.setScene(scene);

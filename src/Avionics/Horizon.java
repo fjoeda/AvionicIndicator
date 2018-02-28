@@ -104,7 +104,7 @@ public class Horizon extends Region {
 
     // ******************** Constructors **************************************
     public Horizon() {
-        getStylesheets().add(getClass().getResource("horizon.css").toExternalForm());
+        getStylesheets().add(getClass().getResource("css/horizon.css").toExternalForm());
         getStyleClass().add("horizon");
         roll = new DoublePropertyBase(0) {
             @Override public void set(final double ROLL) { super.set(ROLL % 360); }
@@ -167,7 +167,7 @@ public class Horizon extends Region {
     }
 
     private void initGraphics() {
-        fontName      = Font.loadFont(Horizon.class.getResourceAsStream("Verdana.ttf"), 10).getName();
+        fontName      = Font.loadFont(Horizon.class.getResourceAsStream("css/Verdana.ttf"), 10).getName();
 
         background    = new Region();
         background.getStyleClass().add("background");

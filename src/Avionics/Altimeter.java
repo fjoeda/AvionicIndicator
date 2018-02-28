@@ -95,7 +95,7 @@ public class Altimeter extends Region {
 
     // ******************** Constructors **************************************
     public Altimeter() {
-        getStylesheets().add(getClass().getResource("altimeter.css").toExternalForm());
+        getStylesheets().add(getClass().getResource("css/altimeter.css").toExternalForm());
         getStyleClass().add("altimeter");
         targetValue     = new DoublePropertyBase(0) {
             @Override public void set(final double VALUE) {
@@ -140,7 +140,7 @@ public class Altimeter extends Region {
     }
 
     private void initGraphics() {
-        fontName      = Font.loadFont(Altimeter.class.getResourceAsStream("Verdana.ttf"), 10).getName();
+        fontName      = Font.loadFont(Altimeter.class.getResourceAsStream("css/Verdana.ttf"), 10).getName();
 
         background    = new Region();
         background.getStyleClass().add("background");

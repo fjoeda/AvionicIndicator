@@ -43,7 +43,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
-
 /**
  * User: hansolo
  * Date: 02.04.14
@@ -77,8 +76,7 @@ public class AirCompass extends Region {
 
     // ******************** Constructors **************************************
     public AirCompass() {
-
-        getStylesheets().add(getClass().getResource("aircompass.css").toExternalForm());
+        getStylesheets().add(getClass().getResource("css/aircompass.css").toExternalForm());
         getStyleClass().add("air-compass");
         bearing          = new SimpleDoubleProperty(this, "bearing", 0);
         bearingAngle     = new SimpleDoubleProperty(this, "bearingAngle", 0);
@@ -113,7 +111,7 @@ public class AirCompass extends Region {
     }
 
     private void initGraphics() {
-        fontName      = Font.loadFont(AirCompass.class.getResourceAsStream("Verdana.ttf"), 10).getName();
+        fontName      = Font.loadFont(AirCompass.class.getResourceAsStream("css/Verdana.ttf"), 10).getName();
         
         background    = new Region();
         background.getStyleClass().add("background");
