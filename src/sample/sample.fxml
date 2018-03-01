@@ -14,7 +14,7 @@
       <HBox fx:id="avionics" layoutX="14.0" layoutY="14.0" prefHeight="320.0" prefWidth="960.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Separator prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="343.0" />
       <TextField prefWidth="398.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="352.0" />
-      <Button mnemonicParsing="false" text="Send" AnchorPane.leftAnchor="421.0" AnchorPane.topAnchor="352.0" />
+      <Button fx:id="btnSend" mnemonicParsing="false" text="Send" AnchorPane.leftAnchor="421.0" AnchorPane.topAnchor="352.0" />
       <TextArea prefHeight="300.0" prefWidth="450.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="386.0" />
       <ComboBox prefWidth="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="695.0" />
       <ComboBox prefWidth="150.0" AnchorPane.leftAnchor="173.0" AnchorPane.topAnchor="695.0" />
