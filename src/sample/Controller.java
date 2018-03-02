@@ -83,21 +83,7 @@ public class Controller implements Initializable{
         horizon   = new Horizon();
         altimeter = new Altimeter();
 
-        ConsoleText.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                Double nilaiAltitude = ParseNilaiAltitude(newValue);
-                Double nilaiYaw = ParseNilaiYaw(newValue);
-                Double nilaiPitch = ParseNilaiPitch(newValue);
-                Double nilaiRoll = ParseNilaiRoll(newValue);
-                Double nilaiLatitude = ParseNilaiLatitude(newValue);
-                Double nilaiLongitude = ParseNilaiLongitude(newValue);
-            }
-        });
-
         avionics.getChildren().addAll(compass, horizon, altimeter);
-
-        timer.start();
 
         PortList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> PortName = newValue);
         BaudList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> BaudRate = newValue);
@@ -142,6 +128,10 @@ public class Controller implements Initializable{
                                 String data = input.readLine();
                                 ConsoleText.appendText(data + System.lineSeparator());
                                 System.out.println(data);
+                                compass.setBearing(ParseNilaiYaw(data));
+                                horizon.setPitch(ParseNilaiPitch(data));
+                                horizon.setRoll(ParseNilaiRoll(data));
+                                altimeter.setValue(ParseNilaiAltitude(data));
                             }
                         } catch (IOException e) {
                             //Log.debug("Catch 1 : " + e.toString());
