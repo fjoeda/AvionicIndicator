@@ -6,8 +6,11 @@ import Avionics.Altimeter;
 import Avionics.Horizon;
 import SerialComm.SerialCommunication;
 import javafx.animation.AnimationTimer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -16,21 +19,26 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
     private static final Random RND = new Random();
-
+    @FXML
+    public HBox avionics;
+    @FXML
+    public TextArea dataArea;
+    SerialCommunication serial;
     private AirCompass     compass;
     private Horizon        horizon;
     private Altimeter      altimeter;
-
     private long           lastTimerCall;
     private AnimationTimer timer;
-
-    @FXML
-    public HBox avionics;
-
-    SerialCommunication serial;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //listener untuk parsing data
+        dataArea.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    ParseData(newValue);
+            }
+        });
         compass   = new AirCompass();
         horizon   = new Horizon();
         altimeter = new Altimeter();
@@ -52,10 +60,9 @@ public class Controller implements Initializable{
 
         timer.start();
     }
-     public void ParseData(){
-        //silahkan pakai nilai_x untuk string type, atau int_nilai_x untuk integer type.
-        String serialData = serial.getReceivedMessage();
-        String[] parts = serialData.split("#");
+     public void ParseData(String dapetData){
+        //pakai int_nilai_x untuk datanya ya
+        String[] parts = dapetData.split("#");
         String nilai_roll = parts[1];
         Integer int_nilai_roll = Integer.valueOf(nilai_roll);
         String nilai_pitch = parts[2];
@@ -64,5 +71,8 @@ public class Controller implements Initializable{
         Integer int_nilai_yaw = Integer.valueOf(nilai_yaw);
         String nilai_altitude = parts[4];
         Integer int_nilai_altitude = Integer.valueOf(nilai_altitude);
+    }
+    public void SetCompass(javafx.event.ActionEvent actionEvent){
+
     }
 }
