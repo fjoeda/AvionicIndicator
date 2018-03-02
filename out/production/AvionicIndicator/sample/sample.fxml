@@ -14,16 +14,16 @@
       <HBox fx:id="avionics" layoutX="14.0" layoutY="14.0" prefHeight="320.0" prefWidth="960.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Separator prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="343.0" />
       <TextField prefWidth="398.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="352.0" />
-      <Button mnemonicParsing="false" text="Send" AnchorPane.leftAnchor="421.0" AnchorPane.topAnchor="352.0" />
-      <TextArea prefHeight="300.0" prefWidth="450.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="386.0" />
-      <ComboBox prefWidth="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="695.0" />
-      <ComboBox prefWidth="150.0" AnchorPane.leftAnchor="173.0" AnchorPane.topAnchor="695.0" />
-      <Button mnemonicParsing="false" text="Connect" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="404.0" AnchorPane.topAnchor="695.0" />
+      <Button fx:id="SendButton" mnemonicParsing="false" onAction="#SendToSerial" text="Send" AnchorPane.leftAnchor="421.0" AnchorPane.topAnchor="352.0" />
+      <TextArea fx:id="ConsoleText" prefHeight="300.0" prefWidth="450.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="386.0" />
+      <ComboBox fx:id="PortList" onMouseClicked="#RefreshPortList" prefWidth="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="695.0" />
+      <ComboBox fx:id="BaudList" prefWidth="150.0" AnchorPane.leftAnchor="173.0" AnchorPane.topAnchor="695.0" />
+      <Button fx:id="ConnectButton" mnemonicParsing="false" onAction="#ConnectToSerial" text="Connect" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="404.0" AnchorPane.topAnchor="695.0" />
       <Separator orientation="VERTICAL" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="473.0" AnchorPane.topAnchor="352.0" />
       <Label layoutX="480.0" layoutY="356.0" text="Lattitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="352.0" />
       <TextField layoutX="487.0" layoutY="374.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="378.0" />
       <Label layoutX="487.0" layoutY="409.0" text="Longitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="412.0" />
-      <TextField fx:id="txtCompass" layoutX="487.0" layoutY="426.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="438.0" />
-      <Button fx:id="btnSend" mnemonicParsing="false" onAction="#SetCompass" text="Set" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="472.0" />
+      <TextField layoutX="487.0" layoutY="426.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="438.0" />
+      <Button mnemonicParsing="false" text="Set" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="472.0" />
    </children>
 </AnchorPane>
