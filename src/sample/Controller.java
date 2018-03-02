@@ -6,6 +6,8 @@ import Avionics.Horizon;
 import SerialComm.SerialCommunication;
 import gnu.io.*;
 import javafx.animation.AnimationTimer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -81,18 +83,17 @@ public class Controller implements Initializable{
         horizon   = new Horizon();
         altimeter = new Altimeter();
 
-        lastTimerCall = System.nanoTime();
-        timer = new AnimationTimer() {
-            @Override public void handle(long now) {
-                if (now > lastTimerCall + 5_000_000_000l) {
-                    compass.setBearing(RND.nextInt(360));
-                    horizon.setPitch(RND.nextInt(90) - 45);
-                    horizon.setRoll(RND.nextInt(90) - 45);
-                    altimeter.setValue(RND.nextInt(20000));
-                    lastTimerCall = now;
-                }
+        ConsoleText.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                Double nilaiAltitude = ParseNilaiAltitude(newValue);
+                Double nilaiYaw = ParseNilaiYaw(newValue);
+                Double nilaiPitch = ParseNilaiPitch(newValue);
+                Double nilaiRoll = ParseNilaiRoll(newValue);
+                Double nilaiLatitude = ParseNilaiLatitude(newValue);
+                Double nilaiLongitude = ParseNilaiLongitude(newValue);
             }
-        };
+        });
 
         avionics.getChildren().addAll(compass, horizon, altimeter);
 
@@ -140,7 +141,6 @@ public class Controller implements Initializable{
                                 input.close();*/
                                 String data = input.readLine();
                                 ConsoleText.appendText(data + System.lineSeparator());
-                                ParseData(data)
                                 System.out.println(data);
                             }
                         } catch (IOException e) {
@@ -159,17 +159,42 @@ public class Controller implements Initializable{
         }
     }
 
-     public void ParseData(String data){
-        //silahkan pakai nilai_x untuk string type, atau int_nilai_x untuk integer type.
-        //String serialData = serial.getReceivedMessage();
-        String[] parts = data.split("#");
-        String nilai_roll = parts[1];
-        Integer int_nilai_roll = Integer.valueOf(nilai_roll);
-        String nilai_pitch = parts[2];
-        Integer int_nilai_pitch = Integer.valueOf(nilai_pitch);
-        String nilai_yaw = parts[3];
-        Integer int_nilai_yaw = Integer.valueOf(nilai_yaw);
-        String nilai_altitude = parts[4];
-        Integer int_nilai_altitude = Integer.valueOf(nilai_altitude);
+    public Double ParseNilaiAltitude(String dapetData){
+        String[] parts = dapetData.split("#");
+        String altitude = parts[1];
+        Double nilai_altitude = Double.valueOf(altitude);
+        return nilai_altitude;
     }
+    public Double ParseNilaiYaw(String dapetData){
+        String[] parts = dapetData.split("#");
+        String yaw = parts[2];
+        Double nilai_yaw = Double.valueOf(yaw);
+        return nilai_yaw;
+
+    }
+    public Double ParseNilaiPitch(String dapetData){
+        String[] parts = dapetData.split("#");
+        String pitch = parts[3];
+        Double nilai_pitch = Double.valueOf(pitch);
+        return nilai_pitch;
+    }
+    public Double ParseNilaiRoll(String dapetData){
+        String[] parts = dapetData.split("#");
+        String roll = parts[4];
+        Double nilai_roll = Double.valueOf(roll);
+        return nilai_roll;
+    }
+    public Double ParseNilaiLatitude(String dapetData){
+        String[] parts = dapetData.split("#");
+        String latitude = parts[5];
+        Double nilai_latitude = Double.valueOf(latitude);
+        return nilai_latitude;
+    }
+    public Double ParseNilaiLongitude(String dapetData){
+        String[] parts = dapetData.split("#");
+        String longitude = parts[6];
+        Double nilai_longitude = Double.valueOf(longitude);
+        return nilai_longitude;
+    }
+
 }
