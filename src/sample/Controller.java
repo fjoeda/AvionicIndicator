@@ -51,4 +51,17 @@ public class Controller implements Initializable{
 
         timer.start();
     }
+     public void ParseData(){
+        //silahkan pakai nilai_x untuk string type, atau int_nilai_x untuk integer type.
+        String serialData = serial.getReceivedMessage();
+        String[] parts = serialData.split("#");
+        String nilai_roll = parts[1];
+        Integer int_nilai_roll = Integer.valueOf(nilai_roll);
+        String nilai_pitch = parts[2];
+        Integer int_nilai_pitch = Integer.valueOf(nilai_pitch);
+        String nilai_yaw = parts[3];
+        Integer int_nilai_yaw = Integer.valueOf(nilai_yaw);
+        String nilai_altitude = parts[4];
+        Integer int_nilai_altitude = Integer.valueOf(nilai_altitude);
+    }
 }
