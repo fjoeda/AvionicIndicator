@@ -25,6 +25,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Random;
@@ -60,7 +61,7 @@ public class Controller implements Initializable{
     private long           lastTimerCall;
     private AnimationTimer timer;
 
-
+    int counter=0;
 
     SerialCommunication serial;
 
@@ -122,16 +123,26 @@ public class Controller implements Initializable{
                     public void serialEvent(SerialPortEvent event) {
                         try {
                             if (event.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+                                String data = input.readLine();
+                                if(counter<10){
+                                    counter++;
+                                } else{
+                                    if(data.matches("@0#(.*)")){
+                                        ConsoleText.appendText(data + System.lineSeparator());
+                                        System.out.println(data);
+                                        compass.setBearing(ParseNilaiYaw(data));
+                                        horizon.setPitch(ParseNilaiPitch(data));
+                                        horizon.setRoll(ParseNilaiRoll(data));
+                                        altimeter.setValue(ParseNilaiAltitude(data));
+                                    } else{
+                                        ConsoleText.appendText(data + System.lineSeparator());
+                                        System.out.println("Wrong format : " + data);
+                                    }
+                                    counter=0;
+                                }
                                 /*data = input.toString();
                                 ConsoleText.appendText(data + System.lineSeparator());
                                 input.close();*/
-                                String data = input.readLine();
-                                ConsoleText.appendText(data + System.lineSeparator());
-                                System.out.println(data);
-                                compass.setBearing(ParseNilaiYaw(data));
-                                horizon.setPitch(ParseNilaiPitch(data));
-                                horizon.setRoll(ParseNilaiRoll(data));
-                                altimeter.setValue(ParseNilaiAltitude(data));
                             }
                         } catch (IOException e) {
                             //Log.debug("Catch 1 : " + e.toString());

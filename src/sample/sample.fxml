@@ -18,7 +18,7 @@
       <TextArea fx:id="ConsoleText" prefHeight="300.0" prefWidth="450.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="386.0" />
       <ComboBox fx:id="PortList" layoutX="482.0" layoutY="472.0" onMouseClicked="#RefreshPortList" prefWidth="150.0" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="472.0" />
       <ComboBox fx:id="BaudList" layoutX="639.0" layoutY="472.0" prefWidth="150.0" AnchorPane.leftAnchor="639.0" AnchorPane.topAnchor="472.0" />
-      <Button fx:id="ConnectButton" layoutX="796.0" layoutY="472.0" mnemonicParsing="false" onAction="#ConnectToSerial" text="Connect" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="796.0" AnchorPane.topAnchor="472.0" />
+      <Button fx:id="ConnectButton" layoutX="482.0" layoutY="517.0" mnemonicParsing="false" onAction="#ConnectToSerial" text="Connect" />
       <Separator orientation="VERTICAL" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="473.0" AnchorPane.topAnchor="352.0" />
       <Label layoutX="480.0" layoutY="356.0" text="Lattitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="352.0" />
       <TextField layoutX="487.0" layoutY="374.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="378.0" />
