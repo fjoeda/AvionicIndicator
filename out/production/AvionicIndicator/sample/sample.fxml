@@ -23,7 +23,7 @@
       <Label layoutX="480.0" layoutY="356.0" text="Lattitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="352.0" />
       <TextField layoutX="487.0" layoutY="374.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="378.0" />
       <Label layoutX="487.0" layoutY="409.0" text="Longitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="412.0" />
-      <TextField layoutX="487.0" layoutY="426.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="438.0" />
-      <Button mnemonicParsing="false" text="Set" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="472.0" />
+      <TextField fx:id="txtCompass" layoutX="487.0" layoutY="426.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="438.0" />
+      <Button fx:id="btnSend" mnemonicParsing="false" onAction="#SetCompass" text="Set" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="472.0" />
    </children>
 </AnchorPane>

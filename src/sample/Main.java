@@ -17,11 +17,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        AnchorPane anchorPane = new AnchorPane();
-
-        Button tombol = new Button("Test");
-        anchorPane.getChildren().addAll(tombol);
-
         primaryStage.setTitle("Avionics");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

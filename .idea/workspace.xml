@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,8 +24,8 @@
       <file leaf-file-name="AirCompass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Avionics/AirCompass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="55" column="56" lean-forward="false" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
+            <state relative-caret-position="4320">
+              <caret line="309" column="30" lean-forward="false" selection-start-line="309" selection-start-column="30" selection-end-line="309" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -28,34 +34,26 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="272">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#805#806#0" expanded="true" />
-                <element signature="e#833#834#0" expanded="true" />
+                <element signature="e#660#661#0" expanded="true" />
+                <element signature="e#688#689#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AvionicIndicator.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AvionicIndicator.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+            <state relative-caret-position="-149">
+              <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#968#1423#0" expanded="true" />
+                <element signature="e#1422#1423#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,8 +62,28 @@
       <file leaf-file-name="SerialCommunication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SerialComm/SerialCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+            <state relative-caret-position="1776">
+              <caret line="114" column="7" lean-forward="false" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2886#2887#0" expanded="true" />
+                <element signature="e#2924#2925#0" expanded="true" />
+                <element signature="e#2969#2970#0" expanded="true" />
+                <element signature="e#3004#3005#0" expanded="true" />
+                <element signature="e#3051#3052#0" expanded="true" />
+                <element signature="e#3086#3087#0" expanded="true" />
+                <element signature="e#3123#3124#0" expanded="true" />
+                <element signature="e#3157#3158#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestForSerialMonitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -74,8 +92,8 @@
       <file leaf-file-name="Demo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Avionics/Demo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="43" selection-end-column="33" />
+            <state relative-caret-position="528">
+              <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -101,16 +119,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="34" />
               <folding />
             </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -140,12 +158,18 @@
         <option value="$PROJECT_DIR$/src/Avionics/AirCompass.java" />
         <option value="$PROJECT_DIR$/src/Avionics/Horizon.java" />
         <option value="$PROJECT_DIR$/src/Avionics/Altimeter.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/Avionics/Demo.java" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
@@ -213,9 +237,9 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -413,30 +437,39 @@
       <option name="presentableId" value="Default" />
       <updated>1519787813041</updated>
     </task>
+    <task id="LOCAL-00001" summary="Tampilan Utama">
+      <created>1519873497750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1519873497751</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995495" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14552239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15351813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -453,27 +486,29 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Tampilan Utama" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tampilan Utama" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Avionics/AirCompass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="55" column="56" lean-forward="false" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="25" column="44" lean-forward="false" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -482,7 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -490,7 +524,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+            <element signature="e#3157#3158#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -519,14 +563,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="5" column="207" lean-forward="false" selection-start-line="5" selection-start-column="207" selection-end-line="5" selection-end-column="207" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Avionics/css/aircompass.css">
@@ -543,6 +587,8 @@
           <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#968#1423#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -561,8 +607,8 @@
           <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -571,7 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -581,6 +626,8 @@
           <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#968#1423#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -589,7 +636,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+            <element signature="e#3157#3158#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,14 +675,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Avionics/AirCompass.java">
@@ -642,8 +699,8 @@
           <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,7 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +716,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+            <element signature="e#3157#3158#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -670,6 +736,8 @@
           <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#968#1423#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,14 +759,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Avionics/css/aircompass.css">
@@ -723,8 +791,8 @@
           <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -733,7 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,7 +808,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+            <element signature="e#3157#3158#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -751,6 +828,8 @@
           <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#968#1423#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -783,7 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,6 +871,8 @@
           <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#968#1423#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -801,7 +881,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+            <element signature="e#3157#3158#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -821,19 +911,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerialComm/SerialCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AvionicIndicator.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -861,52 +942,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Avionics/AirCompass.java">
+    <entry file="file://$PROJECT_DIR$/src/Avionics/Demo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="55" column="56" lean-forward="false" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
+        <state relative-caret-position="528">
+          <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Avionics/Demo.java">
+    <entry file="file://$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="43" selection-end-column="33" />
+        <state relative-caret-position="560">
+          <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerialComm/SerialCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1776">
+          <caret line="114" column="7" lean-forward="false" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3051#3052#0" expanded="true" />
+            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+            <element signature="e#3157#3158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Avionics/AirCompass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4320">
+          <caret line="309" column="30" lean-forward="false" selection-start-line="309" selection-start-column="30" selection-end-line="309" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="272">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="-149">
+          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#968#1423#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

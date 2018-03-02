@@ -28,6 +28,7 @@ public class Controller implements Initializable{
     public HBox avionics;
 
     SerialCommunication serial;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         compass   = new AirCompass();
