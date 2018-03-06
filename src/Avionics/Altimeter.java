@@ -110,7 +110,7 @@ public class Altimeter extends Region {
         value100        = new SimpleDoubleProperty(this, "value100", 0);       
         value1000       = new SimpleDoubleProperty(this, "value100", 0);        
         value10000      = new SimpleDoubleProperty(this, "value100", 0);        
-        animated        = new SimpleBooleanProperty(this, "animated", true);
+        animated        = new SimpleBooleanProperty(this, "animated", false);
         textColor       = new SimpleObjectProperty<>(this, "textColor", Color.web("#ffffff"));
         timeline        = new Timeline();
         init();

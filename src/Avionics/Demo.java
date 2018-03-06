@@ -42,6 +42,7 @@ public class Demo extends Application {
 
     private long           lastTimerCall;
     private AnimationTimer timer;
+    private int heading;
 
     @Override public void init() {
         compass   = new AirCompass();
@@ -52,10 +53,12 @@ public class Demo extends Application {
         timer = new AnimationTimer() {
             @Override public void handle(long now) {
                 if (now > lastTimerCall + 5_000_000_000l) {
-                    compass.setBearing(RND.nextInt(360));
-                    horizon.setPitch(RND.nextInt(90) - 45);
-                    horizon.setRoll(RND.nextInt(90) - 45);
-                    altimeter.setValue(RND.nextInt(20000));
+                    heading=RND.nextInt(360);
+                    compass.setBearing(heading);
+                    System.out.println(heading);
+                    //horizon.setPitch(RND.nextInt(90) - 45);
+                    //horizon.setRoll(RND.nextInt(90) - 45);
+                    //altimeter.setValue(RND.nextInt(20000));
                     lastTimerCall = now;
                 }
             }

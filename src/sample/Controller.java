@@ -124,7 +124,7 @@ public class Controller implements Initializable{
                         try {
                             if (event.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
                                 String data = input.readLine();
-                                if(counter<10){
+                                if(counter<2){
                                     counter++;
                                 } else{
                                     if(data.matches("@0#(.*)")){

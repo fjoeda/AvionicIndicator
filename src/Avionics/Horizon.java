@@ -131,7 +131,7 @@ public class Horizon extends Region {
             @Override public String getName() { return "pitch"; }
         };
         upsidedown       = new SimpleBooleanProperty(this, "upsidedown", false);
-        animated         = new SimpleBooleanProperty(this, "animated", true);    
+        animated         = new SimpleBooleanProperty(this, "animated", false);
         skyColor         = new SimpleObjectProperty<>(this, "skyColor", Color.rgb(127, 213, 240));
         earthColor       = new SimpleObjectProperty<>(this, "earthColor", Color.rgb(60, 68, 57));
         indicatorColor   = new SimpleObjectProperty<>(this, "indicatorcolor", Color.web("#fd7e24"));
