@@ -4,6 +4,7 @@ import Avionics.AirCompass;
 import Avionics.Altimeter;
 import Avionics.Horizon;
 import SerialComm.SerialCommunication;
+import TextParser.StringParser;
 import gnu.io.*;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
@@ -48,34 +49,21 @@ public class Controller implements Initializable{
     public ComboBox<String> BaudList;
     public Button ConnectButton;
 
-    public static SerialPort serialPort;
-
-    private BufferedReader input;
-    private OutputStream output;
 
     private String PortName = null;
     private String BaudRate = null;
 
-    private String data = "";
+
 
     private long           lastTimerCall;
     private AnimationTimer timer;
 
-    int counter=0;
 
-    SerialCommunication serial;
+    SerialCommunication serial = null;
 
     public void SendToSerial(ActionEvent actionEvent) {
-        try {
-            String getText = SendSerialText.getText() + System.lineSeparator();
-            output.write(getText.getBytes());
-            ConsoleText.appendText(SendSerialText.getText() + System.lineSeparator());
-            SendSerialText.clear();
-            output.wait();
-        } catch (Exception e){
-            System.out.println("Error send to serial : " + e.toString() +
-                    "\n" + e.getMessage());
-        }
+        if(serial != null)
+        serial.SendToSerial((SendSerialText.getText())+System.lineSeparator());
     }
 
     @Override
@@ -95,6 +83,27 @@ public class Controller implements Initializable{
         BaudList.setItems(baudRate);
         BaudList.getSelectionModel().select(1);
 
+        lastTimerCall = System.nanoTime();
+
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if(now > lastTimerCall + 1_000_000_000L && serial.getReceivedMessage()!=null){
+                    System.out.println(serial.getReceivedMessage());
+                    try{
+                        compass.setBearing(StringParser.getYaw(serial.getReceivedMessage()));
+                        horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
+                        horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
+                        altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
+                        ConsoleText.appendText((serial.getReceivedMessage()+System.lineSeparator()));
+                    }catch (Exception e){
+
+                    }
+
+                }
+            }
+        };
+
     }
 
     public void RefreshPortList(MouseEvent mouseEvent) {
@@ -108,96 +117,14 @@ public class Controller implements Initializable{
 
     public void ConnectToSerial(ActionEvent actionEvent) throws Exception {
         if(PortName != null && BaudRate != null){
-            CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(PortName);
-            CommPort commPort = portIdentifier.open(this.getClass().getName(),2000);
-            try {
-                serialPort = (SerialPort) commPort;
-
-                serialPort.setSerialPortParams(Integer.valueOf(BaudRate),8,1,0);
-
-                output = serialPort.getOutputStream();
-
-                //input = serialPort.getInputStream();
-                input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
-
-                serialPort.addEventListener(new SerialPortEventListener() {
-                    @Override
-                    public void serialEvent(SerialPortEvent event) {
-                        try {
-                            if (event.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-                                String data = input.readLine();
-                                if(counter<2){
-                                    counter++;
-                                } else{
-                                    if(data.matches("@0#(.*)")){
-                                        ConsoleText.appendText(data + System.lineSeparator());
-                                        System.out.println(data);
-                                        compass.setBearing(ParseNilaiYaw(data));
-                                        horizon.setPitch(ParseNilaiPitch(data));
-                                        horizon.setRoll(ParseNilaiRoll(data));
-                                        altimeter.setValue(ParseNilaiAltitude(data));
-                                    } else{
-                                        ConsoleText.appendText(data + System.lineSeparator());
-                                        System.out.println("Wrong format : " + data);
-                                    }
-                                    counter=0;
-                                }
-                                /*data = input.toString();
-                                ConsoleText.appendText(data + System.lineSeparator());
-                                input.close();*/
-                            }
-                        } catch (IOException e) {
-                            //Log.debug("Catch 1 : " + e.toString());
-                        }
-                    }
-                });
-
-                serialPort.notifyOnDataAvailable(true);
-
-            } catch (Exception e) {
-                //Log.debug("Catch 2 : " + e.toString());
-            }
+            serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
+            serial.connectToSerial();
+            timer.start();
         } else {
             new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
         }
     }
 
-    public Double ParseNilaiAltitude(String dapetData){
-        String[] parts = dapetData.split("#");
-        String altitude = parts[1];
-        Double nilai_altitude = Double.valueOf(altitude);
-        return nilai_altitude;
-    }
-    public Double ParseNilaiYaw(String dapetData){
-        String[] parts = dapetData.split("#");
-        String yaw = parts[2];
-        Double nilai_yaw = Double.valueOf(yaw);
-        return nilai_yaw;
 
-    }
-    public Double ParseNilaiPitch(String dapetData){
-        String[] parts = dapetData.split("#");
-        String pitch = parts[3];
-        Double nilai_pitch = Double.valueOf(pitch);
-        return nilai_pitch;
-    }
-    public Double ParseNilaiRoll(String dapetData){
-        String[] parts = dapetData.split("#");
-        String roll = parts[4];
-        Double nilai_roll = Double.valueOf(roll);
-        return nilai_roll;
-    }
-    public Double ParseNilaiLatitude(String dapetData){
-        String[] parts = dapetData.split("#");
-        String latitude = parts[5];
-        Double nilai_latitude = Double.valueOf(latitude);
-        return nilai_latitude;
-    }
-    public Double ParseNilaiLongitude(String dapetData){
-        String[] parts = dapetData.split("#");
-        String longitude = parts[6];
-        Double nilai_longitude = Double.valueOf(longitude);
-        return nilai_longitude;
-    }
 
 }

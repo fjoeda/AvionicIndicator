@@ -53,7 +53,7 @@ public class SerialCommunication {
 
     public void SendToSerial(String message) {
         try{
-            output1.write(Byte.valueOf(message));
+            output1.write(message.getBytes());
             output1.flush();
 
         }catch (Exception e){
