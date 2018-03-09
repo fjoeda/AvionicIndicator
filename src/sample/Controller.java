@@ -67,7 +67,8 @@ public class Controller implements Initializable{
 
     public void SendToSerial(ActionEvent actionEvent) {
         try {
-            output.write(SendSerialText.getText().getBytes());
+            String getText = SendSerialText.getText() + System.lineSeparator();
+            output.write(getText.getBytes());
             ConsoleText.appendText(SendSerialText.getText() + System.lineSeparator());
             SendSerialText.clear();
             output.wait();
@@ -115,6 +116,7 @@ public class Controller implements Initializable{
                 serialPort.setSerialPortParams(Integer.valueOf(BaudRate),8,1,0);
 
                 output = serialPort.getOutputStream();
+
                 //input = serialPort.getInputStream();
                 input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
 
