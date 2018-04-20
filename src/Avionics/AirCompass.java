@@ -49,8 +49,8 @@ import javafx.util.Duration;
  * Time: 07:40
  */
 public class AirCompass extends Region {
-    private static final double   PREFERRED_WIDTH  = 320;
-    private static final double   PREFERRED_HEIGHT = 320;
+    private static final double   PREFERRED_WIDTH  = 149.0;
+    private static final double   PREFERRED_HEIGHT = 149.0;
     private static final double   MINIMUM_WIDTH    = 5;
     private static final double   MINIMUM_HEIGHT   = 5;
     private static final double   MAXIMUM_WIDTH    = 1024;

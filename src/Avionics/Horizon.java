@@ -62,8 +62,8 @@ import javafx.util.Duration;
 public class Horizon extends Region {
     private static final double ANIMATION_DURATION = 800;
 
-    private static final double PREFERRED_WIDTH  = 320;
-    private static final double PREFERRED_HEIGHT = 320;
+    private static final double PREFERRED_WIDTH  = 149;
+    private static final double PREFERRED_HEIGHT = 149;
     private static final double MINIMUM_WIDTH    = 5;
     private static final double MINIMUM_HEIGHT   = 5;
     private static final double MAXIMUM_WIDTH    = 1024;
