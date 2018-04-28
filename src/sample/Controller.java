@@ -40,10 +40,8 @@ import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.text.NumberFormat;
+import java.util.*;
 
 public class Controller implements Initializable, MapComponentInitializedListener{
     private static final Random RND = new Random();
@@ -64,7 +62,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
     public GoogleMapView mapView;
     public GridPane SecAvionic;
     public Pane Pane3D;
-    public StackPane HorizonPane;
     public SubSceneContainer subSceneContainer;
 
 
@@ -100,9 +97,9 @@ public class Controller implements Initializable, MapComponentInitializedListene
         horizon   = new Horizon();
         altimeter = new Altimeter();
         mapView.addMapInializedListener(this);
-        HorizonPane.getChildren().add(horizon);
-        SecAvionic.add(compass,0,0);
-        SecAvionic.add(altimeter,1,0);
+        SecAvionic.add(horizon,0,0);
+        SecAvionic.add(compass,0,1);
+        SecAvionic.add(altimeter,1,1);
 
         PortList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> PortName = newValue);
         BaudList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> BaudRate = newValue);
@@ -122,6 +119,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
                     System.out.println(serial.getReceivedMessage());
                     refreshMapRoute();
                     refreshOrientation();
+                    System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
                 }
             }
         };
@@ -182,6 +180,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 isConnectedToSerial = true;
                 ConnectButton.setText("Disconnect");
                 timer.start();
+
             } else {
                 new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
             }
@@ -224,16 +223,20 @@ public class Controller implements Initializable, MapComponentInitializedListene
     }
 
     private void refreshMapRoute(){
+        positionNow = new LatLong(StringParser.getLatitude(serial.getReceivedMessage()),
+                StringParser.getLongitude(serial.getReceivedMessage()));
+
+        map.setCenter(positionNow);
         try{
-            positionNow = new LatLong(StringParser.getLatitude(serial.getReceivedMessage()),
-                    StringParser.getLongitude(serial.getReceivedMessage()));
+
             System.out.println(positionNow);
             if((positionNow.getLatitude()!= positionLast.getLatitude())||(positionNow.getLongitude()!=positionLast.getLongitude())){
                 routes.add(positionNow);
                 positionLast = positionNow;
                 map.setCenter(positionNow);
+                map.setZoom(16);
                 mvc.push(positionNow);
-                System.out.println(serial.getReceivedMessage());
+                //System.out.println(serial.getReceivedMessage());
 
 
             }
