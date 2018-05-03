@@ -1,8 +1,6 @@
 package sample;
 
-import Avionics.AirCompass;
-import Avionics.Altimeter;
-import Avionics.Horizon;
+import Avionics.*;
 import SerialComm.SerialCommunication;
 import TextParser.StringParser;
 import Visualize3D.Importer3D;
@@ -29,6 +27,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -45,10 +44,13 @@ import java.util.*;
 
 public class Controller implements Initializable, MapComponentInitializedListener{
     private static final Random RND = new Random();
+    public Label Status;
+    public Label BatteryLabel;
 
     private AirCompass     compass;
     private Horizon        horizon;
     private Altimeter      altimeter;
+    private RadialGauge    speedometer;
 
 
     @FXML
@@ -96,9 +98,20 @@ public class Controller implements Initializable, MapComponentInitializedListene
         compass   = new AirCompass();
         horizon   = new Horizon();
         altimeter = new Altimeter();
+        speedometer = RadialGaugeBuilder.create()
+                .title("")
+                .unit("Km/h")
+                .style("-body: rgb(30, 30, 30); -tick-mark-fill: white; -tick-label-fill: white;")
+                .animated(false)
+                .maxValue(200)
+                .majorTickSpace(20)
+                .build();
+
+
         mapView.addMapInializedListener(this);
         SecAvionic.add(horizon,0,0);
         SecAvionic.add(compass,0,1);
+        SecAvionic.add(speedometer,1,0);
         SecAvionic.add(altimeter,1,1);
 
         PortList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> PortName = newValue);
