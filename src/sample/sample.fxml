@@ -51,7 +51,7 @@
                               <Image url="@../Avionics/baticon.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="BatteryLabel" text="00%">
+                        <Label fx:id="BatteryLabel" text="87%">
                            <font>
                               <Font size="22.0" />
                            </font>

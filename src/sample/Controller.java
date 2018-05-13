@@ -82,7 +82,10 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
 
     private long           lastTimerCall;
+    private long           lastSpeedDataGot;
+    private double         speed;
     private AnimationTimer timer;
+    private AnimationTimer speedometerTimer;
 
 
     SerialCommunication serial = null;
@@ -124,27 +127,31 @@ public class Controller implements Initializable, MapComponentInitializedListene
         initialize3DScene();
 
         lastTimerCall = System.nanoTime();
+        lastSpeedDataGot = System.nanoTime();
 
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(now > lastTimerCall + 1_000_000_000L && serial.getReceivedMessage()!=null){
+                if(now > lastTimerCall + 100_000_000L && serial.getReceivedMessage()!=null){
                     System.out.println(serial.getReceivedMessage());
                     refreshMapRoute();
                     refreshOrientation();
                     System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
+                    lastTimerCall = now;
                 }
             }
         };
+
+
 
     }
 
     @Override
     public void mapInitialized() {
-        LatLong MyPosition = new LatLong(-7.889,108.7137);
+        LatLong MyPosition = new LatLong(-7.8891243,113.71372344);
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(MyPosition).mapType(MapTypeIdEnum.ROADMAP)
+        mapOptions.center(MyPosition).mapType(MapTypeIdEnum.SATELLITE)
                 .zoom(12)
                 .mapTypeControl(false)
                 .streetViewControl(false)
@@ -174,6 +181,15 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 .strokeWeight(2);
         Polyline poly = new Polyline(polylineOptions);
         map.addMapShape(poly);
+        speedometerTimer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if(now > lastTimerCall + 100_000_000L && serial.getReceivedMessage()!=null){
+                    speed = (Math.abs(positionNow.distanceFrom(positionLast)))*3.6/0.1;
+                    speedometer.setValue(speed);
+                }
+            }
+        };
     }
 
     public void RefreshPortList(MouseEvent mouseEvent) {
@@ -193,6 +209,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 isConnectedToSerial = true;
                 ConnectButton.setText("Disconnect");
                 timer.start();
+                speedometerTimer.start();
 
             } else {
                 new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
@@ -202,6 +219,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
             ConnectButton.setText("Connect");
             isConnectedToSerial = false;
             timer.stop();
+            speedometerTimer.stop();
         }
 
     }
