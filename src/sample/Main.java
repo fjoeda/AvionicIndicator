@@ -31,7 +31,6 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         controller.serial.disconnectSerial();
-
         super.stop();
     }
 }

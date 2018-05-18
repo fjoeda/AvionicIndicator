@@ -21,13 +21,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -52,12 +53,13 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private Altimeter      altimeter;
     private RadialGauge    speedometer;
 
-
     @FXML
-
     public javafx.scene.control.TextField SendSerialText;
     public javafx.scene.control.Button SendButton;
     public javafx.scene.control.TextArea ConsoleText;
+    public MenuButton MainMenu;
+    public MenuItem LoadWaypoint;
+    public MenuItem SaveWaypoint;
     public ComboBox<String> PortList;
     public ComboBox<String> BaudList;
     public Button ConnectButton;
@@ -65,7 +67,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
     public GridPane SecAvionic;
     public Pane Pane3D;
     public SubSceneContainer subSceneContainer;
-
 
     private String PortName = null;
     private String BaudRate = null;
@@ -80,13 +81,11 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private ArrayList<LatLong> routes = new ArrayList<>();
     private boolean isConnectedToSerial = false;
 
-
     private long           lastTimerCall;
     private long           lastSpeedDataGot;
     private double         speed;
     private AnimationTimer timer;
     private AnimationTimer speedometerTimer;
-
 
     SerialCommunication serial = null;
 
@@ -95,9 +94,10 @@ public class Controller implements Initializable, MapComponentInitializedListene
         serial.SendToSerial((SendSerialText.getText())+System.lineSeparator());
     }
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         compass   = new AirCompass();
         horizon   = new Horizon();
         altimeter = new Altimeter();
@@ -109,7 +109,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 .maxValue(200)
                 .majorTickSpace(20)
                 .build();
-
 
         mapView.addMapInializedListener(this);
         SecAvionic.add(horizon,0,0);
@@ -141,9 +140,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 }
             }
         };
-
-
-
     }
 
     @Override
@@ -158,7 +154,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 .rotateControl(false)
                 .scaleControl(false);
 
-
         map = mapView.createMap(mapOptions);
 
         map.addMouseEventHandler(UIEventType.click,(GMapMouseEvent event)->{
@@ -168,8 +163,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 positionList.add(position);
 
             }
-
-
         });
 
         positionLast = new LatLong(1.32,0.23);
@@ -187,6 +180,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 if(now > lastTimerCall + 100_000_000L && serial.getReceivedMessage()!=null){
                     speed = (Math.abs(positionNow.distanceFrom(positionLast)))*3.6/0.1;
                     speedometer.setValue(speed);
+                    lastSpeedDataGot = now;
                 }
             }
         };
@@ -249,7 +243,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
     }
 
     private void handleLoadResult(final Group content) {
-
         Platform.runLater(() -> viewer.setContent(content));
     }
 
@@ -267,13 +260,8 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 map.setCenter(positionNow);
                 map.setZoom(16);
                 mvc.push(positionNow);
-                //System.out.println(serial.getReceivedMessage());
-
-
             }
-
-
-        }catch (Exception e){
+        } catch (Exception e){
 
         }
     }
@@ -286,11 +274,22 @@ public class Controller implements Initializable, MapComponentInitializedListene
             horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
             horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
             altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
 
+    public void saveWaypoint(ActionEvent actionEvent) {
+        System.out.println("hahahaa");
 
+    }
 
+    public void loadWaypoint(ActionEvent actionEvent) {
+    }
+
+    public void openFlightRecord(ActionEvent actionEvent) {
+    }
+
+    public void saveFlightRecord(ActionEvent actionEvent) {
+    }
 }

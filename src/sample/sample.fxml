@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import Visualize3D.SubSceneContainer?>
 <?import com.lynden.gmapsfx.GoogleMapView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -18,9 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import Visualize3D.SubSceneContainer?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <GridPane hgap="5.0" prefHeight="807.0" prefWidth="1024.0">
         <columnConstraints>
@@ -35,12 +34,12 @@
                <children>
                   <HBox alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="345.0">
                      <children>
-                        <MenuButton mnemonicParsing="false" text="Menu">
+                        <MenuButton fx:id="MainMenu" mnemonicParsing="false" text="Menu">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Load Waypoint" />
-                              <MenuItem mnemonicParsing="false" text="Save Waypoint" />
-                              <MenuItem mnemonicParsing="false" text="Open Flight Record" />
-                              <MenuItem mnemonicParsing="false" text="Save Flight Record" />
+                              <MenuItem fx:id="LoadWaypoint" mnemonicParsing="false" text="Load Waypoint" onAction="#loadWaypoint"/>
+                              <MenuItem fx:id="SaveWaypoint" mnemonicParsing="false" text="Save Waypoint" onAction="#saveWaypoint"/>
+                              <MenuItem fx:id="OpenRecord" mnemonicParsing="false" text="Open Flight Record" onAction="#openFlightRecord" />
+                              <MenuItem fx:id="SaveRecord" mnemonicParsing="false" text="Save Flight Record" onAction="#saveFlightRecord" />
                               <MenuItem mnemonicParsing="false" text="Exit" />
                           </items>
                         </MenuButton>
@@ -66,7 +65,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                       <children>
-                          <SubSceneContainer fx:id="subSceneContainer"/>
+                          <SubSceneContainer fx:id="subSceneContainer" />
                       </children>
                   </Pane>
                   <GridPane fx:id="SecAvionic" prefHeight="301.0" prefWidth="345.0" vgap="10.0">
