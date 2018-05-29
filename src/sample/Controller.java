@@ -35,13 +35,23 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+
 import javax.sound.sampled.Port;
 import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.List;
 
 public class Controller implements Initializable, MapComponentInitializedListener{
     private static final Random RND = new Random();
@@ -81,6 +91,15 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private ArrayList<LatLong> routes = new ArrayList<>();
     private boolean isConnectedToSerial = false;
 
+    private ArrayList<Waypoint> waypoints = new ArrayList<>();
+    //List waypoints = new ArrayList();
+
+    private int index = 0;
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+    private static final String FILE_HEADER = "id,latitude,longitude";
+    FileWriter fileWriter = null;
+
     private long           lastTimerCall;
     private long           lastSpeedDataGot;
     private double         speed;
@@ -93,8 +112,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
         if(serial != null)
         serial.SendToSerial((SendSerialText.getText())+System.lineSeparator());
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -144,7 +161,8 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
     @Override
     public void mapInitialized() {
-        LatLong MyPosition = new LatLong(-7.8891243,113.71372344);
+        //LatLong MyPosition = new LatLong(-7.8891243,113.71372344);
+        LatLong MyPosition = new LatLong(-7.7692766,110.3736047);
         MapOptions mapOptions = new MapOptions();
 
         mapOptions.center(MyPosition).mapType(MapTypeIdEnum.SATELLITE)
@@ -162,6 +180,10 @@ public class Controller implements Initializable, MapComponentInitializedListene
             if(!positionList.contains(position)) {
                 positionList.add(position);
 
+                Waypoint waypoint = new Waypoint(index, Double.toString(position.getLatitude()), Double.toString(position.getLongitude()));
+                waypoints.add(waypoint);
+
+                index++;
             }
         });
 
@@ -280,16 +302,52 @@ public class Controller implements Initializable, MapComponentInitializedListene
     }
 
     public void saveWaypoint(ActionEvent actionEvent) {
-        System.out.println("hahahaa");
+        try {
+            fileWriter = new FileWriter("Waypoints.csv");
 
+            fileWriter.append(FILE_HEADER.toString());
+            fileWriter.append(NEW_LINE_SEPARATOR);
+
+            for (Waypoint waypoint : waypoints) {
+                fileWriter.append(String.valueOf(waypoint.getId()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(waypoint.getLatitude()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(waypoint.getLongitude()));
+                fileWriter.append(NEW_LINE_SEPARATOR);
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Berhasil menyimpan waypoint");
+            alert.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void loadWaypoint(ActionEvent actionEvent) {
+
     }
 
     public void openFlightRecord(ActionEvent actionEvent) {
     }
 
     public void saveFlightRecord(ActionEvent actionEvent) {
+    }
+
+    public void clearWaypoint(ActionEvent actionEvent) {
+        map.clearMarkers();
+        positionList.clear();
+        index = 0;
     }
 }

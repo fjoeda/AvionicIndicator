@@ -172,7 +172,7 @@
                                     <Insets left="5.0" right="5.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" text="Clear Waypoint">
+                              <Button mnemonicParsing="false" text="Clear Waypoint" onAction="#clearWaypoint">
                                  <HBox.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </HBox.margin>
