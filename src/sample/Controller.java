@@ -92,13 +92,20 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private boolean isConnectedToSerial = false;
 
     private ArrayList<Waypoint> waypoints = new ArrayList<>();
-    //List waypoints = new ArrayList();
 
     private int index = 0;
+    private int loadIndex = 0;
+
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String FILE_HEADER = "id,latitude,longitude";
+
+    private static final int WAYPOINT_ID = 0;
+    private static final int WAYPOINT_LATITUDE = 1;
+    private static final int WAYPOINT_LONGITUDE = 2;
+
     FileWriter fileWriter = null;
+    BufferedReader fileReader = null;
 
     private long           lastTimerCall;
     private long           lastSpeedDataGot;
@@ -336,7 +343,36 @@ public class Controller implements Initializable, MapComponentInitializedListene
     }
 
     public void loadWaypoint(ActionEvent actionEvent) {
+        map.clearMarkers();
 
+        try {
+            String line = "";
+
+            fileReader = new BufferedReader(new FileReader("Waypoints.csv"));
+            fileReader.readLine();
+
+            while ((line = fileReader.readLine()) != null) {
+                String[] tokens = line.split(COMMA_DELIMITER);
+                if (tokens.length > 0) {
+                    Waypoint waypoint = new Waypoint(index, Double.toString(position.getLatitude()), Double.toString(position.getLongitude()));
+                }
+            }
+
+            for (Waypoint waypoint : waypoints) {
+                map.addMarker((new Marker((new MarkerOptions()).position(positionList.get(loadIndex)))));
+                System.out.println(String.valueOf(waypoint.getId()) + ", " + String.valueOf(waypoint.getLatitude()) + ", " + String.valueOf(waypoint.getLongitude()));
+                loadIndex++;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void openFlightRecord(ActionEvent actionEvent) {
@@ -347,7 +383,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
     public void clearWaypoint(ActionEvent actionEvent) {
         map.clearMarkers();
-        positionList.clear();
         index = 0;
     }
 }
