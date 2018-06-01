@@ -359,7 +359,9 @@ public class Controller implements Initializable, MapComponentInitializedListene
             }
 
             for (Waypoint waypoint : waypoints) {
-                map.addMarker((new Marker((new MarkerOptions()).position(positionList.get(loadIndex)))));
+                //map.addMarker((new Marker((new MarkerOptions()).position(positionList.get(loadIndex)))));
+                LatLong location = new LatLong(Double.parseDouble(waypoint.getLatitude()), Double.parseDouble(waypoint.getLongitude()));
+                map.addMarker((new Marker((new MarkerOptions()).position(location))));
                 System.out.println(String.valueOf(waypoint.getId()) + ", " + String.valueOf(waypoint.getLatitude()) + ", " + String.valueOf(waypoint.getLongitude()));
                 loadIndex++;
             }
@@ -383,6 +385,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
     public void clearWaypoint(ActionEvent actionEvent) {
         map.clearMarkers();
+        positionList.clear();
         index = 0;
     }
 }

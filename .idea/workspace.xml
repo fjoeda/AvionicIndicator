@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,8 +20,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="360" column="49" lean-forward="false" selection-start-line="360" selection-start-column="49" selection-end-line="360" selection-end-column="49" />
+            <state relative-caret-position="562">
+              <caret line="387" column="29" lean-forward="true" selection-start-line="387" selection-start-column="29" selection-end-line="387" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5360#5870#0" expanded="true" />
@@ -660,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527596109327</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add Load Waypoint Function">
+      <created>1527873684365</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1527873684365</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -713,7 +722,8 @@
     <MESSAGE value="3D visualization ok. Cek kesesuaian rotasi dengan wahana" />
     <MESSAGE value="Add method for all Menu Item" />
     <MESSAGE value="Add Save Waypoint to CSV and Clear Waypoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Save Waypoint to CSV and Clear Waypoint" />
+    <MESSAGE value="Add Load Waypoint Function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Load Waypoint Function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1084,8 +1094,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="360" column="49" lean-forward="false" selection-start-line="360" selection-start-column="49" selection-end-line="360" selection-end-column="49" />
+        <state relative-caret-position="562">
+          <caret line="387" column="29" lean-forward="true" selection-start-line="387" selection-start-column="29" selection-end-line="387" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5360#5870#0" expanded="true" />
