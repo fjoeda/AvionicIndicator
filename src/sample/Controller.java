@@ -34,6 +34,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
+import org.controlsfx.control.ToggleSwitch;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -58,6 +60,15 @@ public class Controller implements Initializable, MapComponentInitializedListene
     public Label Status;
     public Label BatteryLabel;
     public static HBox TitleBar;
+    public ToggleSwitch tglArm1;
+    public ToggleSwitch tglArm2;
+    public ToggleSwitch tglPlaneMode;
+    public ToggleSwitch tglVtolMode;
+    public Button ClearWaypoint;
+    public Button SaveWaypoint;
+    public Button OpenWaypoint;
+    public Button OpenFlightRecord;
+    public Button SaveFlightRecord;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -68,12 +79,9 @@ public class Controller implements Initializable, MapComponentInitializedListene
     public javafx.scene.control.TextField SendSerialText;
     public javafx.scene.control.Button SendButton;
     public javafx.scene.control.TextArea ConsoleText;
-    public MenuButton MainMenu;
-    public MenuItem LoadWaypoint;
-    public MenuItem SaveWaypoint;
     public ComboBox<String> PortList;
     public ComboBox<String> BaudList;
-    public Button ConnectButton;
+    public ToggleSwitch ConnectButton;
     public GoogleMapView mapView;
     public GridPane SecAvionic;
     public Pane Pane3D;
@@ -136,9 +144,9 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
         mapView.addMapInializedListener(this);
         SecAvionic.add(horizon,0,0);
-        SecAvionic.add(compass,0,1);
+        SecAvionic.add(compass,0,2);
         SecAvionic.add(speedometer,1,0);
-        SecAvionic.add(altimeter,1,1);
+        SecAvionic.add(altimeter,1,2);
 
         PortList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> PortName = newValue);
         BaudList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> BaudRate = newValue);
@@ -147,7 +155,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
         BaudList.setItems(baudRate);
         BaudList.getSelectionModel().select(1);
-        //initialize3DScene();
+        initialize3DScene();
 
         lastTimerCall = System.nanoTime();
         lastSpeedDataGot = System.nanoTime();
@@ -164,6 +172,42 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 }
             }
         };
+
+        /*
+        * Initialize toggle button handlers
+        * */
+        ConnectButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+               if(newValue){
+                   if(!isConnectedToSerial){
+                       try{
+                           if(PortName != null && BaudRate != null){
+                               serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
+                               serial.connectToSerial();
+                               isConnectedToSerial = true;
+                               timer.start();
+                               speedometerTimer.start();
+
+                           } else {
+                               new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
+                               ConnectButton.setSelected(false);
+                           }
+                       }catch (Exception e){
+
+                       }
+
+                   }
+               } else if (!newValue){
+                   if(isConnectedToSerial){
+                       serial.disconnectSerial();
+                       isConnectedToSerial = false;
+                       timer.stop();
+                       speedometerTimer.stop();
+                   }
+               }
+            }
+        });
 
     }
 
@@ -208,7 +252,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
             @Override
             public void handle(long now) {
                 if(now > lastTimerCall + 100_000_000L && serial.getReceivedMessage()!=null){
-                    speed = (Math.abs(positionNow.distanceFrom(positionLast)))*3.6/0.1;
+                    speed = StringParser.getAirspeed(serial.getReceivedMessage());
                     speedometer.setValue(speed);
                     lastSpeedDataGot = now;
                 }
@@ -226,29 +270,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
     }
 
 
-
-    public void ConnectToSerial(ActionEvent actionEvent) throws Exception {
-        if(!isConnectedToSerial){
-            if(PortName != null && BaudRate != null){
-                serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
-                serial.connectToSerial();
-                isConnectedToSerial = true;
-                ConnectButton.setText("Disconnect");
-                timer.start();
-                speedometerTimer.start();
-
-            } else {
-                new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
-            }
-        }else{
-            serial.disconnectSerial();
-            ConnectButton.setText("Connect");
-            isConnectedToSerial = false;
-            timer.stop();
-            speedometerTimer.stop();
-        }
-
-    }
 
     private void initialize3DScene(){
         viewer = new ViewerModel();
@@ -348,25 +369,25 @@ public class Controller implements Initializable, MapComponentInitializedListene
     public void loadWaypoint(ActionEvent actionEvent) {
         map.clearMarkers();
 
+        FileChooser fileChooser = new FileChooser();
+        //fileChooser.showOpenDialog();
+        waypoints.clear();
         try {
             String line = "";
-
             fileReader = new BufferedReader(new FileReader("Waypoints.csv"));
             fileReader.readLine();
 
             while ((line = fileReader.readLine()) != null) {
                 String[] tokens = line.split(COMMA_DELIMITER);
-                if (tokens.length > 0) {
-                    Waypoint waypoint = new Waypoint(index, Double.toString(position.getLatitude()), Double.toString(position.getLongitude()));
-                }
-            }
 
-            for (Waypoint waypoint : waypoints) {
-                //map.addMarker((new Marker((new MarkerOptions()).position(positionList.get(loadIndex)))));
-                LatLong location = new LatLong(Double.parseDouble(waypoint.getLatitude()), Double.parseDouble(waypoint.getLongitude()));
-                map.addMarker((new Marker((new MarkerOptions()).position(location))));
-                System.out.println(String.valueOf(waypoint.getId()) + ", " + String.valueOf(waypoint.getLatitude()) + ", " + String.valueOf(waypoint.getLongitude()));
-                loadIndex++;
+                if (tokens.length > 0) {
+                    LatLong pos = new LatLong(Double.parseDouble(tokens[1]),Double.parseDouble(tokens[2]));
+                    map.addMarker((new Marker((new MarkerOptions()).position(pos))));
+                    Waypoint waypoint = new Waypoint(Integer.valueOf(tokens[0]), Double.toString(pos.getLatitude()), Double.toString(pos.getLongitude()));
+                    waypoints.add(waypoint);
+                    System.out.println(String.valueOf(waypoint.getId()) + ", " + String.valueOf(waypoint.getLatitude()) + ", " + String.valueOf(waypoint.getLongitude()));
+                    loadIndex++;
+                }
             }
         }
         catch (Exception e) {

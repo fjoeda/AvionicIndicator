@@ -30,7 +30,7 @@ public class ViewerModel {
     private final PerspectiveCamera camera = new PerspectiveCamera(true);
     private final Rotate cameraXRotate = new Rotate(-115, 0, 0, 0, Rotate.X_AXIS);
     private final Rotate cameraZRotate = new Rotate(0, 0, 0, 0, Rotate.Z_AXIS);
-    private final Translate cameraPosition = new Translate(0, 0, -20);
+    private final Translate cameraPosition = new Translate(0, 0, -10);
     private RotateTransition rotateTransition;
     private boolean isRotating;
     private double scaleFactor = 1;

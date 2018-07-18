@@ -41,18 +41,19 @@ public class StringParser{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return (Double.parseDouble(number.toString()));
+        return (Double.parseDouble((data.split("#"))[5]));
     }
 
     public static double getLongitude(String data){
-        Number number = null;
-        try {
-            number =(NumberFormat.getInstance(Locale.US)).parse(data.split("#")[6]);
+        return (Double.parseDouble((data.split("#"))[6]));
+    }
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return (Double.parseDouble(number.toString()));
+    public static double getAirspeed(String data){
+        return (Double.parseDouble((data.split("#"))[7]));
+    }
+
+    public static double getBattery(String data){
+        return (Double.parseDouble((data.split("#"))[8]));
     }
 
 

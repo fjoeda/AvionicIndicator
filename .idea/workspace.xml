@@ -2,34 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="3D visualization ok. Cek kesesuaian rotasi dengan wahana">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/controlsfx-8.40.14.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/controlsfx-samples-8.40.14.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/fxsampler-1.0.10.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_40_14.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_samples_8_40_14.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FlyingLog/TestCSV.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/GCSScene.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/UndecoratedWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Waypoint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/AirCompass.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/AirCompass.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$2.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/TestForSerialMonitor.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/TestForSerialMonitor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AvionicIndicator.iml" afterPath="$PROJECT_DIR$/AvionicIndicator.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Avionics/RadialGauge.java" afterPath="$PROJECT_DIR$/src/Avionics/RadialGauge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlyingLog/CSV_Log.java" afterPath="$PROJECT_DIR$/src/FlyingLog/CSV_Log.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java" afterPath="$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TextParser/StringParser.java" afterPath="$PROJECT_DIR$/src/TextParser/StringParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Visualize3D/ViewerModel.java" afterPath="$PROJECT_DIR$/src/Visualize3D/ViewerModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/GCSScene.css" afterPath="$PROJECT_DIR$/src/sample/GCSScene.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -48,73 +29,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="93" column="39" lean-forward="false" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
-              <folding>
-                <marker date="1531893144915" expanded="true" signature="10182:10229" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10263" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10296" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10322" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10349" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10369" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10390" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10408" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10423" ph="..." />
-                <marker date="1531893144915" expanded="true" signature="10182:10431" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UndecoratedWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/UndecoratedWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="44" column="1" lean-forward="false" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="radial-gauge.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Avionics/css/radial-gauge.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RadialGauge.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Avionics/RadialGauge.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
-              <caret line="174" column="94" lean-forward="false" selection-start-line="174" selection-start-column="94" selection-end-line="174" selection-end-column="94" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AirCompass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Avionics/AirCompass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="52" column="58" lean-forward="false" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
+            <state relative-caret-position="219">
+              <caret line="249" column="193" lean-forward="false" selection-start-line="249" selection-start-column="193" selection-end-line="249" selection-end-column="193" />
               <folding />
             </state>
           </provider>
@@ -123,8 +39,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="55" column="23" lean-forward="false" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+            <state relative-caret-position="124">
+              <caret line="91" column="18" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,11 +48,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CSV_Log.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FlyingLog/CSV_Log.java">
+      <file leaf-file-name="ViewerModel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Visualize3D/ViewerModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="61" column="18" lean-forward="false" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+            <state relative-caret-position="120">
+              <caret line="32" column="67" lean-forward="false" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
+              <folding>
+                <element signature="e#3073#3074#0" expanded="true" />
+                <element signature="e#3123#3124#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="55" column="54" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+              <folding>
+                <element signature="e#1110#1111#0" expanded="true" />
+                <element signature="e#1175#1176#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="e#1292#1293#0" expanded="true" />
+                <element signature="e#1343#1344#0" expanded="true" />
+                <element signature="e#1408#1409#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubSceneContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Visualize3D/SubSceneContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,8 +111,8 @@
       <file leaf-file-name="TestForSerialMonitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="23" column="74" lean-forward="false" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -177,6 +133,7 @@
     <findStrings>
       <find>println</find>
       <find>font</find>
+      <find>viewer</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\ACER\IdeaProjects\AvionicIndicator\src\Visualize3D</dir>
@@ -210,11 +167,9 @@
         <option value="$PROJECT_DIR$/src/Visualize3D/SubSceneContainer.java" />
         <option value="$PROJECT_DIR$/src/Visualize3D/Importer3D.java" />
         <option value="$PROJECT_DIR$/src/Visualize3D/3DVisual.fxml" />
-        <option value="$PROJECT_DIR$/src/Visualize3D/ViewerModel.java" />
         <option value="$PROJECT_DIR$/src/Visualize3D/Controller.java" />
         <option value="$PROJECT_DIR$/src/Avionics/AirCompass.java" />
         <option value="$PROJECT_DIR$/src/Avionics/Horizon.java" />
-        <option value="$PROJECT_DIR$/src/TextParser/StringParser.java" />
         <option value="$PROJECT_DIR$/src/Avionics/SpeedometerBuilder.java" />
         <option value="$PROJECT_DIR$/src/Avionics/Speedometer.java" />
         <option value="$PROJECT_DIR$/src/Avionics/common/SectionBuilder.java" />
@@ -229,11 +184,13 @@
         <option value="$PROJECT_DIR$/src/Avionics/RadialGauge.java" />
         <option value="$PROJECT_DIR$/src/FlyingLog/TestCSV.java" />
         <option value="$PROJECT_DIR$/src/FlyingLog/CSV_Log.java" />
-        <option value="$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java" />
         <option value="$PROJECT_DIR$/src/sample/UndecoratedWindow.java" />
-        <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
+        <option value="$PROJECT_DIR$/src/TextParser/StringParser.java" />
+        <option value="$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Visualize3D/ViewerModel.java" />
       </list>
     </option>
   </component>
@@ -299,6 +256,18 @@
               <item name="AvionicIndicator" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="SerialComm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AvionicIndicator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AvionicIndicator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="TextParser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AvionicIndicator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AvionicIndicator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Visualize3D" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -626,27 +595,44 @@
       <option name="project" value="LOCAL" />
       <updated>1526170330605</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Update UI 50 %">
+      <created>1531896029828</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1531896029828</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998326" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998326" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13400336" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24958123" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10741301" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16944024" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -658,7 +644,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -678,7 +663,8 @@
     <MESSAGE value="Visualisasi kecepatan + battery, &#10;Menu load waypoint dan save waypoint" />
     <MESSAGE value="Add battery icon" />
     <MESSAGE value="Coba hitung kecepatan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Coba hitung kecepatan" />
+    <MESSAGE value="Update UI 50 %" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update UI 50 %" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -804,45 +790,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Visualize3D/ViewerModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="87" column="5" lean-forward="false" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Visualize3D/Importer3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Visualize3D/SubSceneContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="20" lean-forward="true" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Visualize3D/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="62" column="86" lean-forward="false" selection-start-line="61" selection-start-column="20" selection-end-line="62" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Avionics/Horizon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="65" column="54" lean-forward="false" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -940,7 +891,7 @@
         <state relative-caret-position="2100">
           <caret line="174" column="94" lean-forward="false" selection-start-line="174" selection-start-column="94" selection-end-line="174" selection-end-column="94" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -958,13 +909,6 @@
         <state relative-caret-position="300">
           <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerialComm/SerialCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -991,10 +935,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1003,9 +947,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="44" column="1" lean-forward="false" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1014,38 +956,85 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="93" column="39" lean-forward="false" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
+        <state relative-caret-position="219">
+          <caret line="249" column="193" lean-forward="false" selection-start-line="249" selection-start-column="193" selection-end-line="249" selection-end-column="193" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerialComm/SerialCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="55" column="54" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
           <folding>
-            <marker date="1531893144915" expanded="true" signature="10182:10229" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10263" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10296" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10322" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10349" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10369" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10390" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10408" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10423" ph="..." />
-            <marker date="1531893144915" expanded="true" signature="10182:10431" ph="..." />
+            <element signature="e#1110#1111#0" expanded="true" />
+            <element signature="e#1175#1176#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerialComm/TestForSerialMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="23" column="74" lean-forward="false" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Visualize3D/Importer3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Visualize3D/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="62" column="86" lean-forward="false" selection-start-line="61" selection-start-column="20" selection-end-line="62" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Visualize3D/SubSceneContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="55" column="23" lean-forward="false" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        <state relative-caret-position="124">
+          <caret line="91" column="18" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Visualize3D/ViewerModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="32" column="67" lean-forward="false" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
+          <folding>
+            <element signature="e#3073#3074#0" expanded="true" />
+            <element signature="e#3123#3124#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -21,7 +21,7 @@ public class TestForSerialMonitor extends Application{
     @Override
     public void init(){
 
-        SerialCommunication serial = new SerialCommunication("COM3",9600);
+        SerialCommunication serial = new SerialCommunication("COM15",57600);
         try{
             serial.connectToSerial();
         }catch(Exception e){
