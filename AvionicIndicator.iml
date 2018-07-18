@@ -15,5 +15,7 @@
     <orderEntry type="library" name="logback-classic-1.2.1" level="project" />
     <orderEntry type="library" name="logback-core-1.2.1" level="project" />
     <orderEntry type="library" name="jimStlMeshImporterJFX" level="project" />
+    <orderEntry type="library" name="controlsfx-8.40.14" level="project" />
+    <orderEntry type="library" name="controlsfx-samples-8.40.14" level="project" />
   </component>
 </module>

@@ -53,10 +53,11 @@ import java.text.NumberFormat;
 import java.util.*;
 import java.util.List;
 
-public class Controller implements Initializable, MapComponentInitializedListener{
+public class Controller implements Initializable, MapComponentInitializedListener {
     private static final Random RND = new Random();
     public Label Status;
     public Label BatteryLabel;
+    public static HBox TitleBar;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -90,7 +91,6 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private PolylineOptions polylineOptions;
     private ArrayList<LatLong> routes = new ArrayList<>();
     private boolean isConnectedToSerial = false;
-
     private ArrayList<Waypoint> waypoints = new ArrayList<>();
 
     private int index = 0;
@@ -147,7 +147,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
         BaudList.setItems(baudRate);
         BaudList.getSelectionModel().select(1);
-        initialize3DScene();
+        //initialize3DScene();
 
         lastTimerCall = System.nanoTime();
         lastSpeedDataGot = System.nanoTime();
@@ -164,6 +164,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 }
             }
         };
+
     }
 
     @Override
@@ -223,6 +224,8 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 PortList.getItems().add(portId.getName());
         }
     }
+
+
 
     public void ConnectToSerial(ActionEvent actionEvent) throws Exception {
         if(!isConnectedToSerial){

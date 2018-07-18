@@ -172,6 +172,7 @@ public class RadialGauge extends Control {
 
     // ******************** Constructors **************************************
     public RadialGauge() {
+        getStylesheets().add(getClass().getResource("css/radial-gauge.css").toExternalForm());
         getStyleClass().add("radial-gauge");
         minValue              = new SimpleDoubleProperty(this, "minValue", 0);
         maxValue              = new SimpleDoubleProperty(this, "maxValue", 100);
