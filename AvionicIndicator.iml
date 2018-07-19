@@ -17,5 +17,8 @@
     <orderEntry type="library" name="jimStlMeshImporterJFX" level="project" />
     <orderEntry type="library" name="controlsfx-8.40.14" level="project" />
     <orderEntry type="library" name="controlsfx-samples-8.40.14" level="project" />
+    <orderEntry type="library" name="gmaps" level="project" />
+    <orderEntry type="library" name="3D" level="project" />
+    <orderEntry type="library" name="fxsampler-1.0.10" level="project" />
   </component>
 </module>
