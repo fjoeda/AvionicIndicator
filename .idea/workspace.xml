@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="3D visualization ok. Cek kesesuaian rotasi dengan wahana">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/3D.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/GMapsFX_2_12_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gmaps.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jimStlMeshImporterJFX.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InteractiveLog/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InteractiveLog/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AvionicIndicator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AvionicIndicator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/AirCompass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/AirCompass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Altimeter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/Avionics/Horizon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/TestForSerialMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/TestForSerialMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +26,7 @@
       <file leaf-file-name="Importer3D.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Visualize3D/Importer3D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="119">
               <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -59,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,7 +50,7 @@
       <file leaf-file-name="TestCSV.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FlyingLog/TestCSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
+            <state relative-caret-position="68">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
@@ -80,27 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/MapTest/Map.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InteractiveLog.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewMap.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MapTest/ViewMap.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -108,8 +68,8 @@
       <file leaf-file-name="Log.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+            <state relative-caret-position="153">
+              <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,16 +77,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InteractiveLog.fxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
@@ -240,6 +206,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -280,9 +249,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -440,7 +406,8 @@
       <workItem from="1532021680216" duration="523000" />
       <workItem from="1532022220072" duration="193000" />
       <workItem from="1532022477243" duration="638000" />
-      <workItem from="1532023184475" duration="676000" />
+      <workItem from="1532023184475" duration="1342000" />
+      <workItem from="1532096991076" duration="248000" />
     </task>
     <task id="LOCAL-00001" summary="Tampilan Utama">
       <created>1519873497750</created>
@@ -456,11 +423,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527961068998</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="UI buat Log. Masih polosan karena di laptopku ngga bisa jalan programnya mas">
+      <created>1532023921926</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1532023921926</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1451000" />
+    <option name="totallyTimeSpent" value="2365000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -518,7 +492,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Tampilan Utama" />
     <MESSAGE value="Write to log added. Note: Belum dipanggil di controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Write to log added. Note: Belum dipanggil di controller" />
+    <MESSAGE value="UI buat Log. Masih polosan karena di laptopku ngga bisa jalan programnya mas" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI buat Log. Masih polosan karena di laptopku ngga bisa jalan programnya mas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -530,6 +505,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -700,7 +685,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Visualize3D/Importer3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="119">
           <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -711,7 +696,7 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -720,7 +705,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FlyingLog/TestCSV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
+        <state relative-caret-position="68">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
@@ -728,33 +713,17 @@
     <entry file="file://$PROJECT_DIR$/src/MapTest/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MapTest/ViewMap.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+        <state relative-caret-position="153">
+          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -771,12 +740,16 @@
     <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">
