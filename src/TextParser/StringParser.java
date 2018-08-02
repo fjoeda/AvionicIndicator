@@ -34,13 +34,6 @@ public class StringParser{
     }
 
     public static double getLatitude(String data){
-        Number number = null;
-        try {
-            number =(NumberFormat.getInstance(Locale.US)).parse(data.split("#")[5]);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         return (Double.parseDouble((data.split("#"))[5]));
     }
 
@@ -56,6 +49,12 @@ public class StringParser{
         return (Double.parseDouble((data.split("#"))[8]));
     }
 
+    public static int getMode(String data){
+        return (Integer.parseInt((data.split("#"))[9]));
+    }
+    public static int getArm(String data){
+        return (Integer.parseInt((data.split("#"))[10]));
+    }
 
     public static int getDataLength(String data){
 
