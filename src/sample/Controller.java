@@ -75,7 +75,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private Altimeter      altimeter;
     private RadialGauge    speedometer;
 
-    @FXML
+
     public javafx.scene.control.TextField SendSerialText;
     public javafx.scene.control.Button SendButton;
     public javafx.scene.control.TextArea ConsoleText;
@@ -112,8 +112,11 @@ public class Controller implements Initializable, MapComponentInitializedListene
     private static final int WAYPOINT_LATITUDE = 1;
     private static final int WAYPOINT_LONGITUDE = 2;
 
-    FileWriter fileWriter = null;
-    BufferedReader fileReader = null;
+    private int mode = 0;
+    private boolean ARMED =false;
+
+    private FileWriter fileWriter = null;
+    private BufferedReader fileReader = null;
 
     private long           lastTimerCall;
     private long           lastSpeedDataGot;
@@ -125,7 +128,7 @@ public class Controller implements Initializable, MapComponentInitializedListene
 
     public void SendToSerial(ActionEvent actionEvent) {
         if(serial != null)
-        serial.SendToSerial((SendSerialText.getText())+System.lineSeparator());
+        serial.sendToSerial((SendSerialText.getText()));
     }
 
     @Override
@@ -135,11 +138,11 @@ public class Controller implements Initializable, MapComponentInitializedListene
         altimeter = new Altimeter();
         speedometer = RadialGaugeBuilder.create()
                 .title("")
-                .unit("Km/h")
+                .unit("m/s")
                 .style("-body: rgb(30, 30, 30); -tick-mark-fill: white; -tick-label-fill: white;")
                 .animated(false)
-                .maxValue(200)
-                .majorTickSpace(20)
+                .maxValue(30)
+                .majorTickSpace(2)
                 .build();
 
         mapView.addMapInializedListener(this);
@@ -172,44 +175,68 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 }
             }
         };
+        speedometer.setValue(0);
 
         /*
         * Initialize toggle button handlers
         * */
-        ConnectButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-               if(newValue){
-                   if(!isConnectedToSerial){
-                       try{
-                           if(PortName != null && BaudRate != null){
-                               serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
-                               serial.connectToSerial();
-                               isConnectedToSerial = true;
-                               timer.start();
-                               speedometerTimer.start();
+        ConnectButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+           if(newValue){
+               if(!isConnectedToSerial){
+                   try{
+                       if(PortName != null && BaudRate != null){
+                           serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
+                           serial.connectToSerial();
+                           isConnectedToSerial = true;
+                           timer.start();
+                           speedometerTimer.start();
 
-                           } else {
-                               new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
-                               ConnectButton.setSelected(false);
-                           }
-                       }catch (Exception e){
-
+                       } else {
+                           new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
+                           ConnectButton.setSelected(false);
                        }
+                   }catch (Exception e){
 
                    }
-               } else if (!newValue){
-                   if(isConnectedToSerial){
-                       serial.disconnectSerial();
-                       isConnectedToSerial = false;
-                       timer.stop();
-                       speedometerTimer.stop();
-                   }
+
                }
+           } else if (!newValue){
+               if(isConnectedToSerial){
+                   serial.disconnectSerial();
+                   isConnectedToSerial = false;
+                   timer.stop();
+                   speedometerTimer.stop();
+               }
+           }
+        });
+
+        tglArm1.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(ConnectButton.isSelected()){
+                if(newValue&&tglArm2.isSelected()){
+                    serial.sendToSerial(StringParser.armUAV(1));
+                }else if(!newValue&&!tglArm2.isSelected()){
+                    serial.sendToSerial(StringParser.armUAV(0));
+                }
+            }else{
+                tglArm1.setSelected(false);
+            }
+        });
+
+        tglArm2.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(ConnectButton.isSelected()){
+                if(newValue&&tglArm1.isSelected()){
+                    serial.sendToSerial(StringParser.armUAV(1));
+                }else if(!newValue&&!tglArm1.isSelected()){
+                    serial.sendToSerial(StringParser.armUAV(0));
+                }
+            }else{
+                tglArm2.setSelected(false);
             }
         });
 
     }
+
+
 
     @Override
     public void mapInitialized() {
@@ -225,7 +252,9 @@ public class Controller implements Initializable, MapComponentInitializedListene
                 .scaleControl(false);
 
         map = mapView.createMap(mapOptions);
-
+        System.out.println(mapView.isCache());
+        mapView.setCache(true);
+        System.out.println(mapView.getCacheHint());
         map.addMouseEventHandler(UIEventType.click,(GMapMouseEvent event)->{
             position = event.getLatLong();
             map.addMarker((new Marker((new MarkerOptions()).position(position))));
@@ -320,16 +349,25 @@ public class Controller implements Initializable, MapComponentInitializedListene
     }
 
     private void refreshOrientation(){
-        viewer.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
-        viewer.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
-        try{
-            compass.setBearing(StringParser.getYaw(serial.getReceivedMessage()));
-            horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
-            horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
-            altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
-        } catch (Exception e) {
+        if(StringParser.getDataLength(serial.getReceivedMessage())==12){
+            viewer.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
+            viewer.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
+            try{
+                compass.setBearing(StringParser.getYaw(serial.getReceivedMessage()));
+                horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
+                horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
+                altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
+                speedometer.setValue(StringParser.getAirspeed((serial.getReceivedMessage())));
+                if(StringParser.getArm(serial.getReceivedMessage())==1){
+                    Status.setText("ARMED");
+                }else{
+                    Status.setText("DISARMED");
+                }
+            } catch (Exception e) {
 
+            }
         }
+
     }
 
     public void saveWaypoint(ActionEvent actionEvent) {

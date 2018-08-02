@@ -51,7 +51,7 @@ public class SerialCommunication {
 
     //Kirim data ke Serial
 
-    public void SendToSerial(String message) {
+    public void sendToSerial(String message) {
         try{
             output1.write(message.getBytes());
             output1.flush();

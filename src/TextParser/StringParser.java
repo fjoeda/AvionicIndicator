@@ -52,8 +52,19 @@ public class StringParser{
     public static int getMode(String data){
         return (Integer.parseInt((data.split("#"))[9]));
     }
-    public static int getArm(String data){
+    public static int getCommand(String data){
         return (Integer.parseInt((data.split("#"))[10]));
+    }
+    public static int getArm(String data){
+        return (Integer.parseInt((data.split("#"))[11]));
+    }
+
+    public static String sentData(int mode, int command){
+        return ("@#"+String.valueOf(mode)+"#"+String.valueOf(command)+"*");
+    }
+
+    public static String armUAV(int mode){
+        return("a#"+String.valueOf(mode)+"*");
     }
 
     public static int getDataLength(String data){
