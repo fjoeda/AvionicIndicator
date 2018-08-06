@@ -163,7 +163,7 @@
                   <Pane prefHeight="568.0" prefWidth="301.0" />
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="295.0">
                      <children>
-                        <TextField prefHeight="30.0" prefWidth="228.0" promptText="Custom Commnd" styleClass="text-field">
+                        <TextField fx:id="SendSerialText" prefHeight="30.0" prefWidth="228.0" promptText="Custom Commnd" styleClass="text-field">
                            <HBox.margin>
                               <Insets left="2.0" right="2.0" />
                            </HBox.margin>
