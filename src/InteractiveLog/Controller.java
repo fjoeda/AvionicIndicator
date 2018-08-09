@@ -24,9 +24,9 @@ public class Controller implements Initializable {
     public void LoadFile(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Pilih File Waypoint");
-        fileChooser.setInitialDirectory(new File("D:\\IdeaProjects\\AvionicIndicator\\waypoint"));
+        fileChooser.setInitialDirectory(new File("E:"));
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("CVS Files", "*.csv")
+                new FileChooser.ExtensionFilter("CSV Files", "*.csv")
         );
         fileChooser.showOpenDialog(primaryStage);
     }
