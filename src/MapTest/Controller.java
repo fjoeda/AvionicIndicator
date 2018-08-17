@@ -3,7 +3,10 @@ package MapTest;
 import SerialComm.SerialCommunication;
 import TextParser.StringParser;
 import com.sothawo.mapjfx.Coordinate;
+import com.sothawo.mapjfx.MapType;
 import com.sothawo.mapjfx.MapView;
+import com.sothawo.mapjfx.Marker;
+import com.sothawo.mapjfx.event.MapViewEvent;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -33,6 +36,7 @@ public class Controller implements Initializable{
     Coordinate positionLast;
     Coordinate positionNow;
 
+    private String BING_MAP_API_KEY = "AjBEkbJVIF_enJ7KdZTSXxNgn58ADVVRqFNKbSBeSCmNukw4hQYAAcaIM61q2mGp";
 
     ArrayList<Coordinate> routes = new ArrayList<>();
 
@@ -48,7 +52,16 @@ public class Controller implements Initializable{
         serial.setPortName("COM14");
         serial.setBaudRate(9600);
         lastTimerCall = System.nanoTime();
+        mapView.setBingMapsApiKey(BING_MAP_API_KEY);
+        mapView.setMapType(MapType.BINGMAPS_ROAD);
+        mapView.setZoom(12);
+        mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
+        mapView.initialize();
 
+        mapView.addEventHandler(MapViewEvent.MAP_CLICKED, event -> {
+
+            mapView.addMarker(Marker.createProvided(Marker.Provided.RED).setPosition(event.getCoordinate()).setVisible(true));
+        });
 
 
         timer = new AnimationTimer() {
