@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import com.sothawo.mapjfx.MapView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -207,18 +207,26 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="669.0" prefWidth="694.0">
-                     <children>
-                        <GoogleMapView fx:id="mapView" layoutX="-1.0" prefHeight="669.0" prefWidth="848.0" />
-                     </children>
                      <VBox.margin>
                         <Insets right="5.0" />
                      </VBox.margin>
+                     <children>
+                        <MapView fx:id="mapView" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="846.0" />
+                     </children>
                   </Pane>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
-                  <VBox prefHeight="47.0" prefWidth="118.0" />
+                  <VBox prefHeight="47.0" prefWidth="118.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" text="__" />
+                              <Button mnemonicParsing="false" text="X" />
+                           </children>
+                        </HBox>
+                     </children></VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="81.0" prefWidth="118.0">
                      <children>
                         <ComboBox fx:id="PortList" onMouseClicked="#RefreshPortList" prefHeight="25.0" prefWidth="107.0" promptText="COM" styleClass="menu-bar">
@@ -237,7 +245,7 @@
                               <Insets bottom="2.0" top="2.0" />
                            </VBox.margin>
                         </ComboBox>
-                        <ToggleSwitch fx:id="ConnectButton" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="107.0" styleClass="toggle-switch" text="Connect" >
+                        <ToggleSwitch fx:id="ConnectButton" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="107.0" styleClass="toggle-switch" text="Connect">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -247,14 +255,14 @@
                         </ToggleSwitch>
                      </children>
                   </VBox>
-                  <Button fx:id="ClearWaypoint" mnemonicParsing="false" prefHeight="52.0" prefWidth="118.0" text="Clear Waypoint" textAlignment="CENTER" wrapText="true" onAction="#clearWaypoint">
+                  <Button fx:id="ClearWaypoint" mnemonicParsing="false" onAction="#clearWaypoint" prefHeight="52.0" prefWidth="118.0" text="Clear Waypoint" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="4.0" top="4.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="SaveWaypoint" mnemonicParsing="false" prefHeight="52.0" prefWidth="118.0" text="Save Waypoint" textAlignment="CENTER" wrapText="true" onAction="#saveWaypoint"/>
-                  <Button fx:id="OpenWaypoint" mnemonicParsing="false" prefHeight="52.0" prefWidth="118.0" text="Open Waypoint" textAlignment="CENTER" wrapText="true" onAction="#loadWaypoint"/>
-                  <Button fx:id="SaveFlightRecord" mnemonicParsing="false" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" onAction="#saveFlightRecord"/>
+                  <Button fx:id="SaveWaypoint" mnemonicParsing="false" onAction="#saveWaypoint" prefHeight="52.0" prefWidth="118.0" text="Save Waypoint" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="OpenWaypoint" mnemonicParsing="false" onAction="#loadWaypoint" prefHeight="52.0" prefWidth="118.0" text="Open Waypoint" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="SaveFlightRecord" mnemonicParsing="false" onAction="#saveFlightRecord" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenFlightRecord" mnemonicParsing="false" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" />
 
                </children>
