@@ -19,6 +19,7 @@ import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -58,6 +59,8 @@ public class Controller implements Initializable {
     public Button OpenWaypoint;
     public Button OpenFlightRecord;
     public Button SaveFlightRecord;
+    public Button ClearMessageButton;
+    public TextArea MessageLog;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -185,7 +188,8 @@ public class Controller implements Initializable {
             @Override
             public void handle(long now) {
                 if(now > lastTimerCall + 100_000_000L && serial.getReceivedMessage()!=null){
-                    System.out.println(serial.getReceivedMessage());
+                    MessageLog.appendText(serial.getReceivedMessage()+System.lineSeparator());
+                    MessageLog.appendText("--------------------------------"+System.lineSeparator());
                     refreshOrientation();
                     System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
                     lastTimerCall = now;
@@ -313,7 +317,7 @@ public class Controller implements Initializable {
         positionNow = new Coordinate(StringParser.getLatitude(serial.getReceivedMessage()),
                 StringParser.getLongitude(serial.getReceivedMessage()));
 
-        //mapView.setCenter(positionNow);
+        mapView.setCenter(positionNow);
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
@@ -321,18 +325,19 @@ public class Controller implements Initializable {
         try{
 
             System.out.println(positionNow);
-            if((positionNow.getLatitude()!= positionLast.getLatitude())||(positionNow.getLongitude()!=positionLast.getLongitude())){
+            if(Waypoint.distance(positionNow,positionLast)<1000&&(
+                    (positionNow.getLatitude()!= positionLast.getLatitude())||
+                    (positionNow.getLongitude()!=positionLast.getLongitude()))){
                 routes.add(positionNow);
                 mapView.removeCoordinateLine(coordinateLine);
-                coordinateLine = new CoordinateLine(routes);
-                mapView.addCoordinateLine(coordinateLine);
-
-                positionLast = positionNow;
-
-                mapView.setZoom(16);
+                coordinateLine = new CoordinateLine(new ArrayList<Coordinate>(){{add(positionNow);add(positionLast);}});
                 coordinateLine.setColor(Color.YELLOWGREEN)
                         .setVisible(true)
                         .setWidth(7);
+                mapView.addCoordinateLine(coordinateLine);
+                positionLast = positionNow;
+                mapView.setZoom(16);
+
             }
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -340,7 +345,7 @@ public class Controller implements Initializable {
     }
 
     private void refreshOrientation(){
-        if(StringParser.getDataLength(serial.getReceivedMessage())==12){
+        if(StringParser.getDataLength(serial.getReceivedMessage())==13){
             viewer.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
             viewer.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
             try{
@@ -349,6 +354,7 @@ public class Controller implements Initializable {
                 horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
                 altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
                 speedometer.setValue(StringParser.getAirspeed((serial.getReceivedMessage())));
+                BatteryLabel.setText(StringParser.getBattery(serial.getReceivedMessage()));
                 if(StringParser.getArm(serial.getReceivedMessage())==1){
                     Status.setText("ARMED");
                 }else{
@@ -442,5 +448,9 @@ public class Controller implements Initializable {
         waypoints.clear();
         positionList.clear();
         index = 0;
+    }
+
+    public void ClearMessageLog(ActionEvent actionEvent) {
+        MessageLog.clear();
     }
 }

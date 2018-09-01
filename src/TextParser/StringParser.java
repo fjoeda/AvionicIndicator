@@ -45,8 +45,8 @@ public class StringParser{
         return (Double.parseDouble((data.split("#"))[7]));
     }
 
-    public static double getBattery(String data){
-        return (Double.parseDouble((data.split("#"))[8]));
+    public static String getBattery(String data){
+        return ((data.split("#"))[8]);
     }
 
     public static int getMode(String data){
