@@ -92,6 +92,7 @@ public class Controller implements Initializable {
     private ArrayList<Waypoint> waypoints = new ArrayList<>();
     private Marker planeMarker;
     private CoordinateLine coordinateLine;
+    private Queue<CoordinateLine> coordinateLinesBuffer;
 
     private int index = 0;
     private int loadIndex = 0;
@@ -161,6 +162,7 @@ public class Controller implements Initializable {
         mapView.setMapType(MapType.BINGMAPS_ROAD);
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
+        positionLast = new Coordinate(-7.7713847,110.3774998);
         planeMarker = new Marker(getClass().getResource("Object/PlaneIcon.png"))
                 .setPosition(new Coordinate(-7.7713847,110.3774998))
                 .setVisible(true);
@@ -191,7 +193,7 @@ public class Controller implements Initializable {
                     MessageLog.appendText(serial.getReceivedMessage()+System.lineSeparator());
                     MessageLog.appendText("--------------------------------"+System.lineSeparator());
                     refreshOrientation();
-                    System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
+                    //System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
                     lastTimerCall = now;
                 }
             }
@@ -219,7 +221,7 @@ public class Controller implements Initializable {
                            serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
                            serial.connectToSerial();
                            isConnectedToSerial = true;
-                           routes.add(positionNow);
+                           routes.add(positionLast);
                            mapView.addMarker(planeMarker);
                            timer.start();
                            routeTimer.start();
@@ -321,19 +323,22 @@ public class Controller implements Initializable {
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
+        System.out.println(positionNow);
+        System.gc();
 
         try{
 
-            System.out.println(positionNow);
-            if(Waypoint.distance(positionNow,positionLast)<1000&&(
+
+            if(Waypoint.distance(positionNow,positionLast)>10&&(
                     (positionNow.getLatitude()!= positionLast.getLatitude())||
                     (positionNow.getLongitude()!=positionLast.getLongitude()))){
+
                 routes.add(positionNow);
-                mapView.removeCoordinateLine(coordinateLine);
-                coordinateLine = new CoordinateLine(new ArrayList<Coordinate>(){{add(positionNow);add(positionLast);}});
+                System.out.println(positionNow);
+                coordinateLine = new CoordinateLine(routes);
                 coordinateLine.setColor(Color.YELLOWGREEN)
                         .setVisible(true)
-                        .setWidth(7);
+                        .setWidth(4);
                 mapView.addCoordinateLine(coordinateLine);
                 positionLast = positionNow;
                 mapView.setZoom(16);
