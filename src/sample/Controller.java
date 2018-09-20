@@ -61,6 +61,8 @@ public class Controller implements Initializable {
     public Button SaveFlightRecord;
     public Button ClearMessageButton;
     public TextArea MessageLog;
+    public Label FlightDistance;
+    public Label FlightTime;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -85,6 +87,7 @@ public class Controller implements Initializable {
     private Coordinate position;
     private ArrayList<Coordinate> positionList = new ArrayList<>();
     private ArrayList<Marker> markerList = new ArrayList<>();
+    private ArrayList<Marker> trackedMarkerList = new ArrayList<>();
     private Coordinate positionLast;
     private Coordinate positionNow;
     private ArrayList<Coordinate> routes = new ArrayList<>();
@@ -93,6 +96,9 @@ public class Controller implements Initializable {
     private Marker planeMarker;
     private CoordinateLine coordinateLine;
     private Queue<CoordinateLine> coordinateLinesBuffer;
+    private int flightDistance = 0;
+    private boolean afterConnect = false;
+    private int flightTime = 0;
 
     private int index = 0;
     private int loadIndex = 0;
@@ -162,8 +168,7 @@ public class Controller implements Initializable {
         mapView.setMapType(MapType.BINGMAPS_ROAD);
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
-        positionLast = new Coordinate(-7.7713847,110.3774998);
-        planeMarker = new Marker(getClass().getResource("Object/PlaneIcon.png"))
+        planeMarker = new Marker(getClass().getResource("Object/PlaneIcon.png"),-15,-20)
                 .setPosition(new Coordinate(-7.7713847,110.3774998))
                 .setVisible(true);
 
@@ -171,7 +176,7 @@ public class Controller implements Initializable {
         //Map Event Handler
         mapView.addEventHandler(MapViewEvent.MAP_CLICKED, event -> {
             position = event.getCoordinate();
-            Marker marker = new Marker(getClass().getResource("Object/marker1.png")).setPosition(position).setVisible(true);
+            Marker marker = new Marker(getClass().getResource("Object/marker1.png"),-10,-10).setPosition(position).setVisible(true);
             mapView.addMarker(marker);
             markerList.add(marker);
             System.out.println(event.getCoordinate());
@@ -206,6 +211,8 @@ public class Controller implements Initializable {
                 if(now>lastRouteDataGot + 1_000_000_000L && serial.getReceivedMessage()!=null){
                     refreshMapRoute();
                     lastRouteDataGot = now;
+                    flightTime++;
+                    FlightTime.setText(StringParser.getTimeFormatFromSecond(flightTime));
                 }
             }
         };
@@ -221,10 +228,12 @@ public class Controller implements Initializable {
                            serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
                            serial.connectToSerial();
                            isConnectedToSerial = true;
-                           routes.add(positionLast);
+                           //routes.add(positionLast);
                            mapView.addMarker(planeMarker);
                            timer.start();
                            routeTimer.start();
+                           tglArm1.setSelected(true);
+                           tglArm2.setSelected(true);
 
                        } else {
                            new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
@@ -241,6 +250,12 @@ public class Controller implements Initializable {
                    isConnectedToSerial = false;
                    timer.stop();
                    routeTimer.stop();
+                   afterConnect = false;
+                   routes.clear();
+                   tglArm1.setSelected(false);
+                   tglArm2.setSelected(false);
+                   // save dulu
+                   System.gc();
                }
            }
         });
@@ -323,23 +338,28 @@ public class Controller implements Initializable {
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
-        System.out.println(positionNow);
         System.gc();
+        if(!afterConnect){
+            positionLast = positionNow;
+            afterConnect = true;
+        }
 
         try{
 
 
-            if(Waypoint.distance(positionNow,positionLast)>10&&(
+            if(Waypoint.distance(positionNow,positionLast)<2000&&(
                     (positionNow.getLatitude()!= positionLast.getLatitude())||
                     (positionNow.getLongitude()!=positionLast.getLongitude()))){
 
                 routes.add(positionNow);
-                System.out.println(positionNow);
+                flightDistance += Waypoint.distance(positionNow,positionLast);
+                FlightDistance.setText(StringParser.getDistanceString(flightDistance));
                 coordinateLine = new CoordinateLine(routes);
-                coordinateLine.setColor(Color.YELLOWGREEN)
+                coordinateLine.setColor(Color.DARKBLUE  )
                         .setVisible(true)
                         .setWidth(4);
                 mapView.addCoordinateLine(coordinateLine);
+                addTrackedMarker(positionNow);
                 positionLast = positionNow;
                 mapView.setZoom(16);
 
@@ -370,6 +390,35 @@ public class Controller implements Initializable {
             }
         }
 
+    }
+
+    private void addTrackedMarker(Coordinate position){
+        for(Marker waypoint : markerList){
+            if(Waypoint.distance(position,waypoint.getPosition())<50){
+                System.out.println("waypoint near");
+                if(trackedMarkerList.isEmpty()){
+                    mapView.removeMarker(waypoint);
+                    addTrackedMarkerToMap(position);
+                }else{
+                    for(Marker tracked : trackedMarkerList){
+                        if(!waypoint.getPosition().equals(tracked.getPosition())){
+                            mapView.removeMarker(waypoint);
+                            addTrackedMarkerToMap(position);
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    private void addTrackedMarkerToMap(Coordinate position){
+        Marker marker = new Marker(getClass().getResource("Object/marker2.png"),-10,-10).setPosition(position).setVisible(true);
+        mapView.addMarker(marker);
+        trackedMarkerList.add(marker);
+        System.out.println("added");
     }
 
     public void saveWaypoint(ActionEvent actionEvent) {
@@ -448,6 +497,10 @@ public class Controller implements Initializable {
 
     public void clearWaypoint(ActionEvent actionEvent) {
         for(Marker marker : markerList){
+            mapView.removeMarker(marker);
+        }
+
+        for(Marker marker : trackedMarkerList){
             mapView.removeMarker(marker);
         }
         waypoints.clear();

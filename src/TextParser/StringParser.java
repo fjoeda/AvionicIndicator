@@ -13,10 +13,6 @@ import SerialComm.SerialCommunication;
 
 public class StringParser{
 
-
-
-
-
     public static double getAltitude(String data){
         return (Double.valueOf(data.split("#")[1]));
     }
@@ -66,6 +62,28 @@ public class StringParser{
     }
 
     public static int getDataLength(String data){ return (data.split("#").length);}
+
+    public static String getTimeFormatFromSecond(int second){
+        int mins, secs;
+        String strMins, strSecs;
+        mins = second / 60;
+        secs = second % 60;
+        if(mins<10)
+            strMins = 0+String.valueOf(mins);
+        else
+            strMins = String.valueOf(mins);
+
+        if(secs<10)
+            strSecs = 0+String.valueOf(secs);
+        else
+            strSecs = String.valueOf(secs);
+
+        return strMins+":"+strSecs;
+    }
+
+    public static String getDistanceString(int distance){
+        return String.valueOf(distance)+" m";
+    }
 
     public StringParser(){
 
