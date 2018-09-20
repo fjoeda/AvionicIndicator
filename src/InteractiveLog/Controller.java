@@ -42,7 +42,6 @@ public class Controller implements Initializable {
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
         mapView.initialize();
-
     }
 
     public void LoadFile(ActionEvent actionEvent) {
