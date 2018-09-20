@@ -14,7 +14,7 @@ public class TestCSV extends Application {
 
     @Override
     public void init() throws Exception {
-        writer = new CSV_Log(LocalDateTime.now().getDayOfWeek().toString()+"_flight_log");
+        writer = new CSV_Log(LocalDateTime.now().getDayOfWeek().toString()+"_flight_log.csv");
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {

@@ -20,5 +20,6 @@
     <orderEntry type="library" name="mapjfx-1.8.0-sources" level="project" />
     <orderEntry type="library" name="controlsfx-8.40.14" level="project" />
     <orderEntry type="library" name="controlsfx-samples-8.40.14" level="project" />
+    <orderEntry type="library" name="opencsv-2.3" level="project" />
   </component>
 </module>
