@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -176,16 +177,7 @@ public class Controller implements Initializable {
         //Map Event Handler
         mapView.addEventHandler(MapViewEvent.MAP_CLICKED, event -> {
             position = event.getCoordinate();
-            Marker marker = new Marker(getClass().getResource("Object/marker1.png"),-10,-10).setPosition(position).setVisible(true);
-            mapView.addMarker(marker);
-            markerList.add(marker);
-            System.out.println(event.getCoordinate());
-            if(!positionList.contains(position)){
-                positionList.add(position);
-                waypoints.add(new Waypoint(index,Double.toString(position.getLatitude()),Double.toString(position.getLongitude())));
-                index++;
-            }
-
+            addMarker(position);
         });
 
         mapView.initialize();
@@ -291,6 +283,7 @@ public class Controller implements Initializable {
 
 
 
+
     public void RefreshPortList(MouseEvent mouseEvent) {
         Enumeration<CommPortIdentifier> portList = CommPortIdentifier.getPortIdentifiers();
         while(portList.hasMoreElements()) {
@@ -300,7 +293,16 @@ public class Controller implements Initializable {
         }
     }
 
-
+    private void addMarker(Coordinate position){
+        Marker marker = new Marker(getClass().getResource("Object/marker1.png"),-10,-10).setPosition(position).setVisible(true);
+        mapView.addMarker(marker);
+        markerList.add(marker);
+        if(!positionList.contains(position)){
+            positionList.add(position);
+            waypoints.add(new Waypoint(index,Double.toString(position.getLatitude()),Double.toString(position.getLongitude())));
+            index++;
+        }
+    }
 
     private void initialize3DScene(){
         viewer = new ViewerModel();
@@ -422,10 +424,16 @@ public class Controller implements Initializable {
     }
 
     public void saveWaypoint(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Gamaforce GCS Waypoint","*.ggwp")
+        );
+        fileChooser.setTitle("Save Waypoint");
+        File file = fileChooser.showSaveDialog(((Node)actionEvent.getSource()).getScene().getWindow());
         try {
-            fileWriter = new FileWriter("Waypoints.csv");
+            fileWriter = new FileWriter(file.toString());
 
-            fileWriter.append(FILE_HEADER.toString());
+            fileWriter.append(FILE_HEADER);
             fileWriter.append(NEW_LINE_SEPARATOR);
 
             for (Waypoint waypoint : waypoints) {
@@ -456,27 +464,34 @@ public class Controller implements Initializable {
     }
 
     public void loadWaypoint(ActionEvent actionEvent) {
-
+        Node node = (Node) actionEvent.getSource();
         FileChooser fileChooser = new FileChooser();
-        //fileChooser.showOpenDialog();
+        fileChooser.setTitle("Load Waypoint");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Gamaforce GCS Waypoint","*.ggwp")
+        );
+        File file = fileChooser.showOpenDialog(node.getScene().getWindow());
         waypoints.clear();
         try {
-            String line = "";
-            fileReader = new BufferedReader(new FileReader("Waypoints.csv"));
-            fileReader.readLine();
+            if(file.exists()){
+                String line = "";
+                fileReader = new BufferedReader(new FileReader(file.toString()));
+                fileReader.readLine();
 
-            while ((line = fileReader.readLine()) != null) {
-                String[] tokens = line.split(COMMA_DELIMITER);
+                while ((line = fileReader.readLine()) != null) {
+                    String[] tokens = line.split(COMMA_DELIMITER);
 
-                if (tokens.length > 0) {
-                    Coordinate pos = new Coordinate(Double.parseDouble(tokens[1]),Double.parseDouble(tokens[2]));
-                    ///Tambah marker
-                    Waypoint waypoint = new Waypoint(Integer.valueOf(tokens[0]), Double.toString(pos.getLatitude()), Double.toString(pos.getLongitude()));
-                    waypoints.add(waypoint);
-                    System.out.println(String.valueOf(waypoint.getId()) + ", " + String.valueOf(waypoint.getLatitude()) + ", " + String.valueOf(waypoint.getLongitude()));
-                    loadIndex++;
+                    if (tokens.length > 0) {
+                        Coordinate pos = new Coordinate(Double.parseDouble(tokens[1]),Double.parseDouble(tokens[2]));
+                        addMarker(pos);
+                        Waypoint waypoint = new Waypoint(Integer.valueOf(tokens[0]), Double.toString(pos.getLatitude()), Double.toString(pos.getLongitude()));
+                        waypoints.add(waypoint);
+                        System.out.println(String.valueOf(waypoint.getId()) + ", " + String.valueOf(waypoint.getLatitude()) + ", " + String.valueOf(waypoint.getLongitude()));
+                        loadIndex++;
+                    }
                 }
             }
+
         }
         catch (Exception e) {
             e.printStackTrace();

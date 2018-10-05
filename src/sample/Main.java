@@ -26,6 +26,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         controller  = (new FXMLLoader(getClass().getResource("sample.fxml"))).getController();
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setTitle("Khageswara Ground Control Station");
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
