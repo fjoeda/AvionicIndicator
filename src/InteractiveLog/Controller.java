@@ -17,7 +17,10 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import sample.Waypoint;
 
 public class Controller implements Initializable {
     public MapView mapView;
@@ -114,4 +117,18 @@ public class Controller implements Initializable {
 
 
     }
+
+    // ngitung jarak total
+    // NOTE : Mohon pas load, koordinat-koordinatnya ditambahkan ke Arraylist
+
+    private double getTotalDistance(ArrayList<Coordinate> coordinateList){
+        double totalDistance = 0;
+        for(int i = 0;i<coordinateList.size()-1;i++){
+            totalDistance += Waypoint.distance(coordinateList.get(i),coordinateList.get(i+1));
+        }
+        return totalDistance;
+    }
+
+
+
 }

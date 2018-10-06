@@ -14,9 +14,12 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
 
 import java.io.FileWriter;
@@ -505,6 +509,15 @@ public class Controller implements Initializable {
     }
 
     public void openFlightRecord(ActionEvent actionEvent) {
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("/InteractiveLog/InteractiveLog.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Log");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void saveFlightRecord(ActionEvent actionEvent) {
