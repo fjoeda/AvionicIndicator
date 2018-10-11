@@ -8,7 +8,7 @@ import Visualize3D.SubSceneContainer;
 import Visualize3D.ViewerModel;
 import com.sothawo.mapjfx.*;
 import com.sothawo.mapjfx.event.MapViewEvent;
-import gnu.io.*;
+import gnu.io.CommPortIdentifier;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -21,9 +21,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -33,23 +30,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
-
-import javax.sound.sampled.Port;
-import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.text.NumberFormat;
-import java.util.*;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     public Label Status;
@@ -68,6 +54,11 @@ public class Controller implements Initializable {
     public TextArea MessageLog;
     public Label FlightDistance;
     public Label FlightTime;
+    public ToggleSwitch tglStab;
+    public ToggleSwitch tglAlt;
+    public ToggleSwitch tglHead;
+    public ToggleSwitch tglWay;
+    public ToggleSwitch tglAuto;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -100,7 +91,6 @@ public class Controller implements Initializable {
     private ArrayList<Waypoint> waypoints = new ArrayList<>();
     private Marker planeMarker;
     private CoordinateLine coordinateLine;
-    private Queue<CoordinateLine> coordinateLinesBuffer;
     private int flightDistance = 0;
     private boolean afterConnect = false;
     private int flightTime = 0;
@@ -112,9 +102,7 @@ public class Controller implements Initializable {
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String FILE_HEADER = "id,latitude,longitude";
 
-    private static final int WAYPOINT_ID = 0;
-    private static final int WAYPOINT_LATITUDE = 1;
-    private static final int WAYPOINT_LONGITUDE = 2;
+    private ArrayList<String> csvLine = new ArrayList<>();
 
     private int mode = 0;
     private boolean ARMED =false;
@@ -227,9 +215,7 @@ public class Controller implements Initializable {
                            //routes.add(positionLast);
                            mapView.addMarker(planeMarker);
                            timer.start();
-                           routeTimer.start();
-                           tglArm1.setSelected(true);
-                           tglArm2.setSelected(true);
+                           //routeTimer.start();
 
                        } else {
                            new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
@@ -248,8 +234,6 @@ public class Controller implements Initializable {
                    routeTimer.stop();
                    afterConnect = false;
                    routes.clear();
-                   tglArm1.setSelected(false);
-                   tglArm2.setSelected(false);
                    // save dulu
                    System.gc();
                }
@@ -260,8 +244,10 @@ public class Controller implements Initializable {
             if(ConnectButton.isSelected()){
                 if(newValue&&tglArm2.isSelected()){
                     serial.sendToSerial(StringParser.armUAV(1));
+                    arm();
                 }else if(!newValue&&!tglArm2.isSelected()){
                     serial.sendToSerial(StringParser.armUAV(0));
+                    disarm();
                 }
             }else{
                 tglArm1.setSelected(false);
@@ -272,21 +258,54 @@ public class Controller implements Initializable {
             if(ConnectButton.isSelected()){
                 if(newValue&&tglArm1.isSelected()){
                     serial.sendToSerial(StringParser.armUAV(1));
+                    arm();
                 }else if(!newValue&&!tglArm1.isSelected()){
                     serial.sendToSerial(StringParser.armUAV(0));
+                    disarm();
                 }
             }else{
                 tglArm2.setSelected(false);
             }
         });
 
+
+
     }
 
 
+    private void arm(){
+        routeTimer.start();
 
+    }
 
+    private void disarm(){
+        routeTimer.stop();
+        //save flight log
+    }
 
+    private void saveFlightLog(ActionEvent actionEvent){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Gamaforce GCS Waypoint","*.ggwp")
+        );
+        fileChooser.setTitle("Save Flight Log");
+        File file = fileChooser.showSaveDialog(((Node)actionEvent.getSource()).getScene().getWindow());
+        try{
+            fileWriter = new FileWriter(file.toString());
+            for(String lines: csvLine){
+                fileWriter.append(lines);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    private void recordFlightData(LocalDateTime  time, Coordinate position, double speed, double altitude){
+        String LineToSave = time.toLocalDate().toString()+","+time.toLocalTime().toString()+","
+                +position.getLatitude()+","+position.getLongitude()+","+String.valueOf(speed)+","+String.valueOf(altitude);
+        csvLine.add(LineToSave);
+
+    }
 
     public void RefreshPortList(MouseEvent mouseEvent) {
         Enumeration<CommPortIdentifier> portList = CommPortIdentifier.getPortIdentifiers();
@@ -344,6 +363,8 @@ public class Controller implements Initializable {
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
+        recordFlightData(LocalDateTime.now(),positionNow,StringParser.getAirspeed(serial.getReceivedMessage()),
+                StringParser.getAltitude(serial.getReceivedMessage()));
         System.gc();
         if(!afterConnect){
             positionLast = positionNow;
@@ -351,8 +372,6 @@ public class Controller implements Initializable {
         }
 
         try{
-
-
             if(Waypoint.distance(positionNow,positionLast)<2000&&(
                     (positionNow.getLatitude()!= positionLast.getLatitude())||
                     (positionNow.getLongitude()!=positionLast.getLongitude()))){
@@ -376,7 +395,7 @@ public class Controller implements Initializable {
     }
 
     private void refreshOrientation(){
-        if(StringParser.getDataLength(serial.getReceivedMessage())==13){
+        if(StringParser.getDataLength(serial.getReceivedMessage())==14){
             viewer.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
             viewer.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
             try{
@@ -427,7 +446,14 @@ public class Controller implements Initializable {
         System.out.println("added");
     }
 
+
+    /*
+    private File getFileDirectoryFromFileChooser(ActionEvent ae, String title,int mode){
+
+    }*/
+
     public void saveWaypoint(ActionEvent actionEvent) {
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Gamaforce GCS Waypoint","*.ggwp")
@@ -508,7 +534,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public void openFlightRecord(ActionEvent actionEvent) {
+    public void openFlightRecord() {
         try{
             Parent root = FXMLLoader.load(getClass().getResource("/InteractiveLog/InteractiveLog.fxml"));
             Stage stage = new Stage();
@@ -523,7 +549,7 @@ public class Controller implements Initializable {
     public void saveFlightRecord(ActionEvent actionEvent) {
     }
 
-    public void clearWaypoint(ActionEvent actionEvent) {
+    public void clearWaypoint() {
         for(Marker marker : markerList){
             mapView.removeMarker(marker);
         }
@@ -536,7 +562,12 @@ public class Controller implements Initializable {
         index = 0;
     }
 
-    public void ClearMessageLog(ActionEvent actionEvent) {
+    public void clearMessageLog() {
         MessageLog.clear();
     }
+}
+
+final class FileHandleMode{
+    public static int FILE_OPEN = 0;
+    public static int FILE_SAVE = 1;
 }

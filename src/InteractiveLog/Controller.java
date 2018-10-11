@@ -129,6 +129,17 @@ public class Controller implements Initializable {
         return totalDistance;
     }
 
+    //buat set zoom secara otomatis
+    //rumus buat meter
+    // resolution = (cos(latitude * pi/180) * 2 * pi * 6378137) / (256 * 2^zoomlevel)
+
+    private double getProperZoomOnMap(double latitude, double distanceResolution, int width){
+        return logBase((Math.cos(latitude*Math.PI/180)*2*Math.PI*6378137*width)/256*distanceResolution,2);
+    }
+
+    private double logBase(double val,double base){
+        return Math.log(val)/Math.log(base);
+    }
 
 
 }
