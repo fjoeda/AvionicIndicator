@@ -285,8 +285,8 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" text="__" />
-                              <Button mnemonicParsing="false" text="X" />
+                              <Button fx:id="MinimizeButton" mnemonicParsing="false" text="__" onAction="#minimizeWindows"/>
+                              <Button fx:id="CloseButton" mnemonicParsing="false" text="X" onAction="#closeWindows"/>
                            </children>
                         </HBox>
                      </children></VBox>
@@ -323,6 +323,8 @@
                         <Insets bottom="4.0" top="4.0" />
                      </VBox.margin>
                   </Button>
+                  <Button fx:id="SendWaypoint" mnemonicParsing="false" onAction="#sendWaypoint" prefHeight="52.0" prefWidth="118.0" text="Send Waypoint" textAlignment="CENTER" wrapText="true" />
+
                   <Button fx:id="SaveWaypoint" mnemonicParsing="false" onAction="#saveWaypoint" prefHeight="52.0" prefWidth="118.0" text="Save Waypoint" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenWaypoint" mnemonicParsing="false" onAction="#loadWaypoint" prefHeight="52.0" prefWidth="118.0" text="Open Waypoint" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenFlightRecord" mnemonicParsing="false" onAction="#openFlightRecord" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" />

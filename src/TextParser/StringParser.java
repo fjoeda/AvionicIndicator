@@ -61,6 +61,9 @@ public class StringParser{
 
     public static String armUAV(int mode){ return("a#"+String.valueOf(mode)+"#*"); }
 
+    public static String setAutoUAV(int mode){ return("u#"+String.valueOf(mode)+"#*"); }
+
+
     public static int getDataLength(String data){ return (data.split("#").length);}
 
     public static String getTimeFormatFromSecond(int second){

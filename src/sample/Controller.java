@@ -59,6 +59,9 @@ public class Controller implements Initializable {
     public ToggleSwitch tglHead;
     public ToggleSwitch tglWay;
     public ToggleSwitch tglAuto;
+    public Button MinimizeButton;
+    public Button CloseButton;
+    public Button SendWaypoint;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -104,8 +107,10 @@ public class Controller implements Initializable {
 
     private ArrayList<String> csvLine = new ArrayList<>();
 
-    private int mode = 0;
-    private boolean ARMED =false;
+    private int MODE = 0;
+    private int COMMAND = 0;
+    private int AUTO = 0;
+    private int ARMED =0;
 
     private FileWriter fileWriter = null;
     private BufferedReader fileReader = null;
@@ -179,8 +184,7 @@ public class Controller implements Initializable {
             @Override
             public void handle(long now) {
                 if(now > lastTimerCall + 100_000_000L && serial.getReceivedMessage()!=null){
-                    MessageLog.appendText(serial.getReceivedMessage()+System.lineSeparator());
-                    MessageLog.appendText("--------------------------------"+System.lineSeparator());
+
                     refreshOrientation();
                     //System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
                     lastTimerCall = now;
@@ -243,10 +247,8 @@ public class Controller implements Initializable {
         tglArm1.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(ConnectButton.isSelected()){
                 if(newValue&&tglArm2.isSelected()){
-                    serial.sendToSerial(StringParser.armUAV(1));
                     arm();
                 }else if(!newValue&&!tglArm2.isSelected()){
-                    serial.sendToSerial(StringParser.armUAV(0));
                     disarm();
                 }
             }else{
@@ -257,10 +259,8 @@ public class Controller implements Initializable {
         tglArm2.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(ConnectButton.isSelected()){
                 if(newValue&&tglArm1.isSelected()){
-                    serial.sendToSerial(StringParser.armUAV(1));
                     arm();
                 }else if(!newValue&&!tglArm1.isSelected()){
-                    serial.sendToSerial(StringParser.armUAV(0));
                     disarm();
                 }
             }else{
@@ -274,11 +274,15 @@ public class Controller implements Initializable {
 
 
     private void arm(){
+        ARMED = 1;
+        serial.sendToSerial(StringParser.armUAV(ARMED));
         routeTimer.start();
 
     }
 
     private void disarm(){
+        ARMED = 0;
+        serial.sendToSerial(StringParser.armUAV(ARMED));
         routeTimer.stop();
         //save flight log
     }
@@ -386,7 +390,7 @@ public class Controller implements Initializable {
                 mapView.addCoordinateLine(coordinateLine);
                 addTrackedMarker(positionNow);
                 positionLast = positionNow;
-                mapView.setZoom(16);
+                mapView.setZoom(18);
 
             }
         } catch (Exception e){
@@ -399,6 +403,8 @@ public class Controller implements Initializable {
             viewer.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
             viewer.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
             try{
+                MessageLog.appendText(serial.getReceivedMessage()+System.lineSeparator());
+                MessageLog.appendText("--------------------------------"+System.lineSeparator());
                 compass.setBearing(StringParser.getYaw(serial.getReceivedMessage()));
                 horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
                 horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
@@ -419,16 +425,18 @@ public class Controller implements Initializable {
 
     private void addTrackedMarker(Coordinate position){
         for(Marker waypoint : markerList){
-            if(Waypoint.distance(position,waypoint.getPosition())<50){
+            if(Waypoint.distance(position,waypoint.getPosition())<5){
                 System.out.println("waypoint near");
                 if(trackedMarkerList.isEmpty()){
                     mapView.removeMarker(waypoint);
                     addTrackedMarkerToMap(position);
+                    markerList.remove(waypoint);
                 }else{
                     for(Marker tracked : trackedMarkerList){
                         if(!waypoint.getPosition().equals(tracked.getPosition())){
                             mapView.removeMarker(waypoint);
                             addTrackedMarkerToMap(position);
+                            markerList.remove(waypoint);
                             break;
                         }
                     }
@@ -564,6 +572,23 @@ public class Controller implements Initializable {
 
     public void clearMessageLog() {
         MessageLog.clear();
+    }
+
+    public void closeWindows(){
+        Platform.exit();
+    }
+
+    public void minimizeWindows(ActionEvent actionEvent){
+        //(((Node)actionEvent.getSource()).getScene().getWindow()).getScene().
+    }
+
+    public void sendWaypoint(ActionEvent actionEvent) {
+        String waypointMessage="w#";
+        for(Waypoint waypoint : waypoints){
+            waypointMessage+=waypoint.getLatitude()+"#"+waypoint.getLongitude()+"#";
+        }
+        waypointMessage +="*";
+        serial.sendToSerial(waypointMessage);
     }
 }
 

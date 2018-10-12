@@ -122,11 +122,16 @@
                                  </Pane>
                              </content>
                          </TitledPane>
-                        <TitledPane expanded="false" prefHeight="17.0" prefWidth="292.0" text="Command Button">
+                        <TitledPane expanded="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="292.0" text="Command Button">
                            <content>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox prefHeight="87.0" prefWidth="298.0">
                                  <children>
-                                    <GridPane>
+                                    <ToggleSwitch fx:id="tglAuto" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="31.0" prefWidth="278.0" styleClass="toggle-switch" text="AUTO">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </ToggleSwitch>
+                                    <GridPane prefHeight="36.0" prefWidth="278.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -137,16 +142,16 @@
                                        <children>
                                           <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <ToggleSwitch fx:id="tglPlaneMode" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="100.0" styleClass="toggle-switch" text="PLANE">
+                                                <ToggleSwitch fx:id="tglPlaneMode" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="133.0" styleClass="toggle-switch" text="PLANE">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </ToggleSwitch>
                                              </children>
                                           </VBox>
-                                          <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                          <VBox prefHeight="54.0" prefWidth="139.0" GridPane.columnIndex="1">
                                              <children>
-                                                <ToggleSwitch fx:id="tglVtolMode" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="100.0" selected="true" styleClass="toggle-switch" text="VTOL">
+                                                <ToggleSwitch fx:id="tglVtolMode" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="138.0" selected="true" styleClass="toggle-switch" text="VTOL">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -155,6 +160,26 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
+                                    <ToggleSwitch fx:id="tglStab" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="STABILLIZE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </ToggleSwitch>
+                                    <ToggleSwitch fx:id="tglAlt" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="ALTITUDE HOLD">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </ToggleSwitch>
+                                    <ToggleSwitch fx:id="tglHead" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="284.0" styleClass="toggle-switch" text="HEADING LOCK">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </ToggleSwitch>
+                                    <ToggleSwitch fx:id="tglWay" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="283.0" styleClass="toggle-switch" text="WAYPOINT">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </ToggleSwitch>
                                  </children>
                               </VBox>
                            </content>
@@ -175,7 +200,7 @@
                                     </HBox>
                                     <HBox alignment="TOP_RIGHT" prefHeight="38.0" prefWidth="278.0">
                                        <children>
-                                          <Button fx:id="ClearMessageButton" mnemonicParsing="false" onAction="#ClearMessageLog" prefHeight="32.0" prefWidth="85.0" text="Clear">
+                                          <Button fx:id="ClearMessageButton" mnemonicParsing="false" onAction="#clearMessageLog" prefHeight="32.0" prefWidth="85.0" text="Clear">
                                              <HBox.margin>
                                                 <Insets right="2.0" />
                                              </HBox.margin>
@@ -208,7 +233,7 @@
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
                               <Label text="Flight Time" />
-                              <Label fx:id="FlightTime"  text="00:00" />
+                              <Label fx:id="FlightTime" text="00:00" />
                            </children>
                         </VBox>
                      </children>
@@ -260,8 +285,8 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" text="__" />
-                              <Button mnemonicParsing="false" text="X" />
+                              <Button fx:id="MinimizeButton" mnemonicParsing="false" text="__" onAction="#minimizeWindows"/>
+                              <Button fx:id="CloseButton" mnemonicParsing="false" text="X" onAction="#closeWindows"/>
                            </children>
                         </HBox>
                      </children></VBox>
@@ -298,6 +323,8 @@
                         <Insets bottom="4.0" top="4.0" />
                      </VBox.margin>
                   </Button>
+                  <Button fx:id="SendWaypoint" mnemonicParsing="false" onAction="#sendWaypoint" prefHeight="52.0" prefWidth="118.0" text="Send Waypoint" textAlignment="CENTER" wrapText="true" />
+
                   <Button fx:id="SaveWaypoint" mnemonicParsing="false" onAction="#saveWaypoint" prefHeight="52.0" prefWidth="118.0" text="Save Waypoint" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenWaypoint" mnemonicParsing="false" onAction="#loadWaypoint" prefHeight="52.0" prefWidth="118.0" text="Open Waypoint" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenFlightRecord" mnemonicParsing="false" onAction="#openFlightRecord" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" />

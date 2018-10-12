@@ -79,8 +79,7 @@ public class SerialCommunication {
                     public void serialEvent(SerialPortEvent event) {
                         try {
                             if(event.getEventType()==SerialPortEvent.DATA_AVAILABLE){
-                                String data = input.readLine();
-                                ReceivedMessage = data;
+                                ReceivedMessage = input.readLine();
                                 //System.out.println(data);
                             }
                         }catch (IOException e){
