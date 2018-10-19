@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/SerialComm/SerialCommunication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerialComm/SerialCommunication.java" afterPath="$PROJECT_DIR$/src/SerialComm/SerialCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TextParser/StringParser.java" afterPath="$PROJECT_DIR$/src/TextParser/StringParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" />
@@ -30,10 +28,14 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2094">
-              <caret line="406" column="97" lean-forward="false" selection-start-line="406" selection-start-column="97" selection-end-line="406" selection-end-column="97" />
+            <state relative-caret-position="286">
+              <caret line="257" column="38" lean-forward="false" selection-start-line="257" selection-start-column="38" selection-end-line="257" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6396#6801#0" expanded="true" />
+                <element signature="e#6800#6801#0" expanded="true" />
+                <element signature="e#6826#7258#0" expanded="true" />
+                <element signature="e#7257#7258#0" expanded="true" />
                 <element signature="method#RefreshPortList#0;class#Controller#0" expanded="false" />
                 <element signature="method#addMarker#0;class#Controller#0" expanded="false" />
                 <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
@@ -50,7 +52,7 @@
       <file leaf-file-name="Log.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="230">
               <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
@@ -60,7 +62,7 @@
       <file leaf-file-name="Waypoint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Waypoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
+            <state relative-caret-position="215">
               <caret line="47" column="107" lean-forward="false" selection-start-line="47" selection-start-column="107" selection-end-line="47" selection-end-column="107" />
               <folding />
             </state>
@@ -69,14 +71,14 @@
       </file>
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="325" column="86" lean-forward="false" selection-start-line="325" selection-start-column="86" selection-end-line="325" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="162" column="63" lean-forward="false" selection-start-line="162" selection-start-column="63" selection-end-line="162" selection-end-column="63" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -108,7 +110,7 @@
       <file leaf-file-name="StringParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="170">
               <caret line="59" column="122" lean-forward="false" selection-start-line="59" selection-start-column="122" selection-end-line="59" selection-end-column="122" />
               <folding>
                 <element signature="method#getTimeFormatFromSecond#0;class#StringParser#0" expanded="false" />
@@ -152,6 +154,11 @@
       <find>fli</find>
       <find>mapv</find>
       <find>getReceived</find>
+      <find>Conne</find>
+      <find>ConnectButton</find>
+      <find>disa</find>
+      <find>TO</find>
+      <find>TOGGL</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\ACER\IdeaProjects\AvionicIndicator\src\Visualize3D</dir>
@@ -209,9 +216,9 @@
         <option value="$PROJECT_DIR$/src/sample/Waypoint.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/InteractiveLog/Controller.java" />
+        <option value="$PROJECT_DIR$/src/SerialComm/SerialCommunication.java" />
         <option value="$PROJECT_DIR$/src/TextParser/StringParser.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/SerialComm/SerialCommunication.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
@@ -242,9 +249,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -309,6 +315,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -729,7 +736,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539251710621</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Send Waypoint">
+      <created>1539342703317</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1539342703317</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -758,7 +772,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15128593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.108169444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -834,14 +848,15 @@
     <MESSAGE value="open and save waypoint from file with file chooser. watpoint file type : *.ggwp" />
     <MESSAGE value="merapikan tampilan flight log + fungsi hitung jarak total" />
     <MESSAGE value="update format data" />
-    <option name="LAST_COMMIT_MESSAGE" value="update format data" />
+    <MESSAGE value="Send Waypoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Send Waypoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>401</line>
+          <line>494</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -895,13 +910,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Visualize3D/3DVisual.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="13" column="62" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="62" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Avionics/SpeedometerBuilder.java" />
@@ -1061,14 +1076,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MapTest/LatLong.java" />
@@ -1087,14 +1101,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MapTest/ViewMap.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MapTest/Map.java">
@@ -1108,14 +1122,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1148,35 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Waypoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="47" column="107" lean-forward="false" selection-start-line="47" selection-start-column="107" selection-end-line="47" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="325" column="86" lean-forward="false" selection-start-line="325" selection-start-column="86" selection-end-line="325" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="59" column="122" lean-forward="false" selection-start-line="59" selection-start-column="122" selection-end-line="59" selection-end-column="122" />
-          <folding>
-            <element signature="method#getTimeFormatFromSecond#0;class#StringParser#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SerialComm/SerialCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="980">
@@ -1185,12 +1162,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Waypoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="47" column="107" lean-forward="false" selection-start-line="47" selection-start-column="107" selection-end-line="47" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="59" column="122" lean-forward="false" selection-start-line="59" selection-start-column="122" selection-end-line="59" selection-end-column="122" />
+          <folding>
+            <element signature="method#getTimeFormatFromSecond#0;class#StringParser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="162" column="63" lean-forward="false" selection-start-line="162" selection-start-column="63" selection-end-line="162" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2094">
-          <caret line="406" column="97" lean-forward="false" selection-start-line="406" selection-start-column="97" selection-end-line="406" selection-end-column="97" />
+        <state relative-caret-position="286">
+          <caret line="257" column="38" lean-forward="false" selection-start-line="257" selection-start-column="38" selection-end-line="257" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6396#6801#0" expanded="true" />
+            <element signature="e#6800#6801#0" expanded="true" />
+            <element signature="e#6826#7258#0" expanded="true" />
+            <element signature="e#7257#7258#0" expanded="true" />
             <element signature="method#RefreshPortList#0;class#Controller#0" expanded="false" />
             <element signature="method#addMarker#0;class#Controller#0" expanded="false" />
             <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />

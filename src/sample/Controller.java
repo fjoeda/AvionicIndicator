@@ -11,6 +11,8 @@ import com.sothawo.mapjfx.event.MapViewEvent;
 import gnu.io.CommPortIdentifier;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,6 +64,7 @@ public class Controller implements Initializable {
     public Button MinimizeButton;
     public Button CloseButton;
     public Button SendWaypoint;
+    public ToggleSwitch tglTakeOff;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -220,6 +223,8 @@ public class Controller implements Initializable {
                            mapView.addMarker(planeMarker);
                            timer.start();
                            //routeTimer.start();
+                           tglArm1.setDisable(!newValue);
+                           tglArm2.setDisable(!newValue);
 
                        } else {
                            new Alert(Alert.AlertType.ERROR,"You haven't select any COM port or baud rate or both").showAndWait();
@@ -238,14 +243,24 @@ public class Controller implements Initializable {
                    routeTimer.stop();
                    afterConnect = false;
                    routes.clear();
+                   tglArm1.setDisable(newValue);
+                   tglArm2.setDisable(newValue);
                    // save dulu
                    System.gc();
                }
            }
         });
 
+        tglTakeOff.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                serial.sendToSerial("t");
+            }else{
+                serial.sendToSerial("l");
+            }
+        });
+
         tglArm1.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if(ConnectButton.isSelected()){
+            if(isConnectedToSerial){
                 if(newValue&&tglArm2.isSelected()){
                     arm();
                 }else if(!newValue&&!tglArm2.isSelected()){
@@ -257,7 +272,7 @@ public class Controller implements Initializable {
         });
 
         tglArm2.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if(ConnectButton.isSelected()){
+            if(isConnectedToSerial){
                 if(newValue&&tglArm1.isSelected()){
                     arm();
                 }else if(!newValue&&!tglArm1.isSelected()){
@@ -268,6 +283,83 @@ public class Controller implements Initializable {
             }
         });
 
+        tglAuto.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            tglAlt.setDisable(!newValue);
+            tglWay.setDisable(!newValue);
+            tglStab.setDisable(!newValue);
+            tglHead.setDisable(!newValue);
+            tglPlaneMode.setDisable(!newValue);
+            tglVtolMode.setDisable(!newValue);
+            serial.sendToSerial(StringParser.setAutoUAV(newValue? 1 : 0));
+        });
+
+        tglPlaneMode.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                tglVtolMode.setSelected(false);
+                MODE = 1;
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+            }
+        });
+
+        tglVtolMode.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                tglPlaneMode.setSelected(false);
+                MODE = 0;
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+            }
+        });
+
+        tglHead.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                COMMAND = 2;
+                tglAlt.setSelected(false);
+                tglStab.setSelected(false);
+                tglWay.setSelected(false);
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+            }
+        });
+        tglAlt.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                COMMAND = 1;
+                tglStab.setSelected(false);
+                tglWay.setSelected(false);
+                tglHead.setSelected(false);
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+
+
+            }
+        });
+
+        tglStab.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                COMMAND = 0;
+                tglWay.setSelected(false);
+                tglHead.setSelected(false);
+                tglAlt.setSelected(false);
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+
+            }
+        });
+
+        tglWay.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                COMMAND = 3;
+                tglStab.setSelected(false);
+                tglHead.setSelected(false);
+                tglAlt.setSelected(false);
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+
+            }
+        });
+
+        tglArm1.setDisable(!ConnectButton.isSelected());
+        tglArm2.setDisable(!ConnectButton.isSelected());
+        tglAlt.setDisable(!tglAuto.isSelected());
+        tglWay.setDisable(!tglAuto.isSelected());
+        tglStab.setDisable(!tglAuto.isSelected());
+        tglHead.setDisable(!tglAuto.isSelected());
+        tglPlaneMode.setDisable(!tglAuto.isSelected());
+        tglVtolMode.setDisable(!tglAuto.isSelected());
 
 
     }
@@ -277,13 +369,14 @@ public class Controller implements Initializable {
         ARMED = 1;
         serial.sendToSerial(StringParser.armUAV(ARMED));
         routeTimer.start();
-
+        //ConnectButton.setDisable(true);
     }
 
     private void disarm(){
         ARMED = 0;
         serial.sendToSerial(StringParser.armUAV(ARMED));
         routeTimer.stop();
+        //ConnectButton.setDisable(false);
         //save flight log
     }
 
