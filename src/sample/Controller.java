@@ -265,6 +265,7 @@ public class Controller implements Initializable {
                     arm();
                 }else if(!newValue&&!tglArm2.isSelected()){
                     disarm();
+
                 }
             }else{
                 tglArm1.setSelected(false);
@@ -284,6 +285,7 @@ public class Controller implements Initializable {
         });
 
         tglAuto.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            tglTakeOff.setDisable(!newValue);
             tglAlt.setDisable(!newValue);
             tglWay.setDisable(!newValue);
             tglStab.setDisable(!newValue);
@@ -311,44 +313,56 @@ public class Controller implements Initializable {
 
         tglHead.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue){
-                COMMAND = 2;
+                COMMAND = 3;
                 tglAlt.setSelected(false);
                 tglStab.setSelected(false);
                 tglWay.setSelected(false);
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
+            }else if(COMMAND==3){
+                COMMAND = 0;
                 serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
             }
         });
         tglAlt.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue){
-                COMMAND = 1;
+                COMMAND = 2;
                 tglStab.setSelected(false);
                 tglWay.setSelected(false);
                 tglHead.setSelected(false);
                 serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
 
 
+            }else if(COMMAND==2){
+                COMMAND = 0;
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
             }
         });
 
         tglStab.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue){
-                COMMAND = 0;
+                COMMAND = 1;
                 tglWay.setSelected(false);
                 tglHead.setSelected(false);
                 tglAlt.setSelected(false);
                 serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
 
+            }else if(COMMAND==1){
+                COMMAND = 0;
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
             }
         });
 
         tglWay.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue){
-                COMMAND = 3;
+                COMMAND = 4;
                 tglStab.setSelected(false);
                 tglHead.setSelected(false);
                 tglAlt.setSelected(false);
                 serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
 
+            }else if(COMMAND==4){
+                COMMAND = 0;
+                serial.sendToSerial(StringParser.sentData(MODE,COMMAND));
             }
         });
 
@@ -360,6 +374,7 @@ public class Controller implements Initializable {
         tglHead.setDisable(!tglAuto.isSelected());
         tglPlaneMode.setDisable(!tglAuto.isSelected());
         tglVtolMode.setDisable(!tglAuto.isSelected());
+        tglTakeOff.setDisable(!tglAuto.isSelected());
 
 
     }
@@ -378,28 +393,16 @@ public class Controller implements Initializable {
         routeTimer.stop();
         //ConnectButton.setDisable(false);
         //save flight log
+
     }
 
-    private void saveFlightLog(ActionEvent actionEvent){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Gamaforce GCS Waypoint","*.ggwp")
-        );
-        fileChooser.setTitle("Save Flight Log");
-        File file = fileChooser.showSaveDialog(((Node)actionEvent.getSource()).getScene().getWindow());
-        try{
-            fileWriter = new FileWriter(file.toString());
-            for(String lines: csvLine){
-                fileWriter.append(lines);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
-    private void recordFlightData(LocalDateTime  time, Coordinate position, double speed, double altitude){
+
+    private void recordFlightData(LocalDateTime  time, Coordinate position, String batteryLevel ,double speed, double altitude){
         String LineToSave = time.toLocalDate().toString()+","+time.toLocalTime().toString()+","
-                +position.getLatitude()+","+position.getLongitude()+","+String.valueOf(speed)+","+String.valueOf(altitude);
+                +position.getLatitude()+","+position.getLongitude()+","+String.valueOf(batteryLevel)+","
+                +String.valueOf(speed)+","+String.valueOf(altitude);
+        System.out.println(LineToSave);
         csvLine.add(LineToSave);
 
     }
@@ -460,8 +463,8 @@ public class Controller implements Initializable {
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
-        recordFlightData(LocalDateTime.now(),positionNow,StringParser.getAirspeed(serial.getReceivedMessage()),
-                StringParser.getAltitude(serial.getReceivedMessage()));
+        recordFlightData(LocalDateTime.now(),positionNow,StringParser.getBattery(serial.getReceivedMessage()),
+                StringParser.getAirspeed(serial.getReceivedMessage()),StringParser.getAltitude(serial.getReceivedMessage()));
         System.gc();
         if(!afterConnect){
             positionLast = positionNow;
@@ -553,6 +556,32 @@ public class Controller implements Initializable {
     private File getFileDirectoryFromFileChooser(ActionEvent ae, String title,int mode){
 
     }*/
+
+    public void saveFlightLog(ActionEvent actionEvent){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Gamaforce GCS Flight Record","*.ggfr")
+        );
+        fileChooser.setTitle("Save Flight Record");
+        File file = fileChooser.showSaveDialog(((Node)actionEvent.getSource()).getScene().getWindow());
+        try{
+            fileWriter = new FileWriter(file.toString());
+            for(String lines: csvLine){
+                fileWriter.append(lines);
+                fileWriter.append(NEW_LINE_SEPARATOR);
+            }
+            csvLine.clear();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void saveWaypoint(ActionEvent actionEvent) {
 

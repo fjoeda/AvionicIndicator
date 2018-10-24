@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/sample.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/InteractiveLog/GCSScene.css" afterPath="$PROJECT_DIR$/src/InteractiveLog/GCSScene.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml" afterPath="$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\ACER\IdeaProjects\AvionicIndicator\.idea\shelf/" />
@@ -26,21 +22,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
-              <caret line="624" column="13" lean-forward="true" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="466" column="70" lean-forward="false" selection-start-line="466" selection-start-column="70" selection-end-line="466" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6396#6801#0" expanded="true" />
                 <element signature="e#6800#6801#0" expanded="true" />
                 <element signature="e#6826#7258#0" expanded="true" />
                 <element signature="e#7257#7258#0" expanded="true" />
+                <element signature="e#9046#9236#0" expanded="false" />
                 <element signature="method#RefreshPortList#0;class#Controller#0" expanded="false" />
                 <element signature="method#addMarker#0;class#Controller#0" expanded="false" />
                 <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
                 <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
+                <element signature="method#refreshOrientation#0;class#Controller#0" expanded="false" />
+                <element signature="method#addTrackedMarker#0;class#Controller#0" expanded="false" />
                 <element signature="method#addTrackedMarkerToMap#0;class#Controller#0" expanded="false" />
                 <element signature="method#openFlightRecord#0;class#Controller#0" expanded="false" />
                 <element signature="method#saveFlightRecord#0;class#Controller#0" expanded="false" />
@@ -73,8 +72,8 @@
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2430">
-              <caret line="162" column="63" lean-forward="false" selection-start-line="162" selection-start-column="63" selection-end-line="162" selection-end-column="63" />
+            <state relative-caret-position="282">
+              <caret line="334" column="99" lean-forward="false" selection-start-line="334" selection-start-column="99" selection-end-line="334" selection-end-column="99" />
               <folding />
             </state>
           </provider>
@@ -83,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
+            <state relative-caret-position="260">
               <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -160,6 +159,9 @@
       <find>disa</find>
       <find>TO</find>
       <find>TOGGL</find>
+      <find>csv</find>
+      <find>save</find>
+      <find>reco</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\ACER\IdeaProjects\AvionicIndicator\src\Visualize3D</dir>
@@ -746,7 +748,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539952396503</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="UI interactive log. Tambahan grafik ketinggian + kecepatan">
+      <created>1540352864760</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1540352864760</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -852,7 +861,8 @@
     <MESSAGE value="merapikan tampilan flight log + fungsi hitung jarak total" />
     <MESSAGE value="Send Waypoint" />
     <MESSAGE value="update format data" />
-    <option name="LAST_COMMIT_MESSAGE" value="update format data" />
+    <MESSAGE value="UI interactive log. Tambahan grafik ketinggian + kecepatan" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI interactive log. Tambahan grafik ketinggian + kecepatan" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1154,35 +1164,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2430">
-          <caret line="162" column="63" lean-forward="false" selection-start-line="162" selection-start-column="63" selection-end-line="162" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="624" column="13" lean-forward="true" selection-start-line="624" selection-start-column="13" selection-end-line="624" selection-end-column="13" />
+        <state relative-caret-position="260">
+          <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6396#6801#0" expanded="true" />
-            <element signature="e#6800#6801#0" expanded="true" />
-            <element signature="e#6826#7258#0" expanded="true" />
-            <element signature="e#7257#7258#0" expanded="true" />
-            <element signature="method#RefreshPortList#0;class#Controller#0" expanded="false" />
-            <element signature="method#addMarker#0;class#Controller#0" expanded="false" />
-            <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
-            <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
-            <element signature="method#addTrackedMarkerToMap#0;class#Controller#0" expanded="false" />
-            <element signature="method#openFlightRecord#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveFlightRecord#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearWaypoint#0;class#Controller#0" expanded="false" />
+            <element signature="method#LoadFile#0;class#Controller#0" expanded="false" />
+            <element signature="e#4881#4882#0" expanded="true" />
+            <element signature="e#4932#4933#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1203,15 +1193,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+        <state relative-caret-position="282">
+          <caret line="334" column="99" lean-forward="false" selection-start-line="334" selection-start-column="99" selection-end-line="334" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="466" column="70" lean-forward="false" selection-start-line="466" selection-start-column="70" selection-end-line="466" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#LoadFile#0;class#Controller#0" expanded="false" />
-            <element signature="e#4881#4882#0" expanded="true" />
-            <element signature="e#4932#4933#0" expanded="true" />
+            <element signature="e#6396#6801#0" expanded="true" />
+            <element signature="e#6800#6801#0" expanded="true" />
+            <element signature="e#6826#7258#0" expanded="true" />
+            <element signature="e#7257#7258#0" expanded="true" />
+            <element signature="e#9046#9236#0" expanded="false" />
+            <element signature="method#RefreshPortList#0;class#Controller#0" expanded="false" />
+            <element signature="method#addMarker#0;class#Controller#0" expanded="false" />
+            <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
+            <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
+            <element signature="method#refreshOrientation#0;class#Controller#0" expanded="false" />
+            <element signature="method#addTrackedMarker#0;class#Controller#0" expanded="false" />
+            <element signature="method#addTrackedMarkerToMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#openFlightRecord#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveFlightRecord#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearWaypoint#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
