@@ -456,7 +456,7 @@ public class Controller implements Initializable {
         positionNow = new Coordinate(StringParser.getLatitude(serial.getReceivedMessage()),
                 StringParser.getLongitude(serial.getReceivedMessage()));
 
-        mapView.setCenter(positionNow);
+
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
@@ -474,10 +474,11 @@ public class Controller implements Initializable {
                     (positionNow.getLongitude()!=positionLast.getLongitude()))){
 
                 routes.add(positionNow);
+                mapView.setCenter(positionNow);
                 flightDistance += Waypoint.distance(positionNow,positionLast);
                 FlightDistance.setText(StringParser.getDistanceString(flightDistance));
                 coordinateLine = new CoordinateLine(routes);
-                coordinateLine.setColor(Color.DARKBLUE  )
+                coordinateLine.setColor(Color.DARKBLUE)
                         .setVisible(true)
                         .setWidth(4);
                 mapView.addCoordinateLine(coordinateLine);

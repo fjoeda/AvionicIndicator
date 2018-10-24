@@ -65,11 +65,11 @@
                         </ToggleSwitch>
                      </children>
                   </HBox>
-                  <Accordion prefWidth="302.0">
+                  <Accordion maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="302.0">
                      <panes>
       
             
-                              <TitledPane prefHeight="16.0" prefWidth="292.0" text="Avionic Indicator">
+                              <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="292.0" text="Avionic Indicator">
                            <content>
                               <GridPane fx:id="SecAvionic" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="284.0" vgap="10.0">
                                  <columnConstraints>
@@ -110,7 +110,7 @@
                               </GridPane>
                            </content>
                         </TitledPane>
-                         <TitledPane expanded="false" prefHeight="22.0" prefWidth="302.0" text="3D Visualization">
+                         <TitledPane expanded="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="302.0" text="3D Visualization">
                              <content>
                                  <Pane fx:id="Pane3D" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="286.0">
                                      <padding>
@@ -122,7 +122,7 @@
                                  </Pane>
                              </content>
                          </TitledPane>
-                        <TitledPane expanded="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="292.0" text="Command Button">
+                        <TitledPane expanded="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="224.0" prefWidth="304.0" text="Command Button">
                            <content>
                               <VBox prefHeight="87.0" prefWidth="298.0">
                                  <children>
@@ -160,6 +160,11 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
+                                    <ToggleSwitch fx:id="tglTakeOff" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="TAKE-OFF">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </ToggleSwitch>
                                     <ToggleSwitch fx:id="tglStab" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="STABILLIZE">
                                        <font>
                                           <Font size="14.0" />
@@ -184,7 +189,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane animated="false" text="Message Log">
+                        <TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="304.0" text="Message Log">
                            <content>
                               <VBox minHeight="240.0" prefHeight="240.0" prefWidth="295.0">
                                  <children>
@@ -285,8 +290,8 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="MinimizeButton" mnemonicParsing="false" text="__" onAction="#minimizeWindows"/>
-                              <Button fx:id="CloseButton" mnemonicParsing="false" text="X" onAction="#closeWindows"/>
+                              <Button fx:id="MinimizeButton" mnemonicParsing="false" onAction="#minimizeWindows" text="__" />
+                              <Button fx:id="CloseButton" mnemonicParsing="false" onAction="#closeWindows" text="X" />
                            </children>
                         </HBox>
                      </children></VBox>
