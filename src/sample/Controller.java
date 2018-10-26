@@ -398,10 +398,10 @@ public class Controller implements Initializable {
 
 
 
-    private void recordFlightData(LocalDateTime  time, Coordinate position, String batteryLevel ,double speed, double altitude){
+    private void recordFlightData(LocalDateTime  time, Coordinate position, String batteryLevel ,double speed, double altitude, int flightTime){
         String LineToSave = time.toLocalDate().toString()+","+time.toLocalTime().toString()+","
                 +position.getLatitude()+","+position.getLongitude()+","+String.valueOf(batteryLevel)+","
-                +String.valueOf(speed)+","+String.valueOf(altitude);
+                +String.valueOf(speed)+","+String.valueOf(altitude)+","+flightTime;
         System.out.println(LineToSave);
         csvLine.add(LineToSave);
 
@@ -464,7 +464,7 @@ public class Controller implements Initializable {
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
         recordFlightData(LocalDateTime.now(),positionNow,StringParser.getBattery(serial.getReceivedMessage()),
-                StringParser.getAirspeed(serial.getReceivedMessage()),StringParser.getAltitude(serial.getReceivedMessage()));
+                StringParser.getAirspeed(serial.getReceivedMessage()),StringParser.getAltitude(serial.getReceivedMessage()),flightTime);
         System.gc();
         if(!afterConnect){
             positionLast = positionNow;

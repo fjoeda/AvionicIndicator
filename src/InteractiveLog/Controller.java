@@ -1,13 +1,20 @@
 package InteractiveLog;
 
+import TextParser.StringParser;
 import au.com.bytecode.opencsv.CSVReader;
 import com.sothawo.mapjfx.Coordinate;
+import com.sothawo.mapjfx.CoordinateLine;
 import com.sothawo.mapjfx.MapType;
 import com.sothawo.mapjfx.MapView;
+import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -17,7 +24,11 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import sample.Waypoint;
@@ -26,9 +37,19 @@ public class Controller implements Initializable {
     public MapView mapView;
     public javafx.scene.control.Label awalStatus;
     public javafx.scene.control.Label akhirStatus;
+    public LineChart AltitudeChart;
+    public LineChart AirspeedChart;
+    public Label timeStatus;
+    public Label distStatus;
+    public Label status;
+
     @FXML
     private Button btnLoad;
     private Window primaryStage;
+
+    private ArrayList<Coordinate> coordinateList = new ArrayList<>();
+    private AnimationTimer timer;
+    long lastTimerCall;
 
 
 
@@ -45,9 +66,31 @@ public class Controller implements Initializable {
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
         mapView.initialize();
+        LoadFile();
+        if(coordinateList.isEmpty())
+            Platform.exit();
+        setCenterAndZoom(coordinateList);
+        CoordinateLine route = new CoordinateLine(coordinateList).setColor(Color.DARKBLUE)
+                .setWidth(4)
+                .setVisible(true);
+
+        mapView.addCoordinateLine(route);
+        lastTimerCall = System.nanoTime();
+
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if(now > lastTimerCall + 10_000_000_000L){
+
+                    mapView.addCoordinateLine(route);
+                    lastTimerCall = now;
+                }
+            }
+        };
+        timer.start();
     }
 
-    public void LoadFile(ActionEvent actionEvent) {
+    public void LoadFile() {
         File recordsDir = new File(System.getProperty("user.dir"));
 
         if (! recordsDir.exists()) {
@@ -57,20 +100,21 @@ public class Controller implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Pilih File Waypoint");
         fileChooser.setInitialDirectory(recordsDir);
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("CSV Files", "*.csv")
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Gamaforce GCS Flight Record","*.ggfr")
         );
 
-        fileChooser.showOpenDialog(primaryStage);
+        File file = fileChooser.showOpenDialog(primaryStage);
 
         //Belum bisa dapetin nama file waktu buka file explorer
         String FILE_PATH = System.getProperty("user.dir") + "/waypoints.csv";
         String dayaAwal;
         String dayaAkhir;
 
+
         //Ngitung jumlah records di CSV
         try (
-                Reader reader = Files.newBufferedReader(Paths.get(FILE_PATH));
+                Reader reader = Files.newBufferedReader(Paths.get(file.toString()));
                 CSVReader csvReader = new CSVReader(reader);
         ) {
             String[] nextRecord;
@@ -84,31 +128,28 @@ public class Controller implements Initializable {
         }
 
         try (
-                Reader reader = Files.newBufferedReader(Paths.get(FILE_PATH));
+                Reader reader = Files.newBufferedReader(Paths.get(file.toString()));
                 CSVReader csvReader = new CSVReader(reader);
         ) {
             String[] nextRecord;
             while ((nextRecord = csvReader.readNext()) != null) {
-                /*System.out.println("Tanggal   : " + nextRecord[0]);
-                System.out.println("Baterai   : " + nextRecord[1]);
-                System.out.println("Altitude  : " + nextRecord[2]);
-                System.out.println("Roll      : " + nextRecord[3]);
-                System.out.println("Pitch     : " + nextRecord[4]);
-                System.out.println("Yaw       : " + nextRecord[5]);
-                System.out.println("Latitude  : " + nextRecord[6]);
-                System.out.println("Longitude : " + nextRecord[7]);
-                System.out.println("Speed     : " + nextRecord[8]);
-                System.out.println("Status    : " + nextRecord[9]);
-                System.out.println("==========================");*/
+                coordinateList.add(new Coordinate(Double.parseDouble(nextRecord[2]),
+                        Double.parseDouble(nextRecord[3])));
+                try {
+                    if (index == 1) {
+                        dayaAwal = nextRecord[4];
+                        awalStatus.setText(dayaAwal);
+                    } else if (index == records - 1) {
+                        dayaAkhir = nextRecord[4];
+                        akhirStatus.setText(dayaAkhir);
+                        timeStatus.setText(StringParser.getTimeFormatFromSecond(Integer.parseInt(nextRecord[7])));
+                    }
 
-                if (index == 1) {
-                    dayaAwal = nextRecord[1];
-                    awalStatus.setText(dayaAwal);
-                } else if (index == records - 1) {
-                    dayaAkhir = nextRecord[1];
-                    akhirStatus.setText(dayaAkhir);
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
 
+                distStatus.setText(getTotalDistance(coordinateList));
                 index += 1;
             }
         } catch (IOException e) {
@@ -121,20 +162,55 @@ public class Controller implements Initializable {
     // ngitung jarak total
     // NOTE : Mohon pas load, koordinat-koordinatnya ditambahkan ke Arraylist
 
-    private double getTotalDistance(ArrayList<Coordinate> coordinateList){
+    private String getTotalDistance(ArrayList<Coordinate> coordinateList){
         double totalDistance = 0;
+        DecimalFormat df = new DecimalFormat("#.##");
         for(int i = 0;i<coordinateList.size()-1;i++){
             totalDistance += Waypoint.distance(coordinateList.get(i),coordinateList.get(i+1));
         }
-        return totalDistance;
+        if(totalDistance<3000){
+            return String.valueOf(df.format(totalDistance))+" m";
+        }else {
+            totalDistance /=1000;
+            return String.valueOf(df.format(totalDistance))+" Km";
+        }
     }
 
     //buat set zoom secara otomatis
     //rumus buat meter
-    // resolution = (cos(latitude * pi/180) * 2 * pi * 6378137) / (256 * 2^zoomlevel)
+    // resolution = (cos(latitude * pi/180) * 2 * pi * 6378137) / (768 * 2^zoomlevel)
 
-    private double getProperZoomOnMap(double latitude, double distanceResolution, int width){
-        return logBase((Math.cos(latitude*Math.PI/180)*2*Math.PI*6378137*width)/256*distanceResolution,2);
+    private void setCenterAndZoom(ArrayList<Coordinate> coordinateList){
+        double minLat = 999, minLng = 999;
+        double maxLat = -999, maxLng = -999;
+        for(Coordinate pos : coordinateList){
+            if(minLat>=pos.getLatitude()){
+                minLat = pos.getLatitude();
+            }
+            if(minLng>=pos.getLongitude()){
+                minLng = pos.getLongitude();
+            }
+            if(maxLat<=pos.getLatitude()){
+                maxLat = pos.getLatitude();
+            }
+            if(maxLng<=pos.getLongitude()){
+                maxLng = pos.getLongitude();
+            }
+        }
+        Coordinate center = new Coordinate((minLat+(maxLat-minLat)/2),(minLng+(maxLng-minLng)/2));
+        mapView.setCenter(center);
+        double midLat = (minLat+(maxLat-minLat)/2);
+        System.out.println(Waypoint.distance(new Coordinate(minLat,minLng),new Coordinate(maxLat,maxLng)));
+        double zoom = getProperZoomOnMap(midLat,
+                Waypoint.distance(new Coordinate(minLat,minLng),new Coordinate(maxLat,maxLng)),
+                616);
+        mapView.setZoom(zoom-1);
+        System.out.println(zoom);
+        System.out.println(mapView.getZoom());
+    }
+
+    private double getProperZoomOnMap(double latitude, double distanceResolution, double width){
+        return logBase((Math.cos(latitude*Math.PI/180)*2*Math.PI*6372137*width)/(256*distanceResolution),2);
     }
 
     private double logBase(double val,double base){

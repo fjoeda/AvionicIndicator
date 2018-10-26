@@ -332,6 +332,7 @@
 
                   <Button fx:id="SaveWaypoint" mnemonicParsing="false" onAction="#saveWaypoint" prefHeight="52.0" prefWidth="118.0" text="Save Waypoint" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenWaypoint" mnemonicParsing="false" onAction="#loadWaypoint" prefHeight="52.0" prefWidth="118.0" text="Open Waypoint" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="SaveFlightRecord" mnemonicParsing="false" onAction="#saveFlightLog" prefHeight="52.0" prefWidth="118.0" text="Save Flight Record" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="OpenFlightRecord" mnemonicParsing="false" onAction="#openFlightRecord" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" />
 
                </children>

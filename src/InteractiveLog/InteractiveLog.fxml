@@ -18,8 +18,8 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="436.0" prefWidth="673.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="290.0" layoutY="301.0" text="Status Pesawat" />
-            <GridPane layoutX="29.0" layoutY="322.0">
+            <Label layoutX="290.0" layoutY="309.0" text="Status Pesawat" />
+            <GridPane layoutX="29.0" layoutY="330.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="91.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
@@ -57,11 +57,11 @@
                         </VBox>
                      </content>
                 </Tab>
-                <Tab text="Altitude Graph">
+                <Tab text="Altitude Chart">
                      <content>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <LineChart>
+                              <LineChart fx:id="AltitudeChart">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -73,11 +73,11 @@
                         </VBox>
                      </content>
                 </Tab>
-                  <Tab text="Air Speed Graph">
+                  <Tab text="Air Speed Chart">
                      <content>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <LineChart>
+                              <LineChart fx:id="AirspeedChart">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
