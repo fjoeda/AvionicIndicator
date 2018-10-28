@@ -8,6 +8,7 @@ import Visualize3D.SubSceneContainer;
 import Visualize3D.ViewerModel;
 import com.sothawo.mapjfx.*;
 import com.sothawo.mapjfx.event.MapViewEvent;
+import com.sothawo.mapjfx.offline.OfflineCache;
 import gnu.io.CommPortIdentifier;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -34,6 +35,8 @@ import org.controlsfx.control.ToggleSwitch;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -179,6 +182,17 @@ public class Controller implements Initializable {
             position = event.getCoordinate();
             addMarker(position);
         });
+
+        // init MapView-Cache
+        final OfflineCache offlineCache = mapView.getOfflineCache();
+        final String cacheDir = System.getProperty("java.io.tmpdir") + "/mapjfx-cache";
+        try {
+            Files.createDirectories(Paths.get(cacheDir));
+            offlineCache.setCacheDirectory(cacheDir);
+            offlineCache.setActive(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         mapView.initialize();
 
@@ -698,6 +712,7 @@ public class Controller implements Initializable {
     }
 
     public void closeWindows(){
+
         Platform.exit();
     }
 

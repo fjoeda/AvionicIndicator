@@ -6,18 +6,22 @@ import com.sothawo.mapjfx.Coordinate;
 import com.sothawo.mapjfx.CoordinateLine;
 import com.sothawo.mapjfx.MapType;
 import com.sothawo.mapjfx.MapView;
+import com.sothawo.mapjfx.offline.OfflineCache;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-
+import javafx.scene.chart.XYChart.Series;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -37,12 +41,15 @@ public class Controller implements Initializable {
     public MapView mapView;
     public javafx.scene.control.Label awalStatus;
     public javafx.scene.control.Label akhirStatus;
-    public LineChart AltitudeChart;
-    public LineChart AirspeedChart;
     public Label timeStatus;
     public Label distStatus;
     public Label status;
+    public VBox AirspeedVbox;
+    public VBox AltitudeVbox;
 
+
+    private LineChart<Number,Number> AltitudeChart;
+    private LineChart<Number,Number> AirspeedChart;
     @FXML
     private Button btnLoad;
     private Window primaryStage;
@@ -59,13 +66,42 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        final NumberAxis xAxis1 = new NumberAxis();
+        final NumberAxis yAxis1 = new NumberAxis();
+        final NumberAxis xAxis2 = new NumberAxis();
+        final NumberAxis yAxis2 = new NumberAxis();
+        AltitudeChart = new LineChart<>(xAxis1,yAxis1);
+        AirspeedChart = new LineChart<>(xAxis2,yAxis2);
         String BING_MAP_API_KEY = "AjBEkbJVIF_enJ7KdZTSXxNgn58ADVVRqFNKbSBeSCmNukw4hQYAAcaIM61q2mGp";
 
         mapView.setBingMapsApiKey(BING_MAP_API_KEY);
         mapView.setMapType(MapType.BINGMAPS_ROAD);
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
+
+        // init MapView-Cache
+        final OfflineCache offlineCache = mapView.getOfflineCache();
+        final String cacheDir = System.getProperty("user.dir") + "/mapjfx-cache";
+        try {
+            Files.createDirectories(Paths.get(cacheDir));
+            offlineCache.setCacheDirectory(cacheDir);
+            offlineCache.setActive(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         mapView.initialize();
+        AltitudeChart.setTitle("Altitude");
+        AirspeedChart.setTitle("Airspeed");
+        xAxis1.setTickLabelFill(Color.WHITE);
+        yAxis1.setTickLabelFill(Color.WHITE);
+        xAxis2.setTickLabelFill(Color.WHITE);
+        yAxis2.setTickLabelFill(Color.WHITE);
+        AltitudeChart.legendVisibleProperty().setValue(false);
+        AirspeedChart.legendVisibleProperty().setValue(false);
+        AirspeedVbox.getChildren().add(AirspeedChart);
+        AltitudeVbox.getChildren().add(AltitudeChart);
+
         LoadFile();
         if(coordinateList.isEmpty())
             Platform.exit();
@@ -88,10 +124,14 @@ public class Controller implements Initializable {
             }
         };
         timer.start();
+
+
     }
 
     public void LoadFile() {
         File recordsDir = new File(System.getProperty("user.dir"));
+        XYChart.Series speedChart = new XYChart.Series();
+        XYChart.Series altitudeChart = new XYChart.Series();
 
         if (! recordsDir.exists()) {
             recordsDir.mkdirs();
@@ -135,6 +175,12 @@ public class Controller implements Initializable {
             while ((nextRecord = csvReader.readNext()) != null) {
                 coordinateList.add(new Coordinate(Double.parseDouble(nextRecord[2]),
                         Double.parseDouble(nextRecord[3])));
+                Number time = Integer.parseInt(nextRecord[7]);
+                Number speed = Double.parseDouble(nextRecord[5]);
+                Number altitude = Double.parseDouble(nextRecord[6]);
+                speedChart.getData().add(new XYChart.Data(time,speed));
+                altitudeChart.getData().add(new XYChart.Data(time,altitude));
+
                 try {
                     if (index == 1) {
                         dayaAwal = nextRecord[4];
@@ -149,9 +195,13 @@ public class Controller implements Initializable {
                     e.printStackTrace();
                 }
 
+
                 distStatus.setText(getTotalDistance(coordinateList));
                 index += 1;
             }
+            AltitudeChart.getData().add(altitudeChart);
+            AirspeedChart.getData().add(speedChart);
+
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -159,8 +209,7 @@ public class Controller implements Initializable {
 
     }
 
-    // ngitung jarak total
-    // NOTE : Mohon pas load, koordinat-koordinatnya ditambahkan ke Arraylist
+
 
     private String getTotalDistance(ArrayList<Coordinate> coordinateList){
         double totalDistance = 0;
@@ -216,6 +265,7 @@ public class Controller implements Initializable {
     private double logBase(double val,double base){
         return Math.log(val)/Math.log(base);
     }
+
 
 
 }

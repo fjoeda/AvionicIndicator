@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.sothawo.mapjfx.MapView?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -19,14 +15,12 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="436.0" prefWidth="673.0" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="290.0" layoutY="309.0" text="Status Pesawat" />
-            <GridPane layoutX="29.0" layoutY="330.0">
+            <GridPane layoutX="122.0" layoutY="330.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="91.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="91.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="56.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="144.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -41,9 +35,6 @@
                   <Label text="Daya Akhir :" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label fx:id="awalStatus" text="-" GridPane.columnIndex="3" />
                   <Label fx:id="akhirStatus" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label text="Status :" GridPane.columnIndex="4" />
-                  <Label fx:id="status" text="-" GridPane.columnIndex="5" />
-                  <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#LoadFile" prefHeight="32.0" prefWidth="83.0" text="Load" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <TabPane layoutX="14.0" layoutY="14.0" prefHeight="285.0" prefWidth="616.0" tabClosingPolicy="UNAVAILABLE">
@@ -59,33 +50,15 @@
                 </Tab>
                 <Tab text="Altitude Chart">
                      <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <LineChart fx:id="AltitudeChart">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" tickLabelFill="WHITE" />
-                                </yAxis>
-                              </LineChart>
-                           </children>
+                        <VBox fx:id="AltitudeVbox" prefHeight="200.0" prefWidth="100.0">
+
                         </VBox>
                      </content>
                 </Tab>
                   <Tab text="Air Speed Chart">
                      <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <LineChart fx:id="AirspeedChart">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" tickLabelFill="WHITE" />
-                                </yAxis>
-                              </LineChart>
-                           </children>
+                        <VBox fx:id="AirspeedVbox" prefHeight="200.0" prefWidth="100.0">
+
                         </VBox>
                      </content>
                   </Tab>
