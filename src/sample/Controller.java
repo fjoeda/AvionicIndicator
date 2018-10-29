@@ -719,7 +719,7 @@ public class Controller implements Initializable {
     }
 
     public void minimizeWindows(ActionEvent actionEvent){
-        //(((Node)actionEvent.getSource()).getScene().getWindow()).getScene().
+        ((Stage)MinimizeButton.getScene().getWindow()).setIconified(true);
     }
 
     public void sendWaypoint(ActionEvent actionEvent) {
