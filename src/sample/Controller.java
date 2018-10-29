@@ -714,7 +714,8 @@ public class Controller implements Initializable {
     }
 
     public void closeWindows(){
-
+        if(isConnectedToSerial)
+            serial.disconnectSerial();
         Platform.exit();
     }
 

@@ -50,9 +50,5 @@ public class Main extends Application {
         launch(args);
     }
 
-    @Override
-    public void stop() throws Exception {
-        controller.serial.disconnectSerial();
-        super.stop();
-    }
+
 }

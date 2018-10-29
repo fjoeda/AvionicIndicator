@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
+    <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="fix">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\ACER\IdeaProjects\AvionicIndicator\.idea\shelf/" />
@@ -21,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="721" column="72" lean-forward="false" selection-start-line="721" selection-start-column="72" selection-end-line="721" selection-end-column="72" />
+            <state relative-caret-position="188">
+              <caret line="717" column="12" lean-forward="false" selection-start-line="717" selection-start-column="12" selection-end-line="717" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9604#9794#0" expanded="false" />
@@ -47,25 +49,21 @@
       <file leaf-file-name="Log.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="158">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Waypoint.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Waypoint.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Waypoint.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
               <folding>
-                <element signature="e#551#552#0" expanded="true" />
-                <element signature="e#602#603#0" expanded="true" />
                 <element signature="e#638#639#0" expanded="true" />
                 <element signature="e#690#691#0" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-                <element signature="e#846#847#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +72,7 @@
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4215">
+            <state relative-caret-position="15">
               <caret line="281" column="28" lean-forward="false" selection-start-line="281" selection-start-column="25" selection-end-line="281" selection-end-column="28" />
               <folding />
             </state>
@@ -87,11 +85,13 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3435">
+            <state relative-caret-position="248">
               <caret line="266" column="5" lean-forward="false" selection-start-line="260" selection-start-column="4" selection-end-line="266" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getTotalDistance#0;class#Controller#0" expanded="false" />
+                <element signature="e#9469#9470#0" expanded="true" />
+                <element signature="e#9520#9521#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,8 +115,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state relative-caret-position="278">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -230,13 +230,13 @@
         <option value="$PROJECT_DIR$/src/MapTest/ViewMap.fxml" />
         <option value="$PROJECT_DIR$/src/MapTest/Controller.java" />
         <option value="$PROJECT_DIR$/src/MapTest/LatLong.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/SerialComm/SerialCommunication.java" />
         <option value="$PROJECT_DIR$/src/TextParser/StringParser.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/InteractiveLog/InteractiveLog.fxml" />
         <option value="$PROJECT_DIR$/src/InteractiveLog/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/Waypoint.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
@@ -297,7 +297,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mapjfx/mapjfx-1.8.0-javadoc.jar!/" />
@@ -763,7 +763,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540817807514</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="minimize">
+      <created>1540818705561</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1540818705561</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -846,7 +853,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Route done. Code on MapTest Package" />
     <MESSAGE value="Update Button, fix bug gagal parsing longitude&#10;decimal precision kurang tapi akurat saat di peta" />
     <MESSAGE value="Visualisasi kecepatan + battery, &#10;Menu load waypoint dan save waypoint" />
     <MESSAGE value="Add battery icon" />
@@ -871,7 +877,8 @@
     <MESSAGE value="flight log" />
     <MESSAGE value="flight log final. SELESAII!!" />
     <MESSAGE value="Auto zoom waypoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Auto zoom waypoint" />
+    <MESSAGE value="minimize" />
+    <option name="LAST_COMMIT_MESSAGE" value="minimize" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1167,32 +1174,22 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Waypoint.java">
+    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        <state relative-caret-position="248">
+          <caret line="266" column="5" lean-forward="false" selection-start-line="260" selection-start-column="4" selection-end-line="266" selection-end-column="5" />
           <folding>
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#602#603#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#getTotalDistance#0;class#Controller#0" expanded="false" />
+            <element signature="e#9469#9470#0" expanded="true" />
+            <element signature="e#9520#9521#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4215">
+        <state relative-caret-position="15">
           <caret line="281" column="28" lean-forward="false" selection-start-line="281" selection-start-column="25" selection-end-line="281" selection-end-column="28" />
           <folding />
         </state>
@@ -1201,29 +1198,26 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/InteractiveLog/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3435">
-          <caret line="266" column="5" lean-forward="false" selection-start-line="260" selection-start-column="4" selection-end-line="266" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getTotalDistance#0;class#Controller#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="158">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="278">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="721" column="72" lean-forward="false" selection-start-line="721" selection-start-column="72" selection-end-line="721" selection-end-column="72" />
+        <state relative-caret-position="188">
+          <caret line="717" column="12" lean-forward="false" selection-start-line="717" selection-start-column="12" selection-end-line="717" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9604#9794#0" expanded="false" />
@@ -1237,6 +1231,17 @@
             <element signature="method#openFlightRecord#0;class#Controller#0" expanded="false" />
             <element signature="method#saveFlightRecord#0;class#Controller#0" expanded="false" />
             <element signature="method#clearWaypoint#0;class#Controller#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Waypoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+          <folding>
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
           </folding>
         </state>
       </provider>
