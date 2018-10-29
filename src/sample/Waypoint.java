@@ -26,6 +26,14 @@ public class Waypoint {
         return latitude;
     }
 
+    public double getLatitudeD(){
+        return Double.parseDouble(latitude);
+    }
+
+    public double getLongitudeD(){
+        return Double.parseDouble(longitude);
+    }
+
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }

@@ -184,6 +184,7 @@ public class Controller implements Initializable {
         });
 
         // init MapView-Cache
+        /*
         final OfflineCache offlineCache = mapView.getOfflineCache();
         final String cacheDir = System.getProperty("java.io.tmpdir") + "/mapjfx-cache";
         try {
@@ -193,7 +194,7 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        */
         mapView.initialize();
 
 
@@ -665,6 +666,7 @@ public class Controller implements Initializable {
                         loadIndex++;
                     }
                 }
+                setCenterAndZoom(waypoints);
             }
 
         }
@@ -728,9 +730,42 @@ public class Controller implements Initializable {
         waypointMessage +="*";
         serial.sendToSerial(waypointMessage);
     }
+
+    private void setCenterAndZoom(ArrayList<Waypoint> coordinateList){
+        double minLat = 999, minLng = 999;
+        double maxLat = -999, maxLng = -999;
+        for(Waypoint pos : coordinateList){
+            if(minLat>=pos.getLatitudeD()){
+                minLat = pos.getLatitudeD();
+            }
+            if(minLng>=pos.getLongitudeD()){
+                minLng = pos.getLongitudeD();
+            }
+            if(maxLat<=pos.getLatitudeD()){
+                maxLat = pos.getLatitudeD();
+            }
+            if(maxLng<=pos.getLongitudeD()){
+                maxLng = pos.getLongitudeD();
+            }
+        }
+        Coordinate center = new Coordinate((minLat+(maxLat-minLat)/2),(minLng+(maxLng-minLng)/2));
+        mapView.setCenter(center);
+        double midLat = (minLat+(maxLat-minLat)/2);
+        System.out.println(Waypoint.distance(new Coordinate(minLat,minLng),new Coordinate(maxLat,maxLng)));
+        double zoom = getProperZoomOnMap(midLat,
+                Waypoint.distance(new Coordinate(minLat,minLng),new Coordinate(maxLat,maxLng)),
+                846);
+        mapView.setZoom(zoom-1);
+        System.out.println(zoom);
+        System.out.println(mapView.getZoom());
+    }
+
+    private double getProperZoomOnMap(double latitude, double distanceResolution, double width){
+        return logBase((Math.cos(latitude*Math.PI/180)*2*Math.PI*6372137*width)/(256*distanceResolution),2);
+    }
+
+    private double logBase(double val,double base){
+        return Math.log(val)/Math.log(base);
+    }
 }
 
-final class FileHandleMode{
-    public static int FILE_OPEN = 0;
-    public static int FILE_SAVE = 1;
-}
