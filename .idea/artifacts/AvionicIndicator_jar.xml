@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AvionicIndicator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AvionicIndicator_jar</output-path>
+    <root id="archive" name="AvionicIndicator.jar">
+      <element id="module-output" name="AvionicIndicator" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jfxrt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/RXTXcomm.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/opencsv-2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/fxsampler-1.0.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/controlsfx-8.40.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/controlsfx-samples-8.40.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gmaps/logback-classic-1.2.1.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mapjfx-1.8.0-javadoc" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mapjfx/mapjfx-1.8.0.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mapjfx-1.8.0-sources" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gmaps/logback-core-1.2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gmaps/GMapsFX-2.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/3D/jimStlMeshImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gmaps/slf4j-api-1.7.23.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

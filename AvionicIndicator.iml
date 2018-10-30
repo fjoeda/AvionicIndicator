@@ -7,19 +7,19 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="AvionicIndicator" level="project" />
-    <orderEntry type="library" name="jfxrt" level="project" />
-    <orderEntry type="library" name="RXTXcomm" level="project" />
+    <orderEntry type="library" exported="" name="AvionicIndicator" level="project" />
+    <orderEntry type="library" exported="" name="jfxrt" level="project" />
+    <orderEntry type="library" exported="" name="RXTXcomm" level="project" />
     <orderEntry type="library" name="GMapsFX-2.12.0" level="project" />
     <orderEntry type="library" name="slf4j-api-1.7.23" level="project" />
     <orderEntry type="library" name="logback-classic-1.2.1" level="project" />
     <orderEntry type="library" name="logback-core-1.2.1" level="project" />
-    <orderEntry type="library" name="jimStlMeshImporterJFX" level="project" />
-    <orderEntry type="library" name="mapjfx-1.8.0" level="project" />
-    <orderEntry type="library" name="mapjfx-1.8.0-javadoc" level="project" />
-    <orderEntry type="library" name="mapjfx-1.8.0-sources" level="project" />
-    <orderEntry type="library" name="controlsfx-8.40.14" level="project" />
-    <orderEntry type="library" name="controlsfx-samples-8.40.14" level="project" />
-    <orderEntry type="library" name="opencsv-2.3" level="project" />
+    <orderEntry type="library" exported="" name="jimStlMeshImporterJFX" level="project" />
+    <orderEntry type="library" exported="" name="mapjfx-1.8.0" level="project" />
+    <orderEntry type="library" exported="" name="mapjfx-1.8.0-javadoc" level="project" />
+    <orderEntry type="library" exported="" name="mapjfx-1.8.0-sources" level="project" />
+    <orderEntry type="library" exported="" name="controlsfx-8.40.14" level="project" />
+    <orderEntry type="library" exported="" name="controlsfx-samples-8.40.14" level="project" />
+    <orderEntry type="library" exported="" name="opencsv-2.3" level="project" />
   </component>
 </module>

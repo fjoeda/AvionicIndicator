@@ -80,15 +80,7 @@ public class Controller implements Initializable {
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
 
         // init MapView-Cache
-        final OfflineCache offlineCache = mapView.getOfflineCache();
-        final String cacheDir = System.getProperty("user.dir") + "/mapjfx-cache";
-        try {
-            Files.createDirectories(Paths.get(cacheDir));
-            offlineCache.setCacheDirectory(cacheDir);
-            offlineCache.setActive(true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
 
         mapView.initialize();
         AltitudeChart.setTitle("Altitude");
