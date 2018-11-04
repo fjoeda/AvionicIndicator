@@ -21,5 +21,6 @@
     <orderEntry type="library" exported="" name="controlsfx-8.40.14" level="project" />
     <orderEntry type="library" exported="" name="controlsfx-samples-8.40.14" level="project" />
     <orderEntry type="library" exported="" name="opencsv-2.3" level="project" />
+    <orderEntry type="library" exported="" name="jssc-2.8.0" level="project" />
   </component>
 </module>

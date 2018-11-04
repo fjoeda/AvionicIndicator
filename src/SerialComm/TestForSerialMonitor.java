@@ -21,22 +21,25 @@ public class TestForSerialMonitor extends Application{
     @Override
     public void init(){
 
-        SerialCommunication serial = new SerialCommunication("COM15",57600);
+
         try{
+            JSSCSerial serial = new JSSCSerial("COM3",9600);
             serial.connectToSerial();
-        }catch(Exception e){
+            lastTimerCount = System.nanoTime();
 
-        }
-        lastTimerCount = System.nanoTime();
-
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if(now > lastTimerCount + 1_000_000_000L){
-                    System.out.println(serial.getReceivedMessage());
+            timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    if(now > lastTimerCount + 1_000_000_000L){
+                        System.out.println(serial.getReceivedMessage());
+                    }
                 }
-            }
-        };
+            };
+            serial.sendToSerial("WriteSomething");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {

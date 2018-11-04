@@ -55,7 +55,7 @@
                         </VBox>
                      </content>
                 </Tab>
-                  <Tab text="Air Speed Chart">
+                  <Tab text="Speed Chart">
                      <content>
                         <VBox fx:id="AirspeedVbox" prefHeight="200.0" prefWidth="100.0">
 

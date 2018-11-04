@@ -1,7 +1,8 @@
 package sample;
 
 import Avionics.*;
-import SerialComm.SerialCommunication;
+import SerialComm.JSSCSerial;
+//import SerialComm.SerialCommunication;
 import TextParser.StringParser;
 import Visualize3D.Importer3D;
 import Visualize3D.SubSceneContainer;
@@ -127,7 +128,7 @@ public class Controller implements Initializable {
     private AnimationTimer timer;
     private AnimationTimer routeTimer;
 
-    SerialCommunication serial = null;
+    JSSCSerial serial = null;
 
     public void SendToSerial(ActionEvent actionEvent) {
         if(serial != null)
@@ -172,7 +173,7 @@ public class Controller implements Initializable {
         mapView.setMapType(MapType.BINGMAPS_ROAD);
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
-        planeMarker = new Marker(getClass().getResource("Object/PlaneIcon.png"),-15,-20)
+        planeMarker = new Marker(getClass().getResource("Object/PlaneIcon.png"),-16,-37)
                 .setPosition(new Coordinate(-7.7713847,110.3774998))
                 .setVisible(true);
 
@@ -231,7 +232,7 @@ public class Controller implements Initializable {
                if(!isConnectedToSerial){
                    try{
                        if(PortName != null && BaudRate != null){
-                           serial = new SerialCommunication(PortName,Integer.valueOf(BaudRate));
+                           serial = new JSSCSerial(PortName,Integer.valueOf(BaudRate));
                            serial.connectToSerial();
                            isConnectedToSerial = true;
                            //routes.add(positionLast);
@@ -423,11 +424,17 @@ public class Controller implements Initializable {
     }
 
     public void RefreshPortList(MouseEvent mouseEvent) {
+        /*
         Enumeration<CommPortIdentifier> portList = CommPortIdentifier.getPortIdentifiers();
         while(portList.hasMoreElements()) {
             CommPortIdentifier portId = portList.nextElement();
             if (!PortList.getItems().contains(portId.getName()))
                 PortList.getItems().add(portId.getName());
+        }*/
+        ArrayList<String> portList = JSSCSerial.getPortList();
+        for(String port : portList){
+            if (!PortList.getItems().contains(port))
+                PortList.getItems().add(port);
         }
     }
 
@@ -592,6 +599,11 @@ public class Controller implements Initializable {
             try {
                 fileWriter.flush();
                 fileWriter.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Flight Record saved");
+                alert.showAndWait();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -624,7 +636,7 @@ public class Controller implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Berhasil menyimpan waypoint");
+            alert.setContentText("Waypoint saved");
             alert.showAndWait();
 
         } catch (Exception e) {

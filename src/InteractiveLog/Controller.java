@@ -80,11 +80,11 @@ public class Controller implements Initializable {
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
 
         // init MapView-Cache
-        
+
 
         mapView.initialize();
         AltitudeChart.setTitle("Altitude");
-        AirspeedChart.setTitle("Airspeed");
+        AirspeedChart.setTitle("Speed");
         xAxis1.setTickLabelFill(Color.WHITE);
         yAxis1.setTickLabelFill(Color.WHITE);
         xAxis2.setTickLabelFill(Color.WHITE);

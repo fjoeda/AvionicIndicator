@@ -17,6 +17,9 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/gmaps/GMapsFX-2.12.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/3D/jimStlMeshImporterJFX.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/gmaps/slf4j-api-1.7.23.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/rxtxSerial.dll" />
+      <element id="file-copy" path="$PROJECT_DIR$/rxtxParallel.dll" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jssc-2.8.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
