@@ -414,7 +414,8 @@ public class Controller implements Initializable {
 
 
 
-    private void recordFlightData(LocalDateTime  time, Coordinate position, String batteryLevel ,double speed, double altitude, int flightTime){
+    private void recordFlightData(LocalDateTime  time, Coordinate position,
+                                  String batteryLevel ,double speed, double altitude, int flightTime){
         String LineToSave = time.toLocalDate().toString()+","+time.toLocalTime().toString()+","
                 +position.getLatitude()+","+position.getLongitude()+","+String.valueOf(batteryLevel)+","
                 +String.valueOf(speed)+","+String.valueOf(altitude)+","+flightTime;
@@ -486,7 +487,7 @@ public class Controller implements Initializable {
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
         recordFlightData(LocalDateTime.now(),positionNow,StringParser.getBattery(serial.getReceivedMessage()),
-                StringParser.getAirspeed(serial.getReceivedMessage()),StringParser.getAltitude(serial.getReceivedMessage()),flightTime);
+                StringParser.getSpeed(serial.getReceivedMessage()),StringParser.getAltitude(serial.getReceivedMessage()),flightTime);
         System.gc();
         if(!afterConnect){
             positionLast = positionNow;
@@ -528,7 +529,7 @@ public class Controller implements Initializable {
                 horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
                 horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
                 altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
-                speedometer.setValue(StringParser.getAirspeed((serial.getReceivedMessage())));
+                speedometer.setValue(StringParser.getSpeed((serial.getReceivedMessage())));
                 BatteryLabel.setText(StringParser.getBattery(serial.getReceivedMessage()));
                 if(StringParser.getArm(serial.getReceivedMessage())==1){
                     Status.setText("ARMED");

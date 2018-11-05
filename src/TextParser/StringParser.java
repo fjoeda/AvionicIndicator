@@ -37,7 +37,7 @@ public class StringParser{
         return (Double.parseDouble((data.split("#"))[6]));
     }
 
-    public static double getAirspeed(String data){
+    public static double getSpeed(String data){
         return (Double.parseDouble((data.split("#"))[7]));
     }
 
