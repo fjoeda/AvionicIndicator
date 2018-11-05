@@ -2,10 +2,7 @@ package InteractiveLog;
 
 import TextParser.StringParser;
 import au.com.bytecode.opencsv.CSVReader;
-import com.sothawo.mapjfx.Coordinate;
-import com.sothawo.mapjfx.CoordinateLine;
-import com.sothawo.mapjfx.MapType;
-import com.sothawo.mapjfx.MapView;
+import com.sothawo.mapjfx.*;
 import com.sothawo.mapjfx.offline.OfflineCache;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -75,7 +72,7 @@ public class Controller implements Initializable {
         String BING_MAP_API_KEY = "AjBEkbJVIF_enJ7KdZTSXxNgn58ADVVRqFNKbSBeSCmNukw4hQYAAcaIM61q2mGp";
 
         mapView.setBingMapsApiKey(BING_MAP_API_KEY);
-        mapView.setMapType(MapType.BINGMAPS_ROAD);
+        mapView.setMapType(MapType.BINGMAPS_AERIAL);
         mapView.setZoom(12);
         mapView.setCenter(new Coordinate(-7.7713847,110.3774998));
 
@@ -98,7 +95,7 @@ public class Controller implements Initializable {
         if(coordinateList.isEmpty())
             Platform.exit();
         setCenterAndZoom(coordinateList);
-        CoordinateLine route = new CoordinateLine(coordinateList).setColor(Color.DARKBLUE)
+        CoordinateLine route = new CoordinateLine(coordinateList).setColor(Color.WHITE)
                 .setWidth(4)
                 .setVisible(true);
 
@@ -177,9 +174,17 @@ public class Controller implements Initializable {
                     if (index == 1) {
                         dayaAwal = nextRecord[4];
                         awalStatus.setText(dayaAwal);
+                        Marker planeMarker = new Marker(getClass().getResource("TakeOffMarker.png"),-16,-32)
+                                .setPosition(coordinateList.get(index))
+                                .setVisible(true);
+                        mapView.addMarker(planeMarker);
                     } else if (index == records - 1) {
                         dayaAkhir = nextRecord[4];
                         akhirStatus.setText(dayaAkhir);
+                        Marker planeMarker = new Marker(getClass().getResource("LandMarker.png"),-16,-32)
+                                .setPosition(coordinateList.get(index))
+                                .setVisible(true);
+                        mapView.addMarker(planeMarker);
                         timeStatus.setText(StringParser.getTimeFormatFromSecond(Integer.parseInt(nextRecord[7])));
                     }
 

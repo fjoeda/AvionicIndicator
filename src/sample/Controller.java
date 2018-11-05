@@ -69,6 +69,7 @@ public class Controller implements Initializable {
     public Button CloseButton;
     public Button SendWaypoint;
     public ToggleSwitch tglTakeOff;
+    public Button MapModeButton;
 
     private AirCompass     compass;
     private Horizon        horizon;
@@ -133,6 +134,7 @@ public class Controller implements Initializable {
     public void SendToSerial(ActionEvent actionEvent) {
         if(serial != null)
         serial.sendToSerial((SendSerialText.getText()));
+        MessageLog.appendText("MESSAGE SENT : "+ SendSerialText.getText());
     }
 
     @Override
@@ -780,6 +782,16 @@ public class Controller implements Initializable {
 
     private double logBase(double val,double base){
         return Math.log(val)/Math.log(base);
+    }
+
+    public void ChangeMapMode(ActionEvent actionEvent) {
+        if(MapModeButton.getText().equals("SATELLITE")){
+            MapModeButton.setText("ROAD");
+            mapView.setMapType(MapType.BINGMAPS_AERIAL);
+        }else{
+            MapModeButton.setText("SATELLITE");
+            mapView.setMapType(MapType.BINGMAPS_ROAD);
+        }
     }
 }
 
