@@ -106,6 +106,9 @@ public class Controller implements Initializable {
     private boolean afterConnect = false;
     private int flightTime = 0;
 
+    private boolean waypointSent = false;
+    private String waypointMessage;
+
     private int index = 0;
     private int loadIndex = 0;
 
@@ -119,6 +122,7 @@ public class Controller implements Initializable {
     private int COMMAND = 0;
     private int AUTO = 0;
     private int ARMED =0;
+    private boolean isGuided = false;
 
     private FileWriter fileWriter = null;
     private BufferedReader fileReader = null;
@@ -208,6 +212,8 @@ public class Controller implements Initializable {
 
                     refreshOrientation();
                     //System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
+                    if(waypointSent)
+                        checkIfWaypointSent();
                     lastTimerCall = now;
                 }
             }
@@ -240,6 +246,7 @@ public class Controller implements Initializable {
                            //routes.add(positionLast);
                            mapView.addMarker(planeMarker);
                            timer.start();
+                           System.out.println(serial.getReceivedMessage());
                            //routeTimer.start();
                            tglArm1.setDisable(!newValue);
                            tglArm2.setDisable(!newValue);
@@ -481,15 +488,16 @@ public class Controller implements Initializable {
     }
 
     private void refreshMapRoute(){
-        positionNow = new Coordinate(StringParser.getLatitude(serial.getReceivedMessage()),
-                StringParser.getLongitude(serial.getReceivedMessage()));
+        String message = serial.getReceivedMessage();
+        positionNow = new Coordinate(StringParser.getLatitude(message),
+                StringParser.getLongitude(message));
 
 
         mapView.removeMarker(planeMarker);
         planeMarker.setPosition(positionNow).setVisible(true);
         mapView.addMarker(planeMarker);
-        recordFlightData(LocalDateTime.now(),positionNow,StringParser.getBattery(serial.getReceivedMessage()),
-                StringParser.getSpeed(serial.getReceivedMessage()),StringParser.getAltitude(serial.getReceivedMessage()),flightTime);
+        recordFlightData(LocalDateTime.now(),positionNow,StringParser.getBattery(message),
+                StringParser.getSpeed(message),StringParser.getAltitude(message),flightTime);
         System.gc();
         if(!afterConnect){
             positionLast = positionNow;
@@ -521,23 +529,35 @@ public class Controller implements Initializable {
     }
 
     private void refreshOrientation(){
-        if(StringParser.getDataLength(serial.getReceivedMessage())==14){
-            viewer.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
-            viewer.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
+        String message = serial.getReceivedMessage();
+        if(StringParser.getDataLength(message)==14){
+            viewer.setPitch(StringParser.getPitch(message));
+            viewer.setRoll(StringParser.getRoll(message));
             try{
-                MessageLog.appendText(serial.getReceivedMessage()+System.lineSeparator());
+                MessageLog.appendText(message+System.lineSeparator());
                 MessageLog.appendText("--------------------------------"+System.lineSeparator());
-                compass.setBearing(StringParser.getYaw(serial.getReceivedMessage()));
-                horizon.setPitch(StringParser.getPitch(serial.getReceivedMessage()));
-                horizon.setRoll(StringParser.getRoll(serial.getReceivedMessage()));
-                altimeter.setValue(StringParser.getAltitude(serial.getReceivedMessage()));
-                speedometer.setValue(StringParser.getSpeed((serial.getReceivedMessage())));
-                BatteryLabel.setText(StringParser.getBattery(serial.getReceivedMessage()));
-                if(StringParser.getArm(serial.getReceivedMessage())==1){
+
+                compass.setBearing(StringParser.getYaw(message));
+                horizon.setPitch(StringParser.getPitch(message));
+                horizon.setRoll(StringParser.getRoll(message));
+                altimeter.setValue(StringParser.getAltitude(message));
+                speedometer.setValue(StringParser.getSpeed((message)));
+                BatteryLabel.setText(StringParser.getBattery(message));
+
+                if(StringParser.getArm(message)==1){
                     Status.setText("ARMED");
                 }else{
                     Status.setText("DISARMED");
                 }
+
+                if(StringParser.getAuto(message)==1&&!isGuided){
+                    tglAuto.setSelected(true);
+                    isGuided = true;
+                }else if(StringParser.getAuto(message)==0&&isGuided){
+                    tglAuto.setSelected(false);
+                    isGuided = false;
+                }
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -739,12 +759,29 @@ public class Controller implements Initializable {
     }
 
     public void sendWaypoint(ActionEvent actionEvent) {
-        String waypointMessage="w#";
+        waypointMessage="w#";
         for(Waypoint waypoint : waypoints){
             waypointMessage+=waypoint.getLatitude()+"#"+waypoint.getLongitude()+"#";
         }
         waypointMessage +="*";
+        waypointSent = true;
+        System.out.println(waypointMessage);
         serial.sendToSerial(waypointMessage);
+
+    }
+
+    public void checkIfWaypointSent(){
+        System.out.println(serial.waypointMessage);
+        if(waypointSent){
+            if(waypointMessage.equals(serial.waypointMessage)){
+                waypointSent = false;
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Waypoint Sent");
+                alert.showAndWait();
+            }
+        }
     }
 
     private void setCenterAndZoom(ArrayList<Waypoint> coordinateList){
