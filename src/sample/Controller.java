@@ -212,8 +212,8 @@ public class Controller implements Initializable {
 
                     refreshOrientation();
                     //System.out.println(StringParser.getDataLength(serial.getReceivedMessage()));
-                    if(waypointSent)
-                        checkIfWaypointSent();
+                    //if(waypointSent)
+                      //  checkIfWaypointSent();
                     lastTimerCall = now;
                 }
             }
@@ -767,6 +767,11 @@ public class Controller implements Initializable {
         waypointSent = true;
         System.out.println(waypointMessage);
         serial.sendToSerial(waypointMessage);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Waypoint Sent");
+        alert.showAndWait();
 
     }
 
@@ -775,11 +780,7 @@ public class Controller implements Initializable {
         if(waypointSent){
             if(waypointMessage.equals(serial.waypointMessage)){
                 waypointSent = false;
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("Waypoint Sent");
-                alert.showAndWait();
+
             }
         }
     }

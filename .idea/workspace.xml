@@ -8,17 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Object/Icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Adhyasta_GCS.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/workspace.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/artifacts/AvionicIndicator_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Adhyasta_GCS_jar.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerialComm/JSSCSerial.java" afterPath="$PROJECT_DIR$/src/SerialComm/JSSCSerial.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\ACER\IdeaProjects\AvionicIndicator\.idea\shelf/" />
@@ -42,11 +36,11 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="557" column="37" lean-forward="false" selection-start-line="557" selection-start-column="37" selection-end-line="557" selection-end-column="37" />
+            <state relative-caret-position="128">
+              <caret line="216" column="40" lean-forward="true" selection-start-line="216" selection-start-column="40" selection-end-line="216" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10004#10194#0" expanded="false" />
+                <element signature="e#10008#10198#0" expanded="false" />
                 <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
                 <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
                 <element signature="method#refreshMapRoute#0;class#Controller#0" expanded="false" />
@@ -842,7 +836,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541439180181</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="message format">
+      <created>1541530582807</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1541530582808</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView">
@@ -925,7 +926,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Komunikasi data" />
     <MESSAGE value="3D visualization ok. Cek kesesuaian rotasi dengan wahana" />
     <MESSAGE value="Coba Mapjfx (BingMap) di package MapTest" />
     <MESSAGE value="Update map" />
@@ -950,7 +950,8 @@
     <MESSAGE value="Ganti tulisan" />
     <MESSAGE value="jssc" />
     <MESSAGE value="update flight log and map type. make sure it's built in 32-bt environment" />
-    <option name="LAST_COMMIT_MESSAGE" value="update flight log and map type. make sure it's built in 32-bt environment" />
+    <MESSAGE value="message format" />
+    <option name="LAST_COMMIT_MESSAGE" value="message format" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1219,6 +1220,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1226,6 +1228,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1312,11 +1315,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="557" column="37" lean-forward="false" selection-start-line="557" selection-start-column="37" selection-end-line="557" selection-end-column="37" />
+        <state relative-caret-position="128">
+          <caret line="216" column="40" lean-forward="true" selection-start-line="216" selection-start-column="40" selection-end-line="216" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10004#10194#0" expanded="false" />
+            <element signature="e#10008#10198#0" expanded="false" />
             <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
             <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
             <element signature="method#refreshMapRoute#0;class#Controller#0" expanded="false" />
