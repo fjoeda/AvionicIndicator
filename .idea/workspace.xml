@@ -8,9 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50f3ba69-89b7-4900-a2bf-9752acd7f3f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/AvionicIndicator/sample/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
     </list>
@@ -36,16 +33,20 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="216" column="40" lean-forward="true" selection-start-line="216" selection-start-column="40" selection-end-line="216" selection-end-column="40" />
+            <state relative-caret-position="339">
+              <caret line="600" column="45" lean-forward="false" selection-start-line="600" selection-start-column="45" selection-end-line="600" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10008#10198#0" expanded="false" />
+                <element signature="e#10047#10237#0" expanded="false" />
                 <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
                 <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
                 <element signature="method#refreshMapRoute#0;class#Controller#0" expanded="false" />
                 <element signature="method#addTrackedMarker#0;class#Controller#0" expanded="false" />
                 <element signature="method#addTrackedMarkerToMap#0;class#Controller#0" expanded="false" />
+                <element signature="method#saveFlightLog#0;class#Controller#0" expanded="false" />
+                <element signature="method#saveWaypoint#0;class#Controller#0" expanded="false" />
+                <element signature="method#loadWaypoint#0;class#Controller#0" expanded="false" />
+                <element signature="method#openFlightRecord#0;class#Controller#0" expanded="false" />
                 <element signature="method#saveFlightRecord#0;class#Controller#0" expanded="false" />
                 <element signature="method#clearWaypoint#0;class#Controller#0" expanded="false" />
               </folding>
@@ -56,7 +57,7 @@
       <file leaf-file-name="StringParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-247">
+            <state relative-caret-position="-37">
               <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="e#843#844#0" expanded="true" />
@@ -843,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541530582808</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="remove waypoint check">
+      <created>1541530698203</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1541530698203</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -926,7 +934,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="3D visualization ok. Cek kesesuaian rotasi dengan wahana" />
     <MESSAGE value="Coba Mapjfx (BingMap) di package MapTest" />
     <MESSAGE value="Update map" />
     <MESSAGE value="Update map + plane icon" />
@@ -951,7 +958,8 @@
     <MESSAGE value="jssc" />
     <MESSAGE value="update flight log and map type. make sure it's built in 32-bt environment" />
     <MESSAGE value="message format" />
-    <option name="LAST_COMMIT_MESSAGE" value="message format" />
+    <MESSAGE value="remove waypoint check" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove waypoint check" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1302,7 +1310,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TextParser/StringParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-247">
+        <state relative-caret-position="-37">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="e#843#844#0" expanded="true" />
@@ -1315,16 +1323,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="216" column="40" lean-forward="true" selection-start-line="216" selection-start-column="40" selection-end-line="216" selection-end-column="40" />
+        <state relative-caret-position="339">
+          <caret line="600" column="45" lean-forward="false" selection-start-line="600" selection-start-column="45" selection-end-line="600" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10008#10198#0" expanded="false" />
+            <element signature="e#10047#10237#0" expanded="false" />
             <element signature="method#initialize3DScene#0;class#Controller#0" expanded="false" />
             <element signature="method#load3DFile#0;class#Controller#0" expanded="false" />
             <element signature="method#refreshMapRoute#0;class#Controller#0" expanded="false" />
             <element signature="method#addTrackedMarker#0;class#Controller#0" expanded="false" />
             <element signature="method#addTrackedMarkerToMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveFlightLog#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveWaypoint#0;class#Controller#0" expanded="false" />
+            <element signature="method#loadWaypoint#0;class#Controller#0" expanded="false" />
+            <element signature="method#openFlightRecord#0;class#Controller#0" expanded="false" />
             <element signature="method#saveFlightRecord#0;class#Controller#0" expanded="false" />
             <element signature="method#clearWaypoint#0;class#Controller#0" expanded="false" />
           </folding>

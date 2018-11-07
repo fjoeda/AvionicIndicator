@@ -3,6 +3,7 @@ package sample;
 import Avionics.*;
 import SerialComm.JSSCSerial;
 //import SerialComm.SerialCommunication;
+import SerialComm.SerialCommunication;
 import TextParser.StringParser;
 import Visualize3D.Importer3D;
 import Visualize3D.SubSceneContainer;
@@ -544,11 +545,45 @@ public class Controller implements Initializable {
                 speedometer.setValue(StringParser.getSpeed((message)));
                 BatteryLabel.setText(StringParser.getBattery(message));
 
-                if(StringParser.getArm(message)==1){
-                    Status.setText("ARMED");
+                if(StringParser.getCommand(message)>0){
+                   switch (StringParser.getCommand(message)){
+                       case 1:
+                           Status.setText("STABILIZE");
+                           break;
+                       case 2:
+                           Status.setText("ALT HOLD");
+                           break;
+                       case 3:
+                           Status.setText("HEADING");
+                           break;
+                       case 4:
+                           Status.setText("WAYPOINT");
+                           break;
+                   }
+                   if(isGuided){
+                       switch (StringParser.getCommand(message)){
+                           case 1:
+                               tglStab.setSelected(true);
+                               break;
+                           case 2:
+                               tglAlt.setSelected(true);
+                               break;
+                           case 3:
+                               tglHead.setSelected(true);
+                               break;
+                           case 4:
+                               tglWay.setSelected(true);
+                               break;
+                       }
+                   }
                 }else{
-                    Status.setText("DISARMED");
+                    if(StringParser.getArm(message)==1){
+                        Status.setText("ARMED");
+                    }else if(StringParser.getArm(message)==0){
+                        Status.setText("DISARMED");
+                    }
                 }
+
 
                 if(StringParser.getAuto(message)==1&&!isGuided){
                     tglAuto.setSelected(true);
@@ -556,6 +591,14 @@ public class Controller implements Initializable {
                 }else if(StringParser.getAuto(message)==0&&isGuided){
                     tglAuto.setSelected(false);
                     isGuided = false;
+                }
+
+                if(StringParser.getArm(message)==1&&!isGuided){
+                    tglArm1.setSelected(true);
+                    tglArm2.setSelected(true);
+                }else if(StringParser.getArm(message)==0&&!isGuided){
+                    tglArm1.setSelected(false);
+                    tglArm2.setSelected(false);
                 }
 
             } catch (Exception e) {
@@ -596,11 +639,6 @@ public class Controller implements Initializable {
         System.out.println("added");
     }
 
-
-    /*
-    private File getFileDirectoryFromFileChooser(ActionEvent ae, String title,int mode){
-
-    }*/
 
     public void saveFlightLog(ActionEvent actionEvent){
         FileChooser fileChooser = new FileChooser();
@@ -774,7 +812,7 @@ public class Controller implements Initializable {
         alert.showAndWait();
 
     }
-
+/*
     public void checkIfWaypointSent(){
         System.out.println(serial.waypointMessage);
         if(waypointSent){
@@ -783,7 +821,7 @@ public class Controller implements Initializable {
 
             }
         }
-    }
+    }*/
 
     private void setCenterAndZoom(ArrayList<Waypoint> coordinateList){
         double minLat = 999, minLng = 999;
