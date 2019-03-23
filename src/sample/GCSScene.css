@@ -1,0 +1,243 @@
+.background {
+    -fx-background-color: #00305C;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+    -fx-base: #00305C;
+    -fx-control-inner-background: #00305C;
+    -fx-background-color: #00305C;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: 
+        transparent
+        transparent
+        derive(-fx-base, 80%) 
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #00305C transparent #00305C;
+    -fx-background-color: transparent, derive(#00305C,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#FFCA24,10%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#00305C,50%);
+    -fx-text-fill: white;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: black;
+}
+
+.text-field {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+/* 
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #00305C;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #FFCA24;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: #FFCA24;
+  -fx-text-fill: #00305C;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #00305C;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}
+
+.toggle-switch .text {
+    -fx-fill: white;
+    -fx-font-size: 1em;
+    -fx-font-family: "Segoe UI Semibold", "Segoe UI";
+}
+
+.toggle-switch .thumb {
+    -fx-background-color: #25bbc4;
+    -fx-padding: 0.583333em 0.333333em 0.583333em 0.333333em;  /* 7 4 7 4*/
+    -fx-background-radius: 0;
+}
+
+.toggle-switch .thumb-area{
+    -fx-background-radius: 0;
+}
+
+.toggle-switch:selected .thumb-area{
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-color: #a6a6a6, white, #FFCA24; /* The last one is the accent color */
+}
+
+.toggle-switch .thumb-area{
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-color: #a6a6a6, white, #a6a6a6;
+}
+
+.toggle-switch:selected:pressed .thumb-area{
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-color: #a6a6a6, white, #25bbc4; /* The last one is the accent color */
+}
+
+.toggle-switch .thumb-area
+{
+    -fx-padding: 0.583333em 1.333333em 0.583333em 1.333333em; /* 7 16 7 16 */
+
+}
+
+.toggle-switch:disabled
+{
+    -fx-opacity: 0.4;
+}
+
+//Titledpane
+
+.titled-pane 
+{
+-fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";    
+-fx-text-fill: white;
+}
+.titled-pane:focused 
+{
+-fx-text-fill: white;
+}
+.titled-pane > .title 
+{
+-fx-background-color: white, white, #25bbc4;
+-fx-background-insets: 0, 1, 2;
+-fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
+}
+
+.titled-pane:focused > .title 
+{
+-fx-color: white;
+}
+
+.titled-pane > .title > .arrow-button 
+{
+-fx-background-color: null;
+-fx-background-insets: 0;
+-fx-background-radius: 0;
+-fx-padding: 0.0em 0.25em 0.0em 0.0em; /* 0 3 0 0 */
+}
+
+.titled-pane > .title > .arrow-button .arrow 
+{
+-fx-background-color: white;
+-fx-background-insets: 1 0 -1 0, 0;
+-fx-padding: 0.25em 0.3125em 0.25em 0.3125em; /* 3 3.75 3 3.75 */
+-fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+.titled-pane:collapsed > .title > .arrow-button .arrow 
+{
+-fx-rotate: -90;
+}
+
+.titled-pane > *.content 
+{
+-fx-background-color: -fx-box-border,#00305C;
+-fx-background-insets: 0, 2 5 4 4;
+-fx-padding: 0.167em;
+ }
+
+.titled-pane:focused > .title > .arrow-button .arrow 
+{
+-fx-background-color: white;
+}

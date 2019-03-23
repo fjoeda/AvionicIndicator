@@ -62,8 +62,8 @@ import javafx.util.Duration;
 public class Horizon extends Region {
     private static final double ANIMATION_DURATION = 800;
 
-    private static final double PREFERRED_WIDTH  = 320;
-    private static final double PREFERRED_HEIGHT = 320;
+    private static final double PREFERRED_WIDTH  = 149;
+    private static final double PREFERRED_HEIGHT = 149;
     private static final double MINIMUM_WIDTH    = 5;
     private static final double MINIMUM_HEIGHT   = 5;
     private static final double MAXIMUM_WIDTH    = 1024;
@@ -131,7 +131,7 @@ public class Horizon extends Region {
             @Override public String getName() { return "pitch"; }
         };
         upsidedown       = new SimpleBooleanProperty(this, "upsidedown", false);
-        animated         = new SimpleBooleanProperty(this, "animated", true);    
+        animated         = new SimpleBooleanProperty(this, "animated", false);
         skyColor         = new SimpleObjectProperty<>(this, "skyColor", Color.rgb(127, 213, 240));
         earthColor       = new SimpleObjectProperty<>(this, "earthColor", Color.rgb(60, 68, 57));
         indicatorColor   = new SimpleObjectProperty<>(this, "indicatorcolor", Color.web("#fd7e24"));

@@ -49,8 +49,8 @@ import javafx.util.Duration;
  * Time: 07:40
  */
 public class AirCompass extends Region {
-    private static final double   PREFERRED_WIDTH  = 320;
-    private static final double   PREFERRED_HEIGHT = 320;
+    private static final double   PREFERRED_WIDTH  = 149.0;
+    private static final double   PREFERRED_HEIGHT = 149.0;
     private static final double   MINIMUM_WIDTH    = 5;
     private static final double   MINIMUM_HEIGHT   = 5;
     private static final double   MAXIMUM_WIDTH    = 1024;
@@ -80,7 +80,7 @@ public class AirCompass extends Region {
         getStyleClass().add("air-compass");
         bearing          = new SimpleDoubleProperty(this, "bearing", 0);
         bearingAngle     = new SimpleDoubleProperty(this, "bearingAngle", 0);
-        animated         = new SimpleBooleanProperty(this, "animated", true);
+        animated         = new SimpleBooleanProperty(this, "animated", false);
         planeColor       = new SimpleObjectProperty<>(this, "planeColor", Color.web("#fd7e24"));
         orientationColor = new SimpleObjectProperty<>(this, "orientationColor", Color.web("#ffa100"));
         timeline         = new Timeline();
@@ -168,11 +168,11 @@ public class AirCompass extends Region {
                 KeyValue kvBearingCanvasRotateEnd = new KeyValue(bearingCanvas.rotateProperty(), rotationAngle, Interpolator.EASE_OUT);
 
                 KeyFrame kfBegin = new KeyFrame(Duration.ZERO, kvBearingAngleBegin, kvBearingCanvasRotateBegin);
-                KeyFrame kfEnd = new KeyFrame(Duration.millis(800), kvBearingAngleEnd, kvBearingCanvasRotateEnd);
+                KeyFrame kfEnd = new KeyFrame(Duration.millis(80), kvBearingAngleEnd, kvBearingCanvasRotateEnd);
                 timeline.getKeyFrames().setAll(kfBegin, kfEnd);
                 timeline.play();
             } else {
-                bearingCanvas.setRotate(rotationAngle);
+                bearingCanvas.setRotate(360-target); // sebelumnya rotationAngle
             }
         }
     }

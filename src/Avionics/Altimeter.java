@@ -53,8 +53,8 @@ import javafx.util.Duration;
  * Time: 20:15
  */
 public class Altimeter extends Region {
-    private static final double  PREFERRED_WIDTH    = 320;
-    private static final double  PREFERRED_HEIGHT   = 320;
+    private static final double  PREFERRED_WIDTH    = 149.0;
+    private static final double  PREFERRED_HEIGHT   = 149.0;
     private static final double  MINIMUM_WIDTH      = 5;
     private static final double  MINIMUM_HEIGHT     = 5;
     private static final double  MAXIMUM_WIDTH      = 1024;
@@ -110,7 +110,7 @@ public class Altimeter extends Region {
         value100        = new SimpleDoubleProperty(this, "value100", 0);       
         value1000       = new SimpleDoubleProperty(this, "value100", 0);        
         value10000      = new SimpleDoubleProperty(this, "value100", 0);        
-        animated        = new SimpleBooleanProperty(this, "animated", true);
+        animated        = new SimpleBooleanProperty(this, "animated", false);
         textColor       = new SimpleObjectProperty<>(this, "textColor", Color.web("#ffffff"));
         timeline        = new Timeline();
         init();

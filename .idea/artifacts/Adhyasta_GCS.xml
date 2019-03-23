@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="Adhyasta GCS">
+    <output-path>$PROJECT_DIR$/out/artifacts/Adhyasta_GCS</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+        <option name="convertCss2Bin" value="true" />
+        <option name="description" value="" />
+        <option name="height" value="720" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="Adhyasta GCS" />
+        <option name="vendor" value="Gamaforce" />
+        <option name="version" value="2.0" />
+        <option name="width" value="1280" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="AvionicIndicator.jar">
+        <element id="module-output" name="AvionicIndicator" />
+        <element id="file-copy" path="$PROJECT_DIR$/rxtxParallel.dll" />
+        <element id="file-copy" path="$PROJECT_DIR$/rxtxSerial.dll" />
+      </element>
+    </root>
+  </artifact>
+</component>

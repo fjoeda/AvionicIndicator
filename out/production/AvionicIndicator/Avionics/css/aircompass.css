@@ -17,32 +17,15 @@
 .air-compass {
     -outer-frame-color: gray;
     -frame-color      : radial-gradient(center 50% 50%, radius 50%, black 0%, black 90%, #454547 94%, gray 95%, #454547 100%);    
-    -background-color : radial-gradient(center 50% 50%, radius 50%, #999999 0%, #333333 90%); 
+    -background-color : rgb(30, 30, 30);
     -frame-width      : 10;    
 }
 .air-compass .frame {
     -fx-background-radius: 1024;
     -fx-background-insets: 0, 1, 5, 25;
-    -fx-background-color : rgb(132, 132, 132),
-                           linear-gradient(from 85% 15% to 15% 85%,
-                                           rgb(83,83,83) 0%,
-                                           rgb(254,254,255) 8%,
-                                           rgb(0,0,0) 52%,
-                                           rgb(5,6,5) 55%,
-                                           rgb(248,250,249) 84%,
-                                           rgb(83,83,83) 99%),
-                           linear-gradient(to bottom,
-                                           rgb(255,255,255) 10%,
-                                           rgb(81,81,81) 48%,
-                                           rgb(57,57,57) 48%,
-                                           rgb(13,13,13) 100%),
-                           linear-gradient(from 80% 20% to 20% 80%,
-                                           rgb(172,172,173) 0%,
-                                           rgb(254,254,255) 8%,
-                                           rgb(0,0,0) 52%,
-                                           rgb(5,6,5) 55%,
-                                           rgb(248,250,249) 91%,
-                                           rgb(178,178,178) 99%);    
+    -fx-background-color : linear-gradient(to bottom,rgb(224,224,224) 0%,rgb(133,133,133) 26%,rgb(84,84,84) 100%),
+                           linear-gradient(to bottom,rgb(255,255,255) 0%,rgb(146,146,147) 50%,rgb(135,136,138) 100%),
+                           linear-gradient(to bottom,rgb(71,72,72) 0%,rgb(110,106,107) 50%,rgb(186,185,187) 100%);
 }
 .air-compass .background {
     -fx-background-radius: 1024;

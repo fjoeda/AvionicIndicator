@@ -51,9 +51,9 @@ public class SerialCommunication {
 
     //Kirim data ke Serial
 
-    public void SendToSerial(String message) {
+    public void sendToSerial(String message) {
         try{
-            output1.write(Byte.valueOf(message));
+            output1.write(message.getBytes());
             output1.flush();
 
         }catch (Exception e){
@@ -79,8 +79,7 @@ public class SerialCommunication {
                     public void serialEvent(SerialPortEvent event) {
                         try {
                             if(event.getEventType()==SerialPortEvent.DATA_AVAILABLE){
-                                String data = input.readLine();
-                                ReceivedMessage = data;
+                                ReceivedMessage = input.readLine();
                                 //System.out.println(data);
                             }
                         }catch (IOException e){

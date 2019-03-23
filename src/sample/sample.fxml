@@ -1,29 +1,361 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.sothawo.mapjfx.MapView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.ToggleSwitch?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+<?import Visualize3D.SubSceneContainer?>
+
+<VBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@GCSScene.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <HBox fx:id="avionics" layoutX="14.0" layoutY="14.0" prefHeight="320.0" prefWidth="960.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <Separator prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="343.0" />
-      <TextField prefWidth="398.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="352.0" />
-      <Button mnemonicParsing="false" text="Send" AnchorPane.leftAnchor="421.0" AnchorPane.topAnchor="352.0" />
-      <TextArea fx:id="dataArea" prefHeight="300.0" prefWidth="450.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="386.0" />
-      <ComboBox prefWidth="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="695.0" />
-      <ComboBox prefWidth="150.0" AnchorPane.leftAnchor="173.0" AnchorPane.topAnchor="695.0" />
-      <Button mnemonicParsing="false" text="Connect" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="404.0" AnchorPane.topAnchor="695.0" />
-      <Separator orientation="VERTICAL" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="473.0" AnchorPane.topAnchor="352.0" />
-      <Label layoutX="480.0" layoutY="356.0" text="Lattitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="352.0" />
-      <TextField layoutX="487.0" layoutY="374.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="378.0" />
-      <Label layoutX="487.0" layoutY="409.0" text="Longitude :" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="412.0" />
-      <TextField fx:id="txtCompass" layoutX="487.0" layoutY="426.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="438.0" />
-      <Button fx:id="btnSend" mnemonicParsing="false" onAction="#SetCompass" text="Set" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="472.0" />
+      <GridPane hgap="5.0" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1245.0" prefHeight="720.0" prefWidth="1245.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" maxWidth="506.0" minWidth="10.0" prefWidth="302.0" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="953.0" minWidth="10.0" prefWidth="851.3333740234375" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="953.0" minWidth="10.0" prefWidth="117.6666259765625" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="720.0" prefWidth="315.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="296.0" VBox.vgrow="NEVER">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Avionics/baticon.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="BatteryLabel" prefHeight="21.0" prefWidth="42.0" text="0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="2.0" right="2.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="Status" prefHeight="21.0" prefWidth="92.0" text="DISARMED" />
+                        <Pane prefHeight="37.0" prefWidth="33.0" />
+                        <ToggleSwitch fx:id="tglArm1" styleClass="toggle-switch" text="Arm">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </ToggleSwitch>
+                        <ToggleSwitch fx:id="tglArm2" styleClass="toggle-switch">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </ToggleSwitch>
+                     </children>
+                  </HBox>
+                  <VBox maxHeight="380.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" scaleShape="false">
+                     <children>
+                        <Accordion>
+                          <panes>
+      
+      
+                              <TitledPane expanded="false" maxHeight="334.0" maxWidth="302.0" prefHeight="50.0" prefWidth="302.0" text="Avionic Indicator">
+                                 <content>
+                                    <GridPane fx:id="SecAvionic" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="284.0" vgap="10.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </padding>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label text="ORIENTATION" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label text="SPEED" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+                                             <children>
+                                                <Label text="HEADING" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <children>
+                                                <Label text="ALTITUDE" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </GridPane>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane expanded="false" text="Message Log">
+                                 <content>
+                                    <VBox minHeight="240.0" prefHeight="240.0" prefWidth="295.0">
+                                       <children>
+                                          <TextArea fx:id="MessageLog" prefHeight="189.0" prefWidth="275.0" wrapText="true" />
+                                          <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="278.0">
+                                             <children>
+                                                <TextField fx:id="SendSerialText" prefHeight="30.0" prefWidth="278.0" promptText="Custom Commnd" styleClass="text-field">
+                                                   <HBox.margin>
+                                                      <Insets left="2.0" right="2.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="TOP_RIGHT" prefHeight="38.0" prefWidth="278.0">
+                                             <children>
+                                                <Button fx:id="ClearMessageButton" mnemonicParsing="false" onAction="#clearMessageLog" prefHeight="32.0" prefWidth="85.0" text="Clear">
+                                                   <HBox.margin>
+                                                      <Insets right="2.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button fx:id="SendButton" mnemonicParsing="false" onAction="#SendToSerial" prefHeight="32.0" prefWidth="85.0" text="Send " />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane expanded="false" maxHeight="195.0" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="304.0" text="Command Button">
+                                 <content>
+                                    <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="298.0">
+                                       <children>
+                                          <ToggleSwitch fx:id="tglAuto" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="31.0" prefWidth="278.0" styleClass="toggle-switch" text="AUTO">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </ToggleSwitch>
+                                          <GridPane prefHeight="36.0" prefWidth="278.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <ToggleSwitch fx:id="tglPlaneMode" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="133.0" styleClass="toggle-switch" text="PLANE">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </ToggleSwitch>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="54.0" prefWidth="139.0" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <ToggleSwitch fx:id="tglVtolMode" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="138.0" selected="true" styleClass="toggle-switch" text="VTOL">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </ToggleSwitch>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </GridPane>
+                                          <ToggleSwitch fx:id="tglTakeOff" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="TAKE-OFF">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </ToggleSwitch>
+                                          <ToggleSwitch fx:id="tglStab" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="STABILLIZE">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </ToggleSwitch>
+                                          <ToggleSwitch fx:id="tglAlt" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="287.0" styleClass="toggle-switch" text="ALTITUDE HOLD">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </ToggleSwitch>
+                                          <ToggleSwitch fx:id="tglHead" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="284.0" styleClass="toggle-switch" text="HEADING LOCK">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </ToggleSwitch>
+                                          <ToggleSwitch fx:id="tglWay" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="283.0" styleClass="toggle-switch" text="WAYPOINT">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </ToggleSwitch>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane expanded="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="304.0" text="3D Visualization">
+                                  <content>
+                                      <Pane fx:id="Pane3D" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="286.0">
+                                          <padding>
+                                              <Insets bottom="5.0" top="5.0" />
+                                          </padding>
+                                          <children>
+                                              <SubSceneContainer fx:id="subSceneContainer"/>
+                                          </children>
+                                      </Pane>
+                                  </content>
+                              </TitledPane>
+                          </panes>
+                        </Accordion>
+
+
+                     </children>
+                  </VBox>
+
+                  <Pane minWidth="-Infinity" prefHeight="498.0" prefWidth="304.0">
+                     <children>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="463.0" prefWidth="304.0" />
+                     </children></Pane>
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="304.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Flight Distance" />
+                              <Label fx:id="FlightDistance" text="0 m" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="Flight Time" />
+                              <Label fx:id="FlightTime" text="00:00" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="798.0" prefWidth="569.0" GridPane.columnIndex="1">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="689.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" top="2.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="1.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Avionics/logo-ugm.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label text="ADHYASTA GROUND CONTROL STATION" />
+                        <ImageView fitHeight="44.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Avionics/Gamaforce.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="669.0" prefWidth="694.0">
+                     <VBox.margin>
+                        <Insets right="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <MapView fx:id="mapView" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="846.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <VBox prefHeight="47.0" prefWidth="118.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="MinimizeButton" mnemonicParsing="false" onAction="#minimizeWindows" text="__" />
+                              <Button fx:id="CloseButton" mnemonicParsing="false" onAction="#closeWindows" text="X" />
+                           </children>
+                        </HBox>
+                     </children></VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="81.0" prefWidth="118.0">
+                     <children>
+                        <ComboBox fx:id="PortList" onMouseClicked="#RefreshPortList" prefHeight="25.0" prefWidth="107.0" promptText="COM" styleClass="menu-bar">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <ComboBox fx:id="BaudList" prefHeight="25.0" prefWidth="107.0" promptText="Baudrate" styleClass="menu-bar">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <ToggleSwitch fx:id="ConnectButton" contentDisplay="RIGHT" graphicTextGap="2.0" prefHeight="21.0" prefWidth="107.0" styleClass="toggle-switch" text="Connect">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </ToggleSwitch>
+                     </children>
+                  </VBox>
+                  <Button fx:id="ClearWaypoint" mnemonicParsing="false" onAction="#clearWaypoint" prefHeight="52.0" prefWidth="118.0" text="Clear Waypoint" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="4.0" top="4.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="SendWaypoint" mnemonicParsing="false" onAction="#sendWaypoint" prefHeight="52.0" prefWidth="118.0" text="Send Waypoint" textAlignment="CENTER" wrapText="true" />
+
+                  <Button fx:id="SaveWaypoint" mnemonicParsing="false" onAction="#saveWaypoint" prefHeight="52.0" prefWidth="118.0" text="Save Waypoint" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="OpenWaypoint" mnemonicParsing="false" onAction="#loadWaypoint" prefHeight="52.0" prefWidth="118.0" text="Open Waypoint" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="SaveFlightRecord" mnemonicParsing="false" onAction="#saveFlightLog" prefHeight="52.0" prefWidth="118.0" text="Save Flight Record" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="OpenFlightRecord" mnemonicParsing="false" onAction="#openFlightRecord" prefHeight="52.0" prefWidth="118.0" text="Flight Record" textAlignment="CENTER" wrapText="true" />
+                  <Label prefHeight="59.0" prefWidth="107.0" text="Change map type to" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="MapModeButton" mnemonicParsing="false" text="SATELLITE" onAction="#ChangeMapMode"/>
+
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+
    </children>
-</AnchorPane>
+</VBox>
