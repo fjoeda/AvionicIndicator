@@ -13,6 +13,7 @@ import com.sothawo.mapjfx.event.MapViewEvent;
 import com.sothawo.mapjfx.offline.OfflineCache;
 import gnu.io.CommPortIdentifier;
 import javafx.animation.AnimationTimer;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -28,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -43,6 +45,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
+
 
 public class Controller implements Initializable {
     public Label Status;
@@ -128,10 +131,13 @@ public class Controller implements Initializable {
     private FileWriter fileWriter = null;
     private BufferedReader fileReader = null;
 
+=======
+
     private long           lastTimerCall;
     private long           lastRouteDataGot;
     private double         speed;
     private AnimationTimer timer;
+
     private AnimationTimer routeTimer;
 
     JSSCSerial serial = null;
@@ -145,6 +151,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String BING_MAP_API_KEY = "AjBEkbJVIF_enJ7KdZTSXxNgn58ADVVRqFNKbSBeSCmNukw4hQYAAcaIM61q2mGp";
+
         compass   = new AirCompass();
         horizon   = new Horizon();
         altimeter = new Altimeter();
@@ -529,6 +536,7 @@ public class Controller implements Initializable {
         }
     }
 
+
     private void refreshOrientation(){
         String message = serial.getReceivedMessage();
         if(StringParser.getDataLength(message)==14){
@@ -868,6 +876,10 @@ public class Controller implements Initializable {
             MapModeButton.setText("SATELLITE");
             mapView.setMapType(MapType.BINGMAPS_ROAD);
         }
+
+    }
+    public void SetCompass(javafx.event.ActionEvent actionEvent){
+
     }
 }
 
